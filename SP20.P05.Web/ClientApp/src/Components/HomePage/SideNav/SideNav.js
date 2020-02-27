@@ -44,7 +44,7 @@ class SideNavbar extends Component {
                         activeKey={this.state.activeKey}
                         onSelect={this.handleSelect}
                     >
-                        <Sidenav.Body >
+                        <Sidenav.Body id="flex-container">
                             <Nav>
                                 <Nav.Item id="sidebar_iconWhite" eventKey="1" icon={<Icon icon="home" />} >
                                     Home
@@ -61,21 +61,7 @@ class SideNavbar extends Component {
                                 <Nav.Item id="sidebar_iconWhite" eventKey="5" icon={<Icon icon="info"/>}>
                                     About Us
                                 </Nav.Item>
-                                <Dropdown
-                                    id="iconBottom"
-                                    placement="rightStart"
-                                    eventKey="6"
-                                    title="Settings"
-                                    icon={<Icon icon="gear-circle" />}
-                                >
-                                    <Dropdown.Item eventKey="6-1">Dark Mode</Dropdown.Item>
-                                    <Dropdown.Item eventKey="6-2">Check Active Farms</Dropdown.Item>
-                                    <Dropdown.Item eventKey="6-3">Search Farms by product</Dropdown.Item>
-                                    <Dropdown.Menu eventKey="6-5" title="Dev">
-                                        <Dropdown.Item eventKey="6-5-1">Dev Portal</Dropdown.Item>
-                                        <Dropdown.Item eventKey="6-5-2">Dev Info</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
+
                             </Nav>
                         </Sidenav.Body>
                     </Sidenav>

@@ -1,5 +1,4 @@
 body {
-    background-image: url("../HomePage/farmer-657333_1920.jpg");
     background-size: cover; 
      /* Background image is centered vertically and horizontally at all times */
     background-position: center center;
@@ -22,4 +21,13 @@ body {
     width: auto;
 
     height: auto;
+}
+
+.sidenav {
+
+}
+
+.carousel_marginLeft{
+    margin-left: 56px;
+    
 }
