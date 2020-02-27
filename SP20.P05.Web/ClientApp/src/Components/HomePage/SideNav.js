@@ -3,12 +3,10 @@ import {
     Sidenav,
     Nav,
     Icon,
-    Dropdown,
-    Toggle
+    Dropdown
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import 'rsuite/lib/styles/themes/dark/index.less';
-import './SideNav.js';
+import './SideNav.css'
 
 class SideNavbar extends Component {
     constructor() {
@@ -41,29 +39,30 @@ class SideNavbar extends Component {
         return (
             <div style={{ width: 200 }}>
                 <div >
-                    <Sidenav
+                    <Sidenav id="content_window"
                         expanded={isOpen}
                         activeKey={this.state.activeKey}
                         onSelect={this.handleSelect}
                     >
-                        <Sidenav.Body>
+                        <Sidenav.Body >
                             <Nav>
-                                <Nav.Item eventKey="1" icon={<Icon icon="home" />} >
+                                <Nav.Item id="sidebar_iconWhite" eventKey="1" icon={<Icon icon="home" />} >
                                     Home
                                 </Nav.Item>
-                                <Nav.Item eventKey="2" icon={<Icon icon="tree" />}>
+                                <Nav.Item id="sidebar_iconWhite" eventKey="2" icon={<Icon icon="tree" />}>
                                     Browse Fields
                                 </Nav.Item>
-                                <Nav.Item eventKey="3" icon={<Icon icon="shopping-basket" />}>
+                                <Nav.Item id="sidebar_iconWhite" eventKey="3" icon={<Icon icon="shopping-basket" />}>
                                     Baskets
                                 </Nav.Item>
-                                <Nav.Item eventKey="4" icon={<Icon icon="order-form" />}>
+                                <Nav.Item id="sidebar_iconWhite" eventKey="4" icon={<Icon icon="order-form" />}>
                                     Order Ticket
                                 </Nav.Item>
-                                <Nav.Item eventKey="5" icon={<Icon icon="info"/>}>
+                                <Nav.Item id="sidebar_iconWhite" eventKey="5" icon={<Icon icon="info"/>}>
                                     About Us
                                 </Nav.Item>
                                 <Dropdown
+                                    id="iconBottom"
                                     placement="rightStart"
                                     eventKey="6"
                                     title="Settings"
