@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Carousel } from 'rsuite';
 
-
-
 class Carousel_Home extends Component{
     constructor() {
         super();
@@ -13,12 +11,15 @@ class Carousel_Home extends Component{
 
     render() {
         return(
-            <Carousel placement ="bottom" >
+            <Carousel placement ="bottom">
                 <img 
-                    src={require("../../../Resources/farmer.jpg")}
+                    src={require("../../Resources/farmer.jpg")}
                 />
                 <img
-                    src={require("../../../Resources/strawberry.jpg")}
+                    src={require("../../Resources/strawberry.jpg")}
+                />
+                <img
+                    src={require("../../Resources/tangerines.jpg")}
                 />
             </Carousel>
         )
