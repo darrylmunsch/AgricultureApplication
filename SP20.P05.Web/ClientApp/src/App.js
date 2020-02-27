@@ -1,12 +1,15 @@
 import React from 'react';
-import './App.css';
 
+// Components
 import SideNav from './Components/HomePage/SideNav';
+
+// CSS
+import './Components/HomePage/HomePage.css';
 
 
 function App() {
   return (
-    <div className="App">
+    <div class="body" >
       <SideNav />
     </div>
   );

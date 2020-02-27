@@ -1,7 +1,15 @@
-.navbar-icon-align_bottom {
-    vertical-align: bottom;
+#content_window {
+    position: absolute;
+    width: 100%;
 }
 
-.navbar-extend {
-    height: 100%
+#sidebar {
+    position:absolute;
+    right:16px; 
+    width:200px;
+    height:100%;
+    overflow:hidden;
+    margin-top:-10px;
 }
+
+
