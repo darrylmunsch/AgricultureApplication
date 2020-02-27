@@ -7,6 +7,8 @@ import {
     Toggle
  } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
+import 'rsuite/lib/styles/themes/dark/index.less';
+import './SideNav.js';
 
 class SideNavbar extends Component {
     constructor() {
@@ -31,12 +33,14 @@ class SideNavbar extends Component {
         });
     }
 
+    
+
     render() {
         const { isOpen } = this.state;
-    
+
         return (
-            <div style={{ width: 200 }}>
-            <Toggle onChange={this.handleToggle} checked={isOpen} />
+            <div style={{ width: 200 }} >
+            <Toggle icon={<Icon icon="circle"/>} onChange={this.handleToggle} checked={isOpen} />
             <hr />
             <Sidenav
               expanded={isOpen}
@@ -76,7 +80,7 @@ class SideNavbar extends Component {
                         <Dropdown.Item eventKey="5-3">Loyalty</Dropdown.Item>
                         <Dropdown.Item eventKey="5-4">Visit Depth</Dropdown.Item>
                     </Dropdown>
-                    <Dropdown
+                    <Dropdown 
                         placement="rightStart"
                         eventKey="6"
                         title="Settings"
