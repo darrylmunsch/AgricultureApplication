@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import {
     Sidenav,
     Nav,
@@ -31,8 +32,6 @@ class SideNavbar extends Component {
         });
     }
 
-
-
     render() {
         const { isOpen } = this.state;
 
@@ -46,22 +45,21 @@ class SideNavbar extends Component {
                     >
                         <Sidenav.Body id="flex-container">
                             <Nav>
-                                <Nav.Item id="sidebar_iconWhite" eventKey="1" icon={<Icon icon="home" />} >
+                                <Nav.Item id="sidebar_iconWhite" eventKey="1" icon={<Icon icon="home" />} Link to='/' >
                                     Home
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconWhite" eventKey="2" icon={<Icon icon="tree" />}>
+                                <Nav.Item id="sidebar_iconWhite" eventKey="2" icon={<Icon icon="tree" />} Link to='/fields'>
                                     Browse Fields
                                 </Nav.Item>
                                 <Nav.Item id="sidebar_iconWhite" eventKey="3" icon={<Icon icon="shopping-basket" />}>
                                     Baskets
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconWhite" eventKey="4" icon={<Icon icon="order-form" />}>
+                                <Nav.Item id="sidebar_iconWhite" eventKey="4" icon={<Icon icon="order-form" />} Link to='/tickets'>
                                     Order Ticket
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconWhite" eventKey="5" icon={<Icon icon="info"/>}>
+                                <Nav.Item id="sidebar_iconWhite" eventKey="5" icon={<Icon icon="info"/>} Link to='/about-us'>
                                     About Us
                                 </Nav.Item>
-
                             </Nav>
                         </Sidenav.Body>
                     </Sidenav>

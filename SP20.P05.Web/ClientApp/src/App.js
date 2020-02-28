@@ -1,21 +1,27 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Components
-import SideNav from './Components/HomePage/SideNav/SideNav';
-import Carousel_Home from './Components/HomePage/Carousel/Carousel';
+import SideNav from './Components/Layout/SideNav/SideNav';
+import HomePage from './Components/Layout/HomePage';
+import Fields from './Components/Layout/Fields';
+import AboutUs from './Components/Layout/AboutUs';
+import Tickets from './Components/Layout/Tickets';
 
 // CSS
-import './Components/HomePage/HomePage.css';
-
+import './Components/Layout/HomePage.css';
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <SideNav/>
-    <div class="carousel_marginLeft" > 
-      <Carousel_Home/>
-    </div>
-    </div>
+      <Switch>
+        <Route path='/' component={HomePage} />
+        <Route path='/fields' component={Fields} />
+        <Route path='/about-us' component={AboutUs} />
+        <Route path='/tickets' component={Tickets} />
+      </Switch>`
+    </BrowserRouter>
   );
 }
 
