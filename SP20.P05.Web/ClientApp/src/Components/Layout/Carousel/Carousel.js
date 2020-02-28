@@ -13,6 +13,7 @@ class Carousel_Home extends Component{
     render() {
         return(
             <Carousel autoplay placement ="bottom" className= 'Carousel'>
+                
                 <img 
                     src={require("../../Resources/farmer.jpg")}
                 />
@@ -22,6 +23,10 @@ class Carousel_Home extends Component{
                 <img
                     src={require("../../Resources/tangerines.jpg")}
                 />
+                 <img 
+                    src={require("../../Resources/orchard.jpg")}
+                />
+               
             </Carousel>
         )
     }
