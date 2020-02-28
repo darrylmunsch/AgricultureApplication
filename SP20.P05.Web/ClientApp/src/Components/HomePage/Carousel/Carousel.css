@@ -1,0 +1,8 @@
+.Carousel {
+    position: relative;
+    height: 500px;
+}
+
+.Carousel img {
+    object-fit: cover;
+}
