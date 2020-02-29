@@ -45,19 +45,19 @@ class SideNavbar extends Component {
                     >
                         <Sidenav.Body id="flex-container">
                             <Nav>
-                                <Nav.Item id="sidebar_iconWhite" eventKey="1" icon={<Icon icon="home" />} Link to='/' >
+                                <Nav.Item id="sidebar_iconWhite" eventKey="1" icon={<Icon icon="home" />} href='/' >
                                     Home
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconWhite" eventKey="2" icon={<Icon icon="tree" />} Link to='/fields'>
+                                <Nav.Item id="sidebar_iconWhite" eventKey="2" icon={<Icon icon="tree" />} href='/fields'>
                                     Browse Fields
                                 </Nav.Item>
                                 <Nav.Item id="sidebar_iconWhite" eventKey="3" icon={<Icon icon="shopping-basket" />}>
                                     Baskets
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconWhite" eventKey="4" icon={<Icon icon="order-form" />} Link to='/tickets'>
+                                <Nav.Item id="sidebar_iconWhite" eventKey="4" icon={<Icon icon="order-form" />} href='/tickets'>
                                     Order Ticket
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconWhite" eventKey="5" icon={<Icon icon="info"/>} Link to='/about-us'>
+                                <Nav.Item id="sidebar_iconWhite" eventKey="5" icon={<Icon icon="info"/>} href='/about-us'>
                                     About Us
                                 </Nav.Item>
                             </Nav>
