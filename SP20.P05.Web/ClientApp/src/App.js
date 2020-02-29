@@ -8,6 +8,7 @@ import Fields from './Pages/FarmFields/Fields';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import Tickets from './Pages/Tickets/Tickets';
 import Login from './Pages/Login/Login';
+import Register from "./Pages/Register/Register";
 
 // CSS
 import './Pages/HomePage/HomePage.css';
@@ -22,6 +23,7 @@ function App() {
         <Route exact path='/about-us' component={AboutUs} />
         <Route exact path='/tickets' component={Tickets} />
         <Route exact path={'/login'} component={Login} />
+        <Route exact path={'/register'} component={Register} />
       </Switch>
     </BrowserRouter>
   );

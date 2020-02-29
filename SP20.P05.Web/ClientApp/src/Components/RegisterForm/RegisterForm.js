@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import {Button, ButtonToolbar, Content, ControlLabel, FlexboxGrid, Form, FormControl, FormGroup, Panel} from 'rsuite';
 
 // CSS
-import './LoginForm.css';
+import './RegisterForm.css';
 
-export class LoginForm extends Component {
+export class RegisterForm extends Component {
     render() {
         return (
             <div>
-                <Content id={'loginPadding'}>
+                <Content id={'registerPadding'}>
                     <FlexboxGrid justify="center">
                         <FlexboxGrid.Item colspan={12} >
-                            <Panel header={<h3>Login</h3>} bordered id={'loginBox'}>
+                            <Panel header={<h3>Register</h3>} bordered id={'registerBox'}>
                                 <Form fluid>
                                     <FormGroup>
                                         <ControlLabel>Username</ControlLabel>
@@ -23,8 +23,8 @@ export class LoginForm extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <ButtonToolbar>
-                                            <Button id={'darkGreenButton'} appearance="primary">Sign In</Button>
-                                            <Button appearance="secondary" href={'/register'}>Register</Button>
+                                            <Button id={'darkGreenButton'} appearance="primary">Register</Button>
+                                            <Button appearance="secondary" href={'/login'}>Sign In</Button>
                                         </ButtonToolbar>
                                     </FormGroup>
                                 </Form>
@@ -37,4 +37,4 @@ export class LoginForm extends Component {
     }
 }
 
-export default LoginForm
+export default RegisterForm

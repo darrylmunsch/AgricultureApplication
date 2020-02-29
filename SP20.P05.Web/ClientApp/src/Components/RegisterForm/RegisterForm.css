@@ -1,0 +1,11 @@
+#registerBox{
+    background-color: white;
+}
+
+#registerPadding{
+    padding: 150px;
+}
+
+#darkGreenButton{
+    background-color: darkgreen !important;
+}
