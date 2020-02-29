@@ -3,13 +3,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Components
 
-import HomePage from './Pages/HomePage';
-import Fields from './Pages/Fields';
-import AboutUs from './Pages/AboutUs';
-import Tickets from './Pages/Tickets';
+import HomePage from './Pages/HomePage/HomePage';
+import Fields from './Pages/FarmFields/Fields';
+import AboutUs from './Pages/AboutUs/AboutUs';
+import Tickets from './Pages/Tickets/Tickets';
 
 // CSS
-import './Pages/HomePage.css';
+import './Pages/HomePage/HomePage.css';
 
 function App() {
   return (

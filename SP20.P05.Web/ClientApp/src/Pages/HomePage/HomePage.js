@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 // Components
-import SideNav from '../Components/SideNav/SideNav';
-import Carousel_Home from '../Components/Carousel/Carousel';
+import SideNav from '../../Components/SideNav/SideNav';
+import Carousel_Home from '../../Components/Carousel/Carousel';
 
 // CSS
 import './HomePage.css';
