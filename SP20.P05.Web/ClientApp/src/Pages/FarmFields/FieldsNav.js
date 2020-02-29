@@ -5,14 +5,14 @@ import {
     Icon
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import './SideNav.css'
+import '../../Components/SideNav/SideNav.css';
 
 class SideNavbar extends Component {
     constructor() {
         super();
         this.state = {
             isOpen: false,
-            activeKey: '1'
+            activeKey: '2'
         };
         this.handleToggle = this.handleToggle.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
@@ -37,9 +37,9 @@ class SideNavbar extends Component {
             <div style={{ width: 200 }}>
                 <div >
                     <Sidenav id="content_window"
-                        expanded={isOpen}
-                        activeKey={this.state.activeKey}
-                        onSelect={this.handleSelect}
+                             expanded={isOpen}
+                             activeKey={this.state.activeKey}
+                             onSelect={this.handleSelect}
                     >
                         <Sidenav.Body id="flex-container">
                             <Nav>
