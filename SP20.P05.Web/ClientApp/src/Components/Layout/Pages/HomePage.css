@@ -1,0 +1,11 @@
+body {
+ /* Set a background color that will be displayed
+while the background image is loading */
+background-color: #464646;
+}
+
+.carousel_marginLeft{
+    margin-left: 56px;
+    background-size: cover;
+}
+

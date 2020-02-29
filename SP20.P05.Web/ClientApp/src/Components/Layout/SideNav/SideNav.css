@@ -1,0 +1,9 @@
+#content_window {
+    height: 100%;
+    position:absolute;
+    background-color: white;
+}
+
+#sidebar_iconWhite{
+    color: darkgreen !important
+}

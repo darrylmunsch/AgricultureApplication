@@ -98,7 +98,7 @@ namespace SP20.P05.Web
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
+                    spa.UseReactDevelopmentServer(npmScript: "dev");             
                 }
             });
         }
