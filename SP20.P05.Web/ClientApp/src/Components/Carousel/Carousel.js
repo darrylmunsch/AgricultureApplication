@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Carousel } from 'rsuite';
 
-import'./Carousel.css';
+import './Carousel.css';
 
 class Carousel_Home extends Component{
     constructor() {
