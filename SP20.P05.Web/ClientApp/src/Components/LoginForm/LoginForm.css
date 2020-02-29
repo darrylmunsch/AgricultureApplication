@@ -1,0 +1,11 @@
+#loginBox{
+    background-color: white;
+}
+
+#loginPadding{
+    padding: 150px;
+}
+
+#darkGreenButton{
+    background-color: darkgreen !important;
+}

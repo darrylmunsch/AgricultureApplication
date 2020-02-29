@@ -4,6 +4,10 @@
     background-color: white;
 }
 
-#sidebar_iconWhite{
+#sidebar_iconGreen{
+    color: darkgreen !important
+}
+
+#sidebar_iconGreen_User{
     color: darkgreen !important
 }
