@@ -15,7 +15,7 @@ export class RegisterForm extends Component {
                                 <Form fluid>
                                     <FormGroup>
                                         <ControlLabel>Username</ControlLabel>
-                                        <FormControl name="name" />
+                                        <FormControl name="username" />
                                     </FormGroup>
                                     <FormGroup>
                                         <ControlLabel>Password</ControlLabel>
