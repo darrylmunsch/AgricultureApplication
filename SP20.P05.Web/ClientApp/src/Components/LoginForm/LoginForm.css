@@ -8,4 +8,15 @@
 
 #darkGreenButton{
     background-color: darkgreen !important;
+    border-color:darkgreen
+}
+
+#registerButton{
+    margin-left: 10px;
+}
+
+.marginLeft{
+    margin-left: 100px !important;
+    margin-right: 100px;
+    background-size: cover;
 }

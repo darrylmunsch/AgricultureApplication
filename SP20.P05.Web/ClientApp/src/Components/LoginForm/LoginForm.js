@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import {Button, ButtonToolbar, Content, ControlLabel, FlexboxGrid, Form, FormControl, FormGroup, Panel} from 'rsuite';
+import {Button, Form} from 'react-bootstrap';
 import axios from 'axios';
 
 // CSS
 import './LoginForm.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export class LoginForm extends Component {
-
     constructor(props){
         super(props);
         this.state={
@@ -40,33 +40,26 @@ export class LoginForm extends Component {
 
     render() {
         return (
-            <div>
-                <Content id={'loginPadding'}>
-                    <FlexboxGrid justify="center">
-                        <FlexboxGrid.Item colspan={12} >
-                            <Panel header={<h3>Login</h3>} bordered id={'loginBox'}>
-                                <Form fluid onSubmit={this.handleSubmit}>
-                                    <FormGroup>
-                                        <ControlLabel>Username</ControlLabel>
-                                        <FormControl name="username" type={"text"} onChange={this.handleChange}/>
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <ControlLabel>Password</ControlLabel>
-                                        <FormControl name="password" type="password" onChange={this.handleChange} />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <ButtonToolbar>
-                                            <Button id={'darkGreenButton'} appearance="primary" type={'submit'} >Sign In</Button>
-                                            <Button appearance="secondary" href={'/register'}>Register</Button>
-                                        </ButtonToolbar>
-                                    </FormGroup>
-                                </Form>
-                            </Panel>
-                        </FlexboxGrid.Item>
-                    </FlexboxGrid>
-                </Content>
+            <div className={'marginLeft'}>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control type="username" name = 'username' placeholder="Enter Username"  onChange={this.handleChange} />
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" name = 'password' placeholder="Password"  onChange={this.handleChange}/>
+                    </Form.Group>
+                    <Button id={'darkGreenButton'} variant="primary" type="submit">
+                        Submit
+                    </Button>
+                    <Button id={'registerButton'}  variant="secondary" href={'/register'}>
+                        Register
+                    </Button>
+                </Form>
             </div>
-        )
+        );
     }
 }
 
