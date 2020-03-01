@@ -8,7 +8,7 @@ import Fields from './Pages/FarmFields/Fields';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import Tickets from './Pages/Tickets/Tickets';
 import Login from './Pages/Login/Login';
-import Register from "./Pages/Register/Register";
+import Register from './Pages/Register/Register';
 
 // CSS
 import './Pages/HomePage/HomePage.css';

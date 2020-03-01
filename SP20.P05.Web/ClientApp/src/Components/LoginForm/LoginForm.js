@@ -7,17 +7,19 @@ import './LoginForm.css';
 
 export class LoginForm extends Component {
 
-    state ={
-        username:'',
-        password:''
-    };
+    constructor(props){
+        super(props);
+        this.state={
+            username:'',
+            password:''
+        }
 
-    handleUsernameChange = event => {
-        this.setState({ username: event.target.value });
-    };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
 
-    handlePasswordChange = event => {
-        this.setState({ password: event.target.value });
+    handleChange(event) {
+        this.setState({ [event.target.name] : event.target.value });
     };
 
     handleSubmit = event => {
@@ -46,11 +48,11 @@ export class LoginForm extends Component {
                                 <Form fluid onSubmit={this.handleSubmit}>
                                     <FormGroup>
                                         <ControlLabel>Username</ControlLabel>
-                                        <FormControl name="username" type={"text"} onChange={this.handleUsernameChange}/>
+                                        <FormControl name="username" type={"text"} onChange={this.handleChange}/>
                                     </FormGroup>
                                     <FormGroup>
                                         <ControlLabel>Password</ControlLabel>
-                                        <FormControl name="password" type="password" onChange={this.handlePasswordChange} />
+                                        <FormControl name="password" type="password" onChange={this.handleChange} />
                                     </FormGroup>
                                     <FormGroup>
                                         <ButtonToolbar>
