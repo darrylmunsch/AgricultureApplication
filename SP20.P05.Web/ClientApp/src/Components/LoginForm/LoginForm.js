@@ -18,6 +18,8 @@ export class LoginForm extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    url = 'api/authentication/login'
+
     handleChange(event) {
         this.setState({ [event.target.name] : event.target.value });
     };
@@ -30,10 +32,11 @@ export class LoginForm extends Component {
             password: this.state.password
         };
 
-        axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+        axios.post(this.url, { user })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
+                return Promise.resolve(res);
             })
     };
 
@@ -46,7 +49,6 @@ export class LoginForm extends Component {
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="username" name = 'username' placeholder="Enter Username"  onChange={this.handleChange} />
                     </Form.Group>
-
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name = 'password' placeholder="Password"  onChange={this.handleChange}/>
