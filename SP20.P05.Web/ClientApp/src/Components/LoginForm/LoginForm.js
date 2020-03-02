@@ -27,12 +27,16 @@ export class LoginForm extends Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        const user = {
+        let user = JSON.stringify({
             username: this.state.username,
             password: this.state.password
-        };
+        });
 
-        axios.post(this.url, { user })
+        axios.post(this.url, user, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
