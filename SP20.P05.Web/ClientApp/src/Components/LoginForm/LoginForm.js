@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Button, Form} from 'react-bootstrap';
+import {Form} from 'react-bootstrap';
+import {Button} from 'rsuite';
 import axios from 'axios';
 
 // CSS
@@ -49,7 +50,7 @@ export class LoginForm extends Component {
         return (
             <div className={'marginLeft'}>
                 <Form onSubmit={this.handleSubmit}>
-                    <Form.Group controlId="formBasicEmail">
+                    <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="username" name = 'username' placeholder="Enter Username"  onChange={this.handleChange} />
                     </Form.Group>
