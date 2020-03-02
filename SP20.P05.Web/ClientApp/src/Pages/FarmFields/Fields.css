@@ -3,13 +3,13 @@ body {
     /* change color of background */
 }
 
-.cardcolumns {
-    margin-left: 60px;
-    /* move to right of navbar */
+div.content  {
+    margin-left: 55px;
 }
 
-.card {
-    color: darkgreen;
-    background-color: whitesmoke;
-    /* colors of cards themselves */
+.cardStyle {
+    object-fit: cover;
+    object-position: top left;
+    height: 400px;
+    width: 200px;
 }
