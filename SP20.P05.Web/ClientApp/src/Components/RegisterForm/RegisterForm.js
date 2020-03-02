@@ -12,7 +12,8 @@ export class RegisterForm extends Component {
         super(props);
         this.state={
             username:'',
-            password:''
+            password:'',
+            signedIn:''
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,6 +44,7 @@ export class RegisterForm extends Component {
                 console.log(res.data);
                 return Promise.resolve(res);
             })
+
     };
 
 
