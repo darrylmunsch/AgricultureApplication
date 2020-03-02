@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import {Button} from 'rsuite';
 import {Form} from 'react-bootstrap';
 import axios from 'axios';
+import {Redirect} from "react-router-dom";
 
 // CSS
 import './RegisterForm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export class RegisterForm extends Component {
     constructor(props){
@@ -13,7 +15,8 @@ export class RegisterForm extends Component {
         this.state={
             username:'',
             password:'',
-            signedIn:''
+            varifypassword:'',
+            registered:''
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,21 +37,37 @@ export class RegisterForm extends Component {
             password: this.state.password
         });
 
-        axios.post(this.url, user, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-                return Promise.resolve(res);
+
+        if(this.state.password == this.state.verifypassword){
+
+            axios.post(this.url, user, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
+                .then(res => {
+                    console.log(res);
+                    console.log(res.data);
+
+                    if(res.status ==200)
+                        this.setState({registered: true})
+
+
+                    return Promise.resolve(res);
+                })
+        }
+        else{
+            console.log('Passwords do not match')
+        }
 
     };
 
 
     render() {
+
+        if(this.state.registered)
+            return<Redirect to ={{ pathname: '/'}} />
+
         return (
             <div className={'marginLeft'}>
                 <Form onSubmit={this.handleSubmit}>
@@ -62,7 +81,7 @@ export class RegisterForm extends Component {
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Verify Password</Form.Label>
-                        <Form.Control type="password" name = 'verifypassword' placeholder="Verify Password"/>
+                        <Form.Control type="password" name = 'verifypassword' placeholder="Verify Password" oncChange={this.handleChange}/>
                     </Form.Group>
                     <Button id={'darkGreenButton'} variant="primary" type="submit">
                         Register
