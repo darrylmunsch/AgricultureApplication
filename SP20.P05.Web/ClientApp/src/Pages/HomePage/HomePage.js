@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 // Components
-import SideNav from '../../Components/SideNav/SideNav';
+import SideNav from './HomeNav';
 import Carousel_Home from '../../Components/Carousel/Carousel';
 import Card from 'react-bootstrap/Card';
 import CardColumns from 'react-bootstrap/CardColumns';
@@ -24,10 +24,9 @@ export class HomePage extends Component {
                             Upcoming Events:
                         </Card.Title>
                         <Card.Body className="home_cardbody">
-                            <li>Field Trips</li>
-                            <li>Family Get Togethers</li>
+                            <li>3/25: Fruit Tasting</li>
+                            <li>7/4: Fourth of July Extravaganza</li>
                             <li>Much More!</li>
-                            
                         </Card.Body>
                     </Card>
                 
