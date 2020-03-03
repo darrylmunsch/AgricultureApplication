@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import SideNav from '../../Components/SideNav/SideNav';
 import Card from 'react-bootstrap/Card';
 import CardColumns from "react-bootstrap/CardColumns";
+import Jumbotron from 'react-bootstrap/Jumbotron';
+
 
 // Style sheets
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,8 +20,12 @@ export class AboutUs extends Component {
               <div className="background-img">
                     <img src={require("../../Resources/orchard.jpg")}  />
                     </div>
+                   
               <div className={"cardcolumns"}>
+                
                     <CardColumns>
+                        
+                        
                         <Card>                       
                             <Card.Body>
                                 <Card.Title>About our farms...</Card.Title>
@@ -28,7 +34,10 @@ export class AboutUs extends Component {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-                       
+                        </CardColumns>
+                        </div>
+                       <div class="d-flex flex-row justify-content-end">
+                           
                         <Card>                       
                             <Card.Body>
                                 <Card.Title>About our product...</Card.Title>
@@ -37,28 +46,52 @@ export class AboutUs extends Component {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-  
+                        </div>
                         
-                        </CardColumns>
+                        <div class="d-flex flex-row justify-content-end mt-4">
+                        <Card>                       
+                            <Card.Body>
+                                <Card.Title>From our home to yours..</Card.Title>
+                                <Card.Text>
+                                   Here at Envoc Agriculture Co. We take pride in our product!
+                                   
+                                 
+                                   
+                                  
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card>
+                            <Card.Body>
+                                <Jumbotron>
+                                   
+                            <div class="jumbotron">
+                                
+                             <h1 class="display-4">Envoc Agri. CO. From our home to yours.!</h1>
+                             <p class="lead">Find any fresh fruit your heart desires, and know it comes from a place of care!</p>
+                             <hr class="my-4"></hr>
+                             <p>Interested in hearing more? Take a look at some of our testimonials...</p>
+                            
 
-                    </div>
-                    
-                </div>
+                             <a class="btn btn-primary btn-lg" role="button">Learn more</a>
+                            
+
+                            </div>
+                          
+                            
+                            
+                            
+                               
+                                 </Jumbotron>
+                            </Card.Body>
+                        </Card>
+                        </div>
+                        </div>
+    
+              
 
         )
     }
 }
-
-/*Code from pure HTML for reference
-/*                
-                <div className="background-img">
-                    <img src={require("../../Resources/orchard.jpg")}  />
-                <h2><span>Our farms are closest to home...</span></h2>
-                
-                 <h3><span>Info about farms</span></h3>
-                 <h4><span>Some more info about the place</span></h4>
-                </div>                   
-                 
-</div>*/
 
 export default AboutUs
