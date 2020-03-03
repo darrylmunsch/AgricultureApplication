@@ -32,10 +32,10 @@ export class RegisterForm extends Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        let user = JSON.stringify({
+        let user ={
             username: this.state.username,
             password: this.state.password
-        });
+        };
 
 
         if(this.state.password == this.state.verifypassword){

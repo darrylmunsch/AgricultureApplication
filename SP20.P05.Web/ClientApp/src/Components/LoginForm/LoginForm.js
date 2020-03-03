@@ -31,10 +31,10 @@ export class LoginForm extends Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        let user = JSON.stringify({
+        let user ={
             username: this.state.username,
             password: this.state.password
-        });
+        };
 
         axios.post(this.url, user, {
             headers: {
