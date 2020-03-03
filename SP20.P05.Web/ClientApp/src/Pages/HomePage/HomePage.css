@@ -1,11 +1,26 @@
 body {
  /* Set a background color that will be displayed
 while the background image is loading */
-background-color: #464646;
+background-color: #14ee14;
+}
+.home_cardcolumns {
+    margin-left: 60px;
+    /* move to right of navbar */
+}
+
+.home_cardtitle{
+    text-decoration-line: underline;
+}
+
+.home_card {
+    text-decoration-color:  #14ee14;
+    color: rgb(17, 17, 17);
+    background-color: rgb(224, 24, 24);
+    /* colors of cards themselves */   
 }
 
 .carousel_marginLeft{
     margin-left: 56px;
-    background-size: cover;
+   /* background-size: cover;*/
 }
 

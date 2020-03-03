@@ -26,7 +26,6 @@ class Carousel_Home extends Component{
                  <img 
                     src={require("../../Resources/orchard.jpg")}
                 />
-               
             </Carousel>
         )
     }
