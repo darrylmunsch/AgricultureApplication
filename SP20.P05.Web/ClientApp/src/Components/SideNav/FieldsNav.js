@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import {
     Sidenav,
     Nav,
-    Icon,
-    Dropdown
+    Icon
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import './AboutUsNav.css'
+import '../../Components/SideNav/SideNav.css'
 
-class SideNavbar extends Component {
+class FieldsNav extends Component {
     constructor() {
         super();
         this.state = {
@@ -39,16 +37,16 @@ class SideNavbar extends Component {
             <div style={{ width: 200 }}>
                 <div >
                     <Sidenav id="content_window"
-                        expanded={isOpen}
-                        activeKey={this.state.activeKey}
-                        onSelect={this.handleSelect}
+                             expanded={isOpen}
+                             activeKey={this.state.activeKey}
+                             onSelect={this.handleSelect}
                     >
                         <Sidenav.Body id="flex-container">
                             <Nav>
                                 <Nav.Item id="sidebar_iconGreen" eventKey="1" icon={<Icon icon="home" />} href='/' >
                                     Home
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconGreen" eventKey="2" icon={<Icon icon="tree" />} href='/fields'>
+                                <Nav.Item id="icon_Brown" eventKey="2" icon={<Icon icon="tree" />} href='/fields'>
                                     Browse Fields
                                 </Nav.Item>
                                 <Nav.Item id="sidebar_iconGreen" eventKey="3" icon={<Icon icon="shopping-basket" />}>
@@ -57,7 +55,7 @@ class SideNavbar extends Component {
                                 <Nav.Item id="sidebar_iconGreen" eventKey="4" icon={<Icon icon="order-form" />} href='/tickets'>
                                     Order Ticket
                                 </Nav.Item>
-                                <Nav.Item id="icon" eventKey="5" icon={<Icon icon="info"/>} href='/about-us'>
+                                <Nav.Item id="sidebar_iconGreen" eventKey="5" icon={<Icon icon="info"/>} href='/about-us'>
                                     About Us
                                 </Nav.Item>
                                 <Nav.Item id="sidebar_iconGreen" eventKey="6" icon= {<Icon icon="user-circle-o"/>} href={'/login'}>
@@ -72,4 +70,4 @@ class SideNavbar extends Component {
     }
 }
 
-export default SideNavbar;
+export default FieldsNav;
