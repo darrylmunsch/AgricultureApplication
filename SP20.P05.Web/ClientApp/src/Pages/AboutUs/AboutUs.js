@@ -52,6 +52,7 @@ export class AboutUs extends Component {
                         <Card>                       
                             <Card.Body>
                                 <Card.Title>From our home to yours..</Card.Title>
+                                <img src={require("../../Resources/farmer.jpg")} class="img-fluid" alt="Responsive image"></img>
                                 <Card.Text>
                                    Here at Envoc Agriculture Co. We take pride in our product!
                                    
@@ -67,13 +68,13 @@ export class AboutUs extends Component {
                                    
                             <div class="jumbotron">
                                 
-                             <h1 class="display-4">Envoc Agri. CO. From our home to yours.!</h1>
+                             <h1 class="display-4">Envoc Agri. CO. From our home to yours!</h1>
                              <p class="lead">Find any fresh fruit your heart desires, and know it comes from a place of care!</p>
                              <hr class="my-4"></hr>
                              <p>Interested in hearing more? Take a look at some of our testimonials...</p>
                             
-
-                             <a class="btn btn-primary btn-lg" role="button">Learn more</a>
+                         
+                             <a></a>
                             
 
                             </div>
