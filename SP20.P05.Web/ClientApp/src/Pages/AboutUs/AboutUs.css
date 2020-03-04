@@ -1,7 +1,10 @@
 .background-img {
 
     /* Set up positioning */
+
     background-size: cover;
+    background-image: url('../../Resources/orchard.jpg') ;
+    position: relative;
     top:0;
     left:0;
     margin-left: 56px;

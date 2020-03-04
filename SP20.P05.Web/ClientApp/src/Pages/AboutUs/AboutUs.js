@@ -19,7 +19,6 @@ export class AboutUs extends Component {
             <div>
               <SideNav />
               <div className="background-img">
-                    <img src={require("../../Resources/orchard.jpg")}  />
                     </div>
                         <div class="d-flex flex-row justify-content-end mt-4">
                         <Card>                       

@@ -15,15 +15,15 @@ class Carousel_Home extends Component{
             <Carousel autoplay placement ="bottom" className= 'Carousel' >
                 
                 <img 
-                    src={require("../../Resources/farmer.jpg")}
+                    src={require("../../Resources/blackberrydeath.jpg")}
                     alt={""}
                 />
                 <img
-                    src={require("../../Resources/strawberry.jpg")}
+                    src={require("../../Resources/taters.jpg")}
                     alt={""}
                 />
                 <img
-                    src={require("../../Resources/tangerines.jpg")}
+                    src={require("../../Resources/tomatoes.jpeg")}
                     alt={""}
                 />
                  <img 
