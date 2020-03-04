@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SideNav from '../../Components/SideNav/SideNav';
+import SideNav from './AboutUsNav';
 import Card from 'react-bootstrap/Card';
 import CardColumns from "react-bootstrap/CardColumns";
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './AboutUs.css';
 
 
+
 export class AboutUs extends Component {
     render() {
         return (
@@ -20,34 +21,6 @@ export class AboutUs extends Component {
               <div className="background-img">
                     <img src={require("../../Resources/orchard.jpg")}  />
                     </div>
-                   
-              <div className={"cardcolumns"}>
-                
-                    <CardColumns>
-                        
-                        
-                        <Card>                       
-                            <Card.Body>
-                                <Card.Title>About our farms...</Card.Title>
-                                <Card.Text>
-                                    Our farms are really nice and have nice stuff!
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        </CardColumns>
-                        </div>
-                       <div class="d-flex flex-row justify-content-end">
-                           
-                        <Card>                       
-                            <Card.Body>
-                                <Card.Title>About our product...</Card.Title>
-                                <Card.Text>
-                                    Our stuff is better than the next guys, by alot!~
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        </div>
-                        
                         <div class="d-flex flex-row justify-content-end mt-4">
                         <Card>                       
                             <Card.Body>
@@ -55,42 +28,24 @@ export class AboutUs extends Component {
                                 <img src={require("../../Resources/farmer.jpg")} class="img-fluid" alt="Responsive image"></img>
                                 <Card.Text>
                                    Here at Envoc Agriculture Co. We take pride in our product!
-                                   
-                                 
-                                   
-                                  
                                 </Card.Text>
                             </Card.Body>
                         </Card>
                         <Card>
                             <Card.Body>
-                                <Jumbotron>
-                                   
-                            <div class="jumbotron">
-                                
+                                <Jumbotron>                                   
+                            <div class="jumbotron">                                
                              <h1 class="display-4">Envoc Agri. CO. From our home to yours!</h1>
                              <p class="lead">Find any fresh fruit your heart desires, and know it comes from a place of care!</p>
                              <hr class="my-4"></hr>
-                             <p>Interested in hearing more? Take a look at some of our testimonials...</p>
-                            
-                         
-                             <a></a>
-                            
-
+                             <p>Interested in hearing more? Take a look at some of our testimonials...</p>                                                    
+                             <a></a>                            
                             </div>
-                          
-                            
-                            
-                            
-                               
-                                 </Jumbotron>
+                             </Jumbotron>
                             </Card.Body>
                         </Card>
                         </div>
-                        </div>
-    
-              
-
+                        </div>     
         )
     }
 }
