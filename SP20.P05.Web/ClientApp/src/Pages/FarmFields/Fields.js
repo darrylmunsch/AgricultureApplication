@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card'
+import {
+    Icon,
+    Drawer,
+    Button
+} from 'rsuite';
 
 // Components
 import FieldsNav from './FieldsNav';
@@ -11,32 +15,79 @@ import './Fields.css';
 
 
 export class Fields extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+        };
+    }
+
+
+
     render() {
         return (
             <div>
                 <FieldsNav/>
-                <div className={"content"}>
-                    <div >
-                        <Card >
-                            <Card.Img className={"cardStyle"} src={require("../../Resources/pickinBlues.jpg")}/>
-                            <Card.Body>
-                                <Card.Text>
-                                    Check out our blueberry farms!
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div >
-                        <Card >
-                            <Card.Img className={"cardStyle"} src={require("../../Resources/pickinBlues.jpg")}/>
-                            <Card.Body>
-                                <Card.Text>
-                                    Check out our blueberry farms!
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </div>
+                <div >
+                    <div className={"p1"}>
+                        <div className={"overlay"} > </div>
+                        <div className={"text_background"}>
+                            <div className={"p1_text"}>
+                                Check out our blueberry farm and buy tickets now!
+                            </div>
+                            <div>
+                                <div className={"p1_icons"}>
+                                    <button className={"btn"}>
+                                        <Icon className={"icon_style"}  icon={"share"} />
+                                    </button>
+                                    &nbsp;
+                                    <button className={"btn"}>
+                                        <Icon className={"icon_style"} icon={"ticket"}/>
+                                    </button>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                    <div className={"p2"}>
+                        <div className={"overlay"} > </div>
+                        <div className={"text_background"}>
+                            <div className={"p1_text"}>
+                                Check out our strawberry farm and buy tickets now!
+                            </div>
+                            <div>
+                                <div className={"p1_icons"}>
+                                    <button className={"btn"}>
+                                        <Icon className={"icon_style"}  icon={"share"} />
+                                    </button>
+                                    &nbsp;
+                                    <button className={"btn"}>
+                                        <Icon className={"icon_style"} icon={"ticket"}/>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className={"p3"}>
+                        <div className={"overlay"} > </div>
+                        <div className={"text_background"}>
+                            <div className={"p1_text"}>
+                                Check out our blackberry farm and buy tickets now!
+                            </div>
+                            <div>
+                                <div className={"p1_icons"}>
+                                    <button className={"btn"}>
+                                        <Icon className={"icon_style"}  icon={"share"} />
+                                    </button>
+                                    &nbsp;
+                                    <button className={"btn"}>
+                                        <Icon className={"icon_style"} icon={"ticket"}/>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         )

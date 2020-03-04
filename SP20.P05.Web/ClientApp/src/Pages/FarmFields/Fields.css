@@ -1,15 +1,74 @@
 body {
-    background-color: lightgray;
+    background-color: rgb(26,26,26);
     /* change color of background */
 }
 
-div.content  {
-    margin-left: 55px;
+.p1 {
+    height: 400px;
+    background-image: url("../../Resources/blueberry_46420153.jpg");
+    background-size: cover;
+    position: relative;
+    margin-left: 56px;
+}
+.p1:hover > .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#000;
+    opacity:0.2;
+    cursor: pointer;
+}
+.p1_text {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    color: whitesmoke;
+    background-color: rgba(26, 26, 26, 0.8);
+    line-height: 50px;
+    padding-bottom: 0;
+}
+.p1_icons {
+    position: absolute;
+    bottom: 0;
+    color: whitesmoke;
+    line-height: 55px;
+    left: 85%;
+}
+.p2 {
+    height: 400px;
+    background-image: url("../../Resources/strawberry3.jpg");
+    background-size: cover;
+    position: relative;
+    margin-left: 56px;
+}
+.p3 {
+    height: 400px;
+    background-image: url("../../Resources/blackberry.jpg");
+    background-size: cover;
+    position: relative;
+    margin-left: 56px;
 }
 
-.cardStyle {
-    object-fit: cover;
-    object-position: top left;
-    height: 400px;
-    width: 200px;
+
+.icon_style {
+    font-size: larger;
+
 }
+.btn {
+    background: none;
+    color: whitesmoke;
+    border-color: whitesmoke;
+}
+.btn:hover {
+    background: none;
+    color: green;
+    border-color: green;
+    transition-duration: 0.5ms;
+}
+.btn:active {
+    background: none;
+    color: dodgerblue;
+    border-color: dodgerblue;
+}
+
