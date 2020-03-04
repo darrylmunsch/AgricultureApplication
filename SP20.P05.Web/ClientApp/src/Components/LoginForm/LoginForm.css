@@ -21,3 +21,11 @@
     margin-right: 100px;
     background-size: cover;
 }
+
+#login_container{
+    position: fixed;
+    width: 25%;
+    height: 35%;
+    margin-top: 15%;
+    margin-left: 40%;
+}
