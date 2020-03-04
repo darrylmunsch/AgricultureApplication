@@ -1,6 +1,22 @@
-#loginBox{
-    background-color: white;
+.background-img {
+
+    /* Set up positioning */
+    object-fit: cover;
+    top:0;
+    left:0;
+    margin-left: 56px;
+    opacity: 0.5;
+    }
+#register_container{
+    position: fixed;
+    width: 25%;
+    height: 35%;
+    margin-top: 15%;
+    margin-left: 40%;
+    background-color: grey;
+    border-color: black !important;
 }
+
 
 #loginPadding{
     padding: 150px;
