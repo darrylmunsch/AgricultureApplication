@@ -69,10 +69,7 @@ export class RegisterForm extends Component {
             return<Redirect to ={{ pathname: '/'}} />
 
         return (
-          
             <Jumbotron id={'register_container'}>
-                
-            
             <div className={'marginLeft'}>                
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formBasicUsername">
@@ -90,7 +87,7 @@ export class RegisterForm extends Component {
                     <Button id={'darkGreenButton'} variant="primary" type="submit">
                         Register
                     </Button>
-                    <Button id={'registerButton'}  variant="secondary" href={'/login'}>
+                    <Button id={'loginButton'}  variant="secondary" href={'/login'}>
                         Login
                     </Button>
                 </Form>
