@@ -5,14 +5,14 @@ import {
     Icon
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import '../../Components/SideNav/SideNav.css';
+import '../../Components/SideNav/SideNav.css'
 
-class SideNavbar extends Component {
+class FieldsNav extends Component {
     constructor() {
         super();
         this.state = {
             isOpen: false,
-            activeKey: '2'
+            activeKey: '1'
         };
         this.handleToggle = this.handleToggle.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
@@ -67,4 +67,4 @@ class SideNavbar extends Component {
     }
 }
 
-export default SideNavbar;
+export default FieldsNav;

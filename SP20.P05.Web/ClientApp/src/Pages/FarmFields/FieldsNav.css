@@ -1,7 +1,8 @@
 #content_window {
     height: 100%;
-    position:fixed;
+    position:relative;
     background-color: white;
+    z-index: 100;
 }
 
 #sidebar_iconWhite{

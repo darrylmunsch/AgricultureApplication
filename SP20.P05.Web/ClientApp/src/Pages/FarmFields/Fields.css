@@ -40,7 +40,14 @@ body {
     background-image: url("../../Resources/strawberry3.jpg");
     background-size: cover;
     position: relative;
-    margin-left: 56px;
+}
+.p2:hover > .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#000;
+    opacity:0.2;
+    cursor: pointer;
 }
 .p3 {
     height: 400px;
@@ -49,7 +56,57 @@ body {
     position: relative;
     margin-left: 56px;
 }
-
+.p3:hover > .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#000;
+    opacity:0.2;
+    cursor: pointer;
+}
+.p4 {
+    height: 400px;
+    background-image: url("../../Resources/cornpickin.jpg");
+    background-size: cover;
+    position: relative;
+}
+.p4:hover > .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#000;
+    opacity:0.2;
+    cursor: pointer;
+}
+.p5 {
+    height: 400px;
+    background-image: url("../../Resources/taters.jpg");
+    background-size: cover;
+    position: relative;
+    margin-left: 56px;
+}
+.p5:hover > .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#000;
+    opacity:0.2;
+    cursor: pointer;
+}
+.p6 {
+    height: 400px;
+    background-image: url("../../Resources/tomatoes.jpeg");
+    background-size: cover;
+    position: relative;
+}
+.p6:hover > .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#000;
+    opacity:0.2;
+    cursor: pointer;
+}
 
 .icon_style {
     font-size: larger;
@@ -71,4 +128,14 @@ body {
     color: dodgerblue;
     border-color: dodgerblue;
 }
+
+/*       ###########################################       */
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+}
+
 
