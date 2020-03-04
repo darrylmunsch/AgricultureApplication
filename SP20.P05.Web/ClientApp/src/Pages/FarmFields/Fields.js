@@ -5,7 +5,7 @@ import {
 } from 'rsuite';
 
 // Components
-import FieldsNav from './FieldsNav';
+import FieldsNav from '../../Components/SideNav/FieldsNav';
 
 // Style sheets
 import 'bootstrap/dist/css/bootstrap.min.css';

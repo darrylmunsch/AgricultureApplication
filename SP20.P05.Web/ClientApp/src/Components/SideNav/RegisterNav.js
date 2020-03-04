@@ -7,7 +7,7 @@ import {
     Dropdown
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import './RegisterNav.css'
+import './SideNav.css'
 
 class RegisterNav extends Component {
     constructor() {

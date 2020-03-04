@@ -5,7 +5,7 @@ import {
     Icon
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import '../../Components/SideNav/SideNav.css'
+import './SideNav.css'
 
 class FieldsNav extends Component {
     constructor() {

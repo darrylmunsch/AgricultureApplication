@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SideNav from './AboutUsNav';
+import SideNav from '../../Components/SideNav/AboutUsNav';
 import Card from 'react-bootstrap/Card';
 import CardColumns from "react-bootstrap/CardColumns";
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -24,7 +24,7 @@ export class AboutUs extends Component {
                         <Card>                       
                             <Card.Body>
                                 <Card.Title>From our home to yours..</Card.Title>
-                                <img src={require("../../Resources/farmer.jpg")} class="img-fluid" alt="Responsive image"></img>
+                                <img src={require("../../Resources/farmer.jpg")} className="img-fluid" alt="Responsive image"/>
                                 <Card.Text>
                                    Here at Envoc Agriculture Co. We take pride in our product!
                                 </Card.Text>

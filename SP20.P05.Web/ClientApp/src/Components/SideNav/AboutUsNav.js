@@ -7,7 +7,7 @@ import {
     Dropdown
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import './AboutUsNav.css'
+import './SideNav.css'
 
 class SideNavbar extends Component {
     constructor() {

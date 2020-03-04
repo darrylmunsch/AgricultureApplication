@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 // Components
-import RegisterNav from './RegisterNav';
+import RegisterNav from '../../Components/SideNav/RegisterNav';
 import RegisterForm from '../../Components/RegisterForm/RegisterForm';
 
 // CSS

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 // Components
-import LoginNav from './LoginNav';
+import LoginNav from '../../Components/SideNav/LoginNav';
 import LoginForm from '../../Components/LoginForm/LoginForm';
 
 // CSS

@@ -58,7 +58,7 @@ class SideNavbar extends Component {
                                 <Nav.Item id="sidebar_iconGreen" eventKey="5" icon={<Icon icon="info"/>} href='/about-us'>
                                     About Us
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconGreen_User" eventKey="6" icon= {<Icon icon="user-circle-o"/>} href={'/login'}>
+                                <Nav.Item id="sidebar_iconGreen" eventKey="6" icon= {<Icon icon="user-circle-o"/>} href={'/login'}>
                                     Login/Register
                                 </Nav.Item>
                             </Nav>
