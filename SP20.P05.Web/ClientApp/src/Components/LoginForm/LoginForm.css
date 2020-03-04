@@ -1,0 +1,23 @@
+#loginBox{
+    background-color: white;
+}
+
+#loginPadding{
+    padding: 150px;
+}
+
+#darkGreenButton{
+    background-color: darkgreen !important;
+    border-color:darkgreen;
+    color: white
+}
+
+#registerButton{
+    margin-left: 10px;
+}
+
+.marginLeft{
+    margin-left: 100px !important;
+    margin-right: 100px;
+    background-size: cover;
+}
