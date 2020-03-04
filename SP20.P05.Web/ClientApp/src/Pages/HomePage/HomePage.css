@@ -1,11 +1,39 @@
 body {
  /* Set a background color that will be displayed
 while the background image is loading */
-background-color: #464646;
+background-color: #14ee14;
+
+}
+.home_carddecks {
+    position: absolute;
+    left: 56px;
+    top: 50%;
+ 
+
+    /* move to right of navbar */
+}
+
+.home_card{
+    margin-left: inherit;
+}
+
+.home_cardtitle{
+
+    text-decoration-line: underline;
+}
+
+.home_cardbody {
+    font-weight: bolder;
+    list-style: circle;
+    text-decoration-color:  #14ee14;
+    color: rgb(17, 17, 17);
+
+    /*background-color: rgb(224, 24, 24);*/
+    /* colors of cards themselves */ 
 }
 
 .carousel_marginLeft{
     margin-left: 56px;
-    background-size: cover;
+   /* background-size: cover;*/
 }
 

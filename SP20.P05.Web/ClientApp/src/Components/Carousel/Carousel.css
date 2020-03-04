@@ -1,14 +1,14 @@
 .Carousel {
 /* Set rules to fill background */
-min-height: 100%;
-min-width: 1024px;
+min-height: 50%;
+min-width: auto;
   
 /* Set up proportionate scaling */
-width: 100%;
-height: auto;
+width: auto;
+height: 50%;
   
 /* Set up positioning */
-position: fixed;
+position: absolute;
 top: 0;
 left: 0;
 margin-left: 56px;
@@ -19,4 +19,5 @@ margin-left: 56px;
 .Carousel img {
     
     object-fit: cover;
+    
 }
