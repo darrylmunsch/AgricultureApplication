@@ -1,6 +1,6 @@
 #content_window {
     height: 100%;
-    position: fixed;
+    position: relative;
     background-color: white;
 }
 

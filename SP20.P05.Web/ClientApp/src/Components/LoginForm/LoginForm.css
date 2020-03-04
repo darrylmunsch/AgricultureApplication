@@ -23,9 +23,10 @@
 }
 
 #login_container{
-    position: fixed;
-    width: 25%;
-    height: 35%;
+    position: relative;
+    width: 150%;
+    height: 100%;
+    right: 30%;
 }
 
 #divElement{
