@@ -2,9 +2,7 @@
     background-color: white;
 }
 
-#loginPadding{
-    padding: 150px;
-}
+
 
 #darkGreenButton{
     background-color: darkgreen !important;
@@ -16,16 +14,29 @@
     margin-left: 10px;
 }
 
-.marginLeft{
-    margin-left: 100px !important;
-    margin-right: 100px;
-    background-size: cover;
+.centerLoginBox{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
 }
 
 #login_container{
     position: fixed;
     width: 25%;
     height: 35%;
-    margin-top: 15%;
-    margin-left: 40%;
+}
+
+#divElement{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}​
+
+html, body, .container {
+    height: 100%;
 }

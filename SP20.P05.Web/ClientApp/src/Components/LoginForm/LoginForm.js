@@ -60,26 +60,28 @@ export class LoginForm extends Component {
             return<Redirect to ={{ pathname: '/'}} />
 
         return (
-            <Jumbotron id={'login_container'}>
-            <div className={'marginLeft'}>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group controlId="formBasicUsername">
-                        <Form.Label>Username</Form.Label>
-                        <Form.Control type="username" name = 'username' placeholder="Enter Username"  onChange={this.handleChange} />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name = 'password' placeholder="Password"  onChange={this.handleChange}/>
-                    </Form.Group>
-                    <Button id={'darkGreenButton'} variant="primary" type="submit">
-                        Submit
-                    </Button>
-                    <Button id={'registerButton'}  variant="secondary" href={'/register'}>
-                        Register
-                    </Button>
-                </Form>
+            <div >
+                <Jumbotron id={'login_container'}>
+                    <div>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Form.Group controlId="formBasicUsername">
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control type="username" name = 'username' placeholder="Enter Username"  onChange={this.handleChange} />
+                            </Form.Group>
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" name = 'password' placeholder="Password"  onChange={this.handleChange}/>
+                            </Form.Group>
+                            <Button id={'darkGreenButton'} variant="primary" type="submit">
+                                Submit
+                            </Button>
+                            <Button id={'registerButton'}  variant="secondary" href={'/register'}>
+                                Register
+                            </Button>
+                        </Form>
+                    </div>
+                </Jumbotron>
             </div>
-            </Jumbotron>
         );
     }
 }

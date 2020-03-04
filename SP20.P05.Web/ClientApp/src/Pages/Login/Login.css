@@ -1,6 +1,12 @@
 body {
     /* Set a background color that will be displayed
    while the background image is loading */
-    background-color: grey;
+
 }
 
+.background-img {
+    /* Set up positioning */
+    background-size: cover;
+    background-image: url('../../Resources/field.jpg') ;
+    position: relative;
+}

@@ -13,10 +13,13 @@ export class Login extends Component {
         return (
             <div>
                 <SideNav />
-                <div classNmae={'marginLeft'}>
-                    <LoginForm />
-                </div>
+                <div className={'background-img'}>
 
+                    <div id={'divElement'} >
+                        <LoginForm />
+                    </div>
+
+                </div>
             </div>
         )
     }
