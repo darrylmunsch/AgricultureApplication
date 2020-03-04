@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Components
-
 import HomePage from './Pages/HomePage/HomePage';
 import Fields from './Pages/FarmFields/Fields';
 import AboutUs from './Pages/AboutUs/AboutUs';
@@ -14,7 +13,6 @@ import './Pages/HomePage/HomePage.css';
 function App() {
   return (
     <BrowserRouter>
-      
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/fields' component={Fields} />

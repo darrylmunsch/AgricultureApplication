@@ -5,9 +5,9 @@ import {
     Icon
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import './SideNav.css'
+import '../../Components/SideNav/SideNav.css'
 
-class SideNavbar extends Component {
+class FieldsNav extends Component {
     constructor() {
         super();
         this.state = {
@@ -37,9 +37,9 @@ class SideNavbar extends Component {
             <div style={{ width: 200 }}>
                 <div >
                     <Sidenav id="content_window"
-                        expanded={isOpen}
-                        activeKey={this.state.activeKey}
-                        onSelect={this.handleSelect}
+                             expanded={isOpen}
+                             activeKey={this.state.activeKey}
+                             onSelect={this.handleSelect}
                     >
                         <Sidenav.Body id="flex-container">
                             <Nav>
@@ -67,4 +67,4 @@ class SideNavbar extends Component {
     }
 }
 
-export default SideNavbar;
+export default FieldsNav;

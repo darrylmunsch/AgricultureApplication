@@ -1,0 +1,10 @@
+#content_window {
+    height: 100%;
+    position:relative;
+    background-color: white;
+    z-index: 100;
+}
+
+#sidebar_iconWhite{
+    color: darkgreen !important
+}
