@@ -8,6 +8,7 @@ import {
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import './HomeNav.css'
+import '../../Components/SideNav/SideNav'
 
 class SideNavbar extends Component {
     constructor() {
@@ -48,16 +49,16 @@ class SideNavbar extends Component {
                                 <Nav.Item id="sidebar_iconBrown" eventKey="1" icon={<Icon icon="home" />} href='/' >
                                     Home
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconBrown" eventKey="2" icon={<Icon icon="tree" />} href='/fields'>
+                                <Nav.Item id="sidebar_iconGreen" eventKey="2" icon={<Icon icon="tree" />} href='/fields'>
                                     Browse Fields
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconBrown" eventKey="3" icon={<Icon icon="shopping-basket" />}>
+                                <Nav.Item id="sidebar_iconGreen" eventKey="3" icon={<Icon icon="shopping-basket" />}>
                                     Baskets
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconBrown" eventKey="4" icon={<Icon icon="order-form" />} href='/tickets'>
+                                <Nav.Item id="sidebar_iconGreen" eventKey="4" icon={<Icon icon="order-form" />} href='/tickets'>
                                     Order Ticket
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconBrown" eventKey="5" icon={<Icon icon="info"/>} href='/about-us'>
+                                <Nav.Item id="sidebar_iconGreen" eventKey="5" icon={<Icon icon="info"/>} href='/about-us'>
                                     About Us
                                 </Nav.Item>
                             </Nav>
