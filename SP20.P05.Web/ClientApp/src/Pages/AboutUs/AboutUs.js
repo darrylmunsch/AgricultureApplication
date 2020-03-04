@@ -44,8 +44,8 @@ export class AboutUs extends Component {
                              </Jumbotron>
                             </Card.Body>
                         </Card>
-                        </div>
-                        </div>     
+                    </div>
+            </div>
         )
     }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 // Components
-import SideNav from '../../Components/SideNav/SideNav';
+import LoginNav from './LoginNav';
 import LoginForm from '../../Components/LoginForm/LoginForm';
 
 // CSS
@@ -12,7 +12,7 @@ export class Login extends Component {
     render() {
         return (
             <div>
-                <SideNav />
+                <LoginNav />
                 <div className={'background-img'}>
 
                     <div id={'divElement'} >

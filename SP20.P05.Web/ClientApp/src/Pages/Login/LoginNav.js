@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import {
     Sidenav,
     Nav,
-    Icon
+    Icon,
+    Dropdown
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import '../../Components/SideNav/SideNav.css'
+import './LoginNav.css'
 
-class FieldsNav extends Component {
+class LoginNav extends Component {
     constructor() {
         super();
         this.state = {
@@ -46,7 +48,7 @@ class FieldsNav extends Component {
                                 <Nav.Item id="sidebar_iconGreen" eventKey="1" icon={<Icon icon="home" />} href='/' >
                                     Home
                                 </Nav.Item>
-                                <Nav.Item id="icon" eventKey="2" icon={<Icon icon="tree" />} href='/fields'>
+                                <Nav.Item id="sidebar_iconGreen" eventKey="2" icon={<Icon icon="tree" />} href='/fields'>
                                     Browse Fields
                                 </Nav.Item>
                                 <Nav.Item id="sidebar_iconGreen" eventKey="3" icon={<Icon icon="shopping-basket" />}>
@@ -58,7 +60,7 @@ class FieldsNav extends Component {
                                 <Nav.Item id="sidebar_iconGreen" eventKey="5" icon={<Icon icon="info"/>} href='/about-us'>
                                     About Us
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconGreen" eventKey="6" icon= {<Icon icon="user-circle-o"/>} href={'/login'}>
+                                <Nav.Item id="icon" eventKey="6" icon= {<Icon icon="user-circle-o"/>} href={'/login'}>
                                     Login/Register
                                 </Nav.Item>
                             </Nav>
@@ -70,4 +72,4 @@ class FieldsNav extends Component {
     }
 }
 
-export default FieldsNav;
+export default LoginNav;
