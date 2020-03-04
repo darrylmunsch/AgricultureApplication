@@ -1,7 +1,7 @@
 .background-img {
 
     /* Set up positioning */
-    position: fixed;
+    background-size: cover;
     top:0;
     left:0;
     margin-left: 56px;
