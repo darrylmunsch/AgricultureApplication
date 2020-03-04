@@ -12,7 +12,11 @@ export class Register extends Component {
         return (
             <div>
                 <SideNav />
-                <RegisterForm />
+                <div className={'bacckground-img'}>
+                    <div id={'divElement'}>
+                        <RegisterForm />
+                    </div>
+                </div>
             </div>
         )
     }

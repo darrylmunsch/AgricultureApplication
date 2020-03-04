@@ -14,11 +14,9 @@ export class Login extends Component {
             <div>
                 <SideNav />
                 <div className={'background-img'}>
-
                     <div id={'divElement'} >
                         <LoginForm />
                     </div>
-
                 </div>
             </div>
         )
