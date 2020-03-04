@@ -3,6 +3,7 @@ import {Form} from 'react-bootstrap';
 import {Button} from 'rsuite';
 import axios from 'axios';
 import {Redirect} from "react-router-dom";
+import {Jumbotron} from 'react-bootstrap';
 
 // CSS
 import './LoginForm.css';
@@ -59,6 +60,7 @@ export class LoginForm extends Component {
             return<Redirect to ={{ pathname: '/'}} />
 
         return (
+            <Jumbotron id={'login_container'}>
             <div className={'marginLeft'}>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formBasicUsername">
@@ -77,6 +79,7 @@ export class LoginForm extends Component {
                     </Button>
                 </Form>
             </div>
+            </Jumbotron>
         );
     }
 }
