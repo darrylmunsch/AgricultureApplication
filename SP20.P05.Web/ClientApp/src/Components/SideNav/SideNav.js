@@ -6,6 +6,7 @@ import {
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import './SideNav.css'
+import {Link} from "react-router-dom";
 
 class SideNavbar extends Component {
     constructor() {
@@ -43,12 +44,20 @@ class SideNavbar extends Component {
                     >
                         <Sidenav.Body id="flex-container">
                             <Nav>
-                                <Nav.Item id="sidebar_iconGreen" eventKey="1" icon={<Icon icon="home" />} href='/' >
-                                    Home
-                                </Nav.Item>
-                                <Nav.Item id="sidebar_iconGreen" eventKey="2" icon={<Icon icon="tree" />} href='/fields'>
-                                    Browse Fields
-                                </Nav.Item>
+
+                                <Link to ='/'>
+                                    <Nav.Item id="sidebar_iconGreen" eventKey="1" icon={<Icon icon="home" />}>
+                                        Home
+                                    </Nav.Item>
+
+                                </Link>
+
+                                <Link to ='/fields'>
+                                    <Nav.Item id="sidebar_iconGreen" eventKey="2" icon={<Icon icon="tree" />} href='/fields'>
+                                        Browse Fields
+                                    </Nav.Item>
+                                </Link>
+
                                 <Nav.Item id="sidebar_iconGreen" eventKey="3" icon={<Icon icon="shopping-basket" />}>
                                     Baskets
                                 </Nav.Item>
