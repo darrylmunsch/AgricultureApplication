@@ -3,38 +3,27 @@
     object-fit: cover;
     top:0;
     left:0;
-    margin-left: 56px;
     opacity: 0.5;
     }
 
-#register_container{
-    position: relative;
-    width: 150%;
-    height: 100%;
-    right: 30%;
+.formMargins {
+    margin-left: 100px !important;
+    margin-right: 100px;
+    color: darkgreen;
 }
 
-.centerRegisterBox{
-    display:flex;
+.centerForm{
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    flex-direction: column;
 }
 
-#darkGreenButton{
-    background-color: darkgreen !important;
-    border-color:darkgreen;
-    color: white;
+.btn_register{
+    background-color: darkgreen;
+    color: whitesmoke;
+    margin-right: 10px;
 }
 
-#loginButton{
-    margin-left: 10px;
+.jumbo_clr {
+    background-color: whitesmoke;
 }
-
-.marginLeft{
-    margin-left: 100px !important;
-    margin-right: 100px ;
-    background-size: cover;
-}
-

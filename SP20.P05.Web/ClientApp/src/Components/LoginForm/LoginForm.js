@@ -60,9 +60,9 @@ export class LoginForm extends Component {
             return<Redirect to ={{ pathname: '/'}} />
 
         return (
-            <div >
-                <Jumbotron id={'login_container'}>
-                    <div>
+            <div className={"centerForm"}>
+                <Jumbotron className={"jumbo_clr"}>
+                    <div className={'formMargins'}>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Username</Form.Label>
@@ -72,10 +72,10 @@ export class LoginForm extends Component {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" name = 'password' placeholder="Password"  onChange={this.handleChange}/>
                             </Form.Group>
-                            <Button id={'darkGreenButton'} variant="primary" type="submit">
+                            <Button className={"btn_register"} variant="primary" type="submit">
                                 Submit
                             </Button>
-                            <Button id={'registerButton'}  variant="secondary" href={'/register'}>
+                            <Button  variant="secondary" href={'/register'}>
                                 Register
                             </Button>
                         </Form>
