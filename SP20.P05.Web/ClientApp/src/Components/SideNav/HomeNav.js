@@ -69,15 +69,7 @@ class SideNavbar extends Component {
                     Order Ticket
                   </Nav.Item>
                 </Link>
-                <Link to="/about-us">
-                  <Nav.Item
-                    id="sidebar_iconGreen"
-                    eventKey="5"
-                    icon={<Icon icon="info" />}
-                  >
-                    About Us
-                  </Nav.Item>
-                </Link>
+                
 
                 <Link to="/login">
                   <Nav.Item

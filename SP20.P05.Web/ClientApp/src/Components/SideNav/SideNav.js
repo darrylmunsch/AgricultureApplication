@@ -44,32 +44,34 @@ class SideNavbar extends Component {
                     >
                         <Sidenav.Body id="flex-container">
                             <Nav>
-
                                 <Link to ='/'>
                                     <Nav.Item id="sidebar_iconGreen" eventKey="1" icon={<Icon icon="home" />}>
                                         Home
                                     </Nav.Item>
-
                                 </Link>
 
                                 <Link to ='/fields'>
-                                    <Nav.Item id="sidebar_iconGreen" eventKey="2" icon={<Icon icon="tree" />} href='/fields'>
+                                    <Nav.Item id="sidebar_iconGreen" eventKey="2" icon={<Icon icon="tree" />} >
                                         Browse Fields
                                     </Nav.Item>
                                 </Link>
-
+                                <Link to ='/Baskets'>
                                 <Nav.Item id="sidebar_iconGreen" eventKey="3" icon={<Icon icon="shopping-basket" />}>
                                     Baskets
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconGreen" eventKey="4" icon={<Icon icon="order-form" />} href='/tickets'>
+                                </Link>
+
+                                <Link to = '/Tickets'>
+                                <Nav.Item id="sidebar_iconGreen" eventKey="4" icon={<Icon icon="order-form" />} >
                                     Order Ticket
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconGreen" eventKey="5" icon={<Icon icon="info"/>} href='/about-us'>
-                                    About Us
-                                </Nav.Item>
-                                <Nav.Item id="sidebar_iconGreen" eventKey="6" icon= {<Icon icon="user-circle-o"/>} href={'/login'}>
+                                </Link>
+                               <Link to ='/Login'>
+                                <Nav.Item id="sidebar_iconGreen" eventKey="6" icon= {<Icon icon="user-circle-o"/>}>
                                     Login/Register
                                 </Nav.Item>
+                                </Link>
+
                             </Nav>
                         </Sidenav.Body>
                     </Sidenav>

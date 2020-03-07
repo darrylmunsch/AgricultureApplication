@@ -55,9 +55,7 @@ class FieldsNav extends Component {
                                 <Nav.Item id="sidebar_iconGreen" eventKey="4" icon={<Icon icon="order-form" />} href='/tickets'>
                                     Order Ticket
                                 </Nav.Item>
-                                <Nav.Item id="sidebar_iconGreen" eventKey="5" icon={<Icon icon="info"/>} href='/about-us'>
-                                    About Us
-                                </Nav.Item>
+                                
                                 <Nav.Item id="sidebar_iconGreen" eventKey="6" icon= {<Icon icon="user-circle-o"/>} href={'/login'}>
                                     Login/Register
                                 </Nav.Item>
