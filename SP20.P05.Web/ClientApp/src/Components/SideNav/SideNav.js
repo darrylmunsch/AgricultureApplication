@@ -5,6 +5,7 @@ import {
     Icon
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
+import "./SideNav";
 import './SideNav.css'
 import {Link} from "react-router-dom";
 

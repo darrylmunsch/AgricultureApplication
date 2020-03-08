@@ -19,7 +19,7 @@ export class HomePage extends Component {
             <SideNav />
             <Carousel_Home/>
                 <CardColumns className="home_carddecks">
-                    <Card>
+                    <Card> 
                         <Card.Title className="home_cardtitle">
                             Upcoming Events:
                         </Card.Title>
