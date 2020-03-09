@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 // Components
 import LoginNav from '../../Components/SideNav/LoginNav';
-import LoginFunc from '../../Components/LoginForm/LoginFunc';
+import LoginForm from '../../Components/LoginForm/LoginForm';
 
 // CSS
 import './Login.css';
@@ -17,7 +17,7 @@ function Login() {
                 <LoginNav />
                 <div className={'background-img'}>
                     <div id={'divElement'} >
-                        <LoginFunc />
+                        <LoginForm />
                     </div>
                 </div>
             </div>

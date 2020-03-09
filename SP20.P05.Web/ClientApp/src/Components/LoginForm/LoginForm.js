@@ -1,28 +1,30 @@
-import React, { Component } from "react";
-import { Form } from "react-bootstrap";
-import { Button } from "rsuite";
-import axios from "axios";
-import { Redirect } from "react-router-dom";
-import { Jumbotron } from "react-bootstrap";
+import React, {useContext, useState} from 'react';
+import {UserContext} from "../Hooks/Context/UserContext";
+import {Form} from 'react-bootstrap';
+import {Button} from 'rsuite';
+import axios from 'axios';
+import {Link, Redirect} from "react-router-dom";
+import {Jumbotron} from 'react-bootstrap';
 import { Formik } from "formik";
+import Toast from 'react-bootstrap/Toast';
 
 // CSS
-import "./LoginForm.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import './LoginForm.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: "",
-      signedIn: ""
-    };
-  }
 
-  handleSubmit = async (data, { setSubmitting, resetForm }) => {
+
+export default function LoginFunc() {
+  const {_user, _setUser} = useContext(UserContext);
+  const [show, setShow] = useState(true);
+  const [_username, _setUsername] = useState('default');
+  const [_password, _setPassword] = useState('default');
+  const [_signedIn, _setSignedIn] = useState(false);
+  const url = 'api/authentication/login';
+
+  const handleSubmit = async (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-    data.preventDefault();
+
 
     let user = {
       username: data.username,
@@ -30,86 +32,100 @@ export class LoginForm extends Component {
     };
 
     await axios
-      .post(this.url, user, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
+        .post(url, user, {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
 
-        if (res.status === 200) this.setState({ signedIn: true });
+          if (res.status === 200){
+            _setUser(res.data);
+            _setSignedIn(true);
+          }
 
-        return Promise.resolve(res);
-      });
+          return false;
+        });
 
     setSubmitting(false);
     resetForm();
   };
 
-  url = "api/authentication/login";
+  if (_signedIn) return <Redirect to={{ pathname: '/'}} />;
 
-  render() {
-    if (this.state.signedIn) return <Redirect to={{ pathname: "/" }} />;
 
-    return (
+  return (
       <div className={"centerForm"}>
         <Jumbotron className={"jumbo_clr"}>
           <div className={"formMargins"}>
             <Formik
-              initialValues={{ username: "", password: "" }}
-              onSubmit={this.handleSubmit}
+                initialValues={{ username: "", password: "" }}
+                onSubmit={handleSubmit}
             >
               {({
-                values,
-                isSubmitting,
-                handleChange,
-                handleBlur,
-                handleSubmit
-              }) => (
-                <Form onSubmit={handleSubmit}>
-                  <Form.Group controlId="formBasicUsername">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control
-                      type="username"
-                      name="username"
-                      placeholder="Enter Username"
-                      value={values.username}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      type="password"
-                      name="password"
-                      placeholder="Password"
-                      value={values.password}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </Form.Group>
-                  <Button
-                    className={"btn_register"}
-                    variant="primary"
-                    disabled={isSubmitting}
-                    type="submit"
-                  >
-                    Submit
-                  </Button>
-                  <Button variant="secondary" href={"/register"}>
-                    Register
-                  </Button>
-                </Form>
+                  values,
+                  isSubmitting,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit
+                }) => (
+                  <Form onSubmit={handleSubmit}>
+                    <Form.Group controlId="formBasicUsername">
+                      <Form.Label>Username</Form.Label>
+                      <Form.Control
+                          type="username"
+                          name="username"
+                          placeholder="Enter Username"
+                          value={values.username}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control
+                          type="password"
+                          name="password"
+                          placeholder="Password"
+                          value={values.password}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                      />
+                    </Form.Group>
+                    <Button
+                        className={"btn_register"}
+                        variant="primary"
+                        disabled={isSubmitting}
+                        type="submit"
+                    >
+                      Submit
+                    </Button>
+                    <Button variant="secondary">
+                        <Link to={'/register'}>
+                            Register
+                        </Link>
+                    </Button>
+                  </Form>
               )}
             </Formik>
           </div>
         </Jumbotron>
       </div>
-    );
-  }
+  );
 }
 
-export default LoginForm;
+export function UserToast(){
+  const [show, setShow] = useState(true);
+  const {_user} = useContext(UserContext);
+  return(
+      <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+        <Toast.Header>
+          <img src="../../Resources/tree.png" className="rounded mr-2" alt="" />
+          <strong className="mr-auto">Welcome! {_user.username}</strong>
+        </Toast.Header>
+        <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
+      </Toast>
+  )
+}
