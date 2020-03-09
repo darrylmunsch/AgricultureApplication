@@ -20,6 +20,34 @@ export class LoginForm extends Component {
     };
   }
 
+  handleSubmit = async (data, { setSubmitting, resetForm }) => {
+    setSubmitting(true);
+    data.preventDefault();
+
+    let user = {
+      username: data.username,
+      password: data.password
+    };
+
+    await axios
+      .post(this.url, user, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+
+        if (res.status === 200) this.setState({ signedIn: true });
+
+        return Promise.resolve(res);
+      });
+
+    setSubmitting(false);
+    resetForm();
+  };
+
   url = "api/authentication/login";
 
   render() {
@@ -31,33 +59,7 @@ export class LoginForm extends Component {
           <div className={"formMargins"}>
             <Formik
               initialValues={{ username: "", password: "" }}
-              onSubmit={async (data, { setSubmitting, resetForm }) => {
-                setSubmitting(true);
-                data.preventDefault();
-
-                let user = {
-                  username: data.username,
-                  password: data.password
-                };
-
-                await axios
-                  .post(this.url, user, {
-                    headers: {
-                      "Content-Type": "application/json"
-                    }
-                  })
-                  .then(res => {
-                    console.log(res);
-                    console.log(res.data);
-
-                    if (res.status === 200) this.setState({ signedIn: true });
-
-                    return Promise.resolve(res);
-                  });
-
-                setSubmitting(false);
-                resetForm();
-              }}
+              onSubmit={this.handleSubmit}
             >
               {({
                 values,
