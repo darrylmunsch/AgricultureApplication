@@ -10,105 +10,103 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./RegisterForm.css";
 import { Formik } from "formik";
 
-const  url = "api/customers";
+export default function RegisterForm() {
+  const url = "api/customers";
 
-const handleSubmit = async (data, { setSubmitting, resetForm }) => {
-  setSubmitting(true);
+  const handleSubmit = async (data, { setSubmitting, resetForm }) => {
+    setSubmitting(true);
 
+    let user = {
+      username: data.username,
+      password: data.password,
+      verifypassword: data.verifypassowrd
+    };
 
-  let user = {
-    username: data.username,
-    password: data.password,
-    verifypassword: data.verifypassowrd
+    if (user.password === user.verifypassword)
+      await axios
+        .post(url, user, {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+
+          if (res.status === 200) {
+            return <Redirect to={{ pathname: "/login" }} />;
+          }
+
+          return false;
+        });
+    resetForm();
   };
 
-  if(user.password === user.verifypassword)
-  await axios
-      .post(url, user, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-
-        if (res.status === 200){
-          return <Redirect to ={{pathname:'/login'}} />
-        }
-
-        return false;
-      });
-
-
-
-    return (
-      <div className={"centerForm"}>
-        <Jumbotron className={"jumbo_clr"}>
-          <div className={"formMargins"}>
-            <Formik
-              initialValues={{ username: "", password: "", verifypassowrd: "" }}
-              onSubmit={handleSubmit}
-            >
-              {({
-                  values,
-                  isSubmitting,
-                  handleChange,
-                  handleBlur,
-                  handleSubmit
-                }) => (
-                  <Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="formBasicUsername">
-                      <Form.Label>Username</Form.Label>
-                      <Form.Control
-                          type="username"
-                          name="username"
-                          placeholder="Enter Username"
-                          value={values.username}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                      />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicPassword">
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control
-                          type="password"
-                          name="password"
-                          placeholder="Password"
-                          value={values.password}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                      />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicPassword">
-                      <Form.Label>Verify Password</Form.Label>
-                      <Form.Control
-                          type="password"
-                          name="verifypassword"
-                          placeholder="Verify Password"
-                          value={values.verifypassword}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                      />
-                    </Form.Group>
-                    <Button
-                        className={"btn_register"}
-                        variant="primary"
-                        disabled={isSubmitting}
-                        type="submit"
-                    >
-                      Register
-                    </Button>
-                    <Button variant="secondary">
-                      <Link to={'/login'}>
-                        Login
-                      </Link>
-                    </Button>
-                  </Form>
-              )}
-            </Formik>
-          </div>
-        </Jumbotron>
-      </div>
-    );
-  }
+  return (
+    <div className={"centerForm"}>
+      <Jumbotron className={"jumbo_clr"}>
+        <div className={"formMargins"}>
+          <Formik
+            initialValues={{ username: "", password: "", verifypassowrd: "" }}
+            onSubmit={handleSubmit}
+          >
+            {({
+              values,
+              isSubmitting,
+              handleChange,
+              handleBlur,
+              handleSubmit
+            }) => (
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="formBasicUsername">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="username"
+                    name="username"
+                    placeholder="Enter Username"
+                    value={values.username}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Verify Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="verifypassword"
+                    placeholder="Verify Password"
+                    value={values.verifypassword}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Form.Group>
+                <Button
+                  className={"btn_register"}
+                  variant="primary"
+                  disabled={isSubmitting}
+                  type="submit"
+                >
+                  Register
+                </Button>
+                <Button variant="secondary">
+                  <Link to={"/login"}>Login</Link>
+                </Button>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </Jumbotron>
+    </div>
+  );
+}

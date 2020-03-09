@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-export default function LoginFunc() {
+export default function LoginForm() {
   const {_user, _setUser} = useContext(UserContext);
   const [show, setShow] = useState(true);
   const [_username, _setUsername] = useState('default');
