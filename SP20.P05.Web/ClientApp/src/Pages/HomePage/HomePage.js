@@ -1,22 +1,30 @@
-import React, { Component } from 'react'
+import React, {useContext, useState} from 'react';
+import {UserContext} from "../../Components/Hooks/Context/UserContext";
 
 // Components
 import SideNav from '../../Components/SideNav/HomeNav';
-import Carousel_Home from '../../Components/Carousel/Carousel';
-import Card from 'react-bootstrap/Card';
-import CardColumns from 'react-bootstrap/CardColumns';
-import CardDeck from 'react-bootstrap/CardDeck'
+import ToastFunc from "../../Components/Toast/ToastFunc";
+import CardColumns from "react-bootstrap/CardColumns";
+import Card from "react-bootstrap/Card";
+import Carousel_Home from "../../Components/Carousel/Carousel";
+
 // CSS
 import './HomePage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-export class HomePage extends Component {
-    render() {
+
+
+
+export default function HomePage() {
+    const {_user} = useContext(UserContext);
+
         return (
             <body>
+
             <div>
             <SideNav />
+
             <Carousel_Home/>
                 <CardColumns className="home_carddecks">
                     <Card>
@@ -48,10 +56,9 @@ export class HomePage extends Component {
                         </Card.Body>
                     </Card>
                 </CardColumns>
+                {_user ? (<ToastFunc className={"toast"}/>) : null}
             </div>
             </body>
         )
-    }
 }
 
-export default HomePage

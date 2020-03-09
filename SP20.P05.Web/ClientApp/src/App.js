@@ -14,11 +14,10 @@ import {UserContext} from "./Components/Hooks/Context/UserContext";
 
 // CSS
 import "./Pages/HomePage/HomePage.css";
-import LoginFunc from "./Components/LoginForm/LoginFunc";
 
 
 function App() {
-  const [_user, _setUser] = useState(localStorage.getItem('user') || '');
+  const [_user, _setUser] = useState(localStorage.getItem('user') || null);
   const value = useMemo(() => ({ _user, _setUser}), [_user, _setUser]);
 
   return (

@@ -84,28 +84,36 @@ body {
     background-size: cover;
     position: relative;
     margin-left: 56px;
+    color: transparent;
+    text-align: center;
 }
-.p5:hover > .overlay {
+.p5:hover > .overlayCS {
     width:100%;
     height:100%;
     position:absolute;
     background-color:#000;
-    opacity:0.2;
+    opacity:0.9;
     cursor: pointer;
+    text-align: center;
+    color: whitesmoke;
 }
 .p6 {
     height: 400px;
     background-image: url("../../Resources/tomatoes.jpeg");
     background-size: cover;
     position: relative;
+    color: transparent;
+    text-align: center;
 }
-.p6:hover > .overlay {
+.p6:hover > .overlayCS {
     width:100%;
     height:100%;
     position:absolute;
     background-color:#000;
-    opacity:0.2;
+    opacity:0.9;
     cursor: pointer;
+    text-align: center;
+    color: whitesmoke;
 }
 
 .icon_style {

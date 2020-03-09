@@ -6,13 +6,17 @@ import axios from 'axios';
 import {Redirect} from "react-router-dom";
 import {Jumbotron} from 'react-bootstrap';
 import { Formik } from "formik";
+import Toast from 'react-bootstrap/Toast';
 
 // CSS
 import './LoginForm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+
 export default function LoginFunc() {
     const {_user, _setUser} = useContext(UserContext);
+    const [show, setShow] = useState(true);
     const [_username, _setUsername] = useState('default');
     const [_password, _setPassword] = useState('default');
     const [_signedIn, _setSignedIn] = useState(false);
@@ -48,7 +52,9 @@ export default function LoginFunc() {
         setSubmitting(false);
         resetForm();
     };
+
     if (_signedIn) return <Redirect to={{ pathname: '/'}} />;
+
 
     return (
         <div className={"centerForm"}>
@@ -106,4 +112,18 @@ export default function LoginFunc() {
             </Jumbotron>
         </div>
     );
+}
+
+export function UserToast(){
+    const [show, setShow] = useState(true);
+    const {_user} = useContext(UserContext);
+    return(
+        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+            <Toast.Header>
+                <img src="../../Resources/tree.png" className="rounded mr-2" alt="" />
+                <strong className="mr-auto">Welcome! {_user.username}</strong>
+            </Toast.Header>
+            <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
+        </Toast>
+    )
 }
