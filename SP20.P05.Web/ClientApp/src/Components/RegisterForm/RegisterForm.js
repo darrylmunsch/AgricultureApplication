@@ -11,6 +11,7 @@ import "./RegisterForm.css";
 import { Formik } from "formik";
 
 export default function RegisterForm() {
+  const [_registered, _setRegistered] = useState(false);
   const url = "api/customers";
 
   const handleSubmit = async (data, { setSubmitting, resetForm }) => {
@@ -34,7 +35,7 @@ export default function RegisterForm() {
             console.log(res.data);
 
             if (res.status === 201) {
-              return <Redirect to={{ pathname: "/login" }} />;
+              _setRegistered(true);
             }
 
             return false;
@@ -45,6 +46,8 @@ export default function RegisterForm() {
       console.log(user)
     }
   };
+
+  if(_registered) return <Redirect to={{ pathname: '/login'}} />;
 
   return (
     <div className={"centerForm"}>
