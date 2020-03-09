@@ -31,7 +31,7 @@ export class LoginForm extends Component {
           <div className={"formMargins"}>
             <Formik
               initialValues={{ username: "", password: "" }}
-              onSubmit={(data, { setSubmitting, resetForm }) => {
+              onSubmit={async (data, { setSubmitting, resetForm }) => {
                 setSubmitting(true);
 
                 data.preventDefault();
@@ -41,7 +41,7 @@ export class LoginForm extends Component {
                   password: data.password
                 };
 
-                axios
+                await axios
                   .post(this.url, user, {
                     headers: {
                       "Content-Type": "application/json"
