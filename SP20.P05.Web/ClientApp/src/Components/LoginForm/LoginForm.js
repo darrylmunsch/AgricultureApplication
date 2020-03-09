@@ -4,7 +4,7 @@ import { Button } from "rsuite";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
-import { Field, Formik } from "formik";
+import { Formik } from "formik";
 
 // CSS
 import "./LoginForm.css";
@@ -33,7 +33,6 @@ export class LoginForm extends Component {
               initialValues={{ username: "", password: "" }}
               onSubmit={async (data, { setSubmitting, resetForm }) => {
                 setSubmitting(true);
-
                 data.preventDefault();
 
                 let user = {
@@ -56,7 +55,6 @@ export class LoginForm extends Component {
                     return Promise.resolve(res);
                   });
 
-                console.log(data);
                 setSubmitting(false);
                 resetForm();
               }}
