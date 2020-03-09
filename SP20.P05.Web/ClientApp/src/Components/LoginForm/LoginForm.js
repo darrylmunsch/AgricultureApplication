@@ -1,89 +1,115 @@
-import React, { Component } from 'react'
-import {Form} from 'react-bootstrap';
-import {Button} from 'rsuite';
-import axios from 'axios';
-import {Redirect} from "react-router-dom";
-import {Jumbotron} from 'react-bootstrap';
+import React, { Component } from "react";
+import { Form } from "react-bootstrap";
+import { Button } from "rsuite";
+import axios from "axios";
+import { Redirect } from "react-router-dom";
+import { Jumbotron } from "react-bootstrap";
+import { Field, Formik } from "formik";
 
 // CSS
-import './LoginForm.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import "./LoginForm.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export class LoginForm extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            username:'',
-            password:'',
-            signedIn:''
-        }
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    url = 'api/authentication/login'
-
-    handleChange(event) {
-        this.setState({ [event.target.name] : event.target.value });
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: "",
+      signedIn: ""
     };
+  }
 
-    handleSubmit = event => {
-        event.preventDefault();
+  url = "api/authentication/login";
 
-        let user ={
-            username: this.state.username,
-            password: this.state.password
-        };
+  render() {
+    if (this.state.signedIn) return <Redirect to={{ pathname: "/" }} />;
 
-        axios.post(this.url, user, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
+    return (
+      <div className={"centerForm"}>
+        <Jumbotron className={"jumbo_clr"}>
+          <div className={"formMargins"}>
+            <Formik
+              initialValues={{ username: "", password: "" }}
+              onSubmit={(data, { setSubmitting, resetForm }) => {
+                setSubmitting(true);
 
-                if(res.status ==200)
-                    this.setState({signedIn: true})
+                data.preventDefault();
 
-                return Promise.resolve(res);
-            })
-    };
+                let user = {
+                  username: data.username,
+                  password: data.password
+                };
 
+                axios
+                  .post(this.url, user, {
+                    headers: {
+                      "Content-Type": "application/json"
+                    }
+                  })
+                  .then(res => {
+                    console.log(res);
+                    console.log(res.data);
 
-    render() {
+                    if (res.status === 200) this.setState({ signedIn: true });
 
-        if(this.state.signedIn)
-            return<Redirect to ={{ pathname: '/'}} />
+                    return Promise.resolve(res);
+                  });
 
-        return (
-            <div className={"centerForm"}>
-                <Jumbotron className={"jumbo_clr"}>
-                    <div className={'formMargins'}>
-                        <Form onSubmit={this.handleSubmit}>
-                            <Form.Group controlId="formBasicUsername">
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control type="username" name = 'username' placeholder="Enter Username"  onChange={this.handleChange} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" name = 'password' placeholder="Password"  onChange={this.handleChange}/>
-                            </Form.Group>
-                            <Button className={"btn_register"} variant="primary" type="submit">
-                                Submit
-                            </Button>
-                            <Button  variant="secondary" href={'/register'}>
-                                Register
-                            </Button>
-                        </Form>
-                    </div>
-                </Jumbotron>
-            </div>
-        );
-    }
+                console.log(data);
+                setSubmitting(false);
+                resetForm();
+              }}
+            >
+              {({
+                values,
+                isSubmitting,
+                handleChange,
+                handleBlur,
+                handleSubmit
+              }) => (
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group controlId="formBasicUsername">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                      type="username"
+                      name="username"
+                      placeholder="Enter Username"
+                      value={values.username}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
+                  <Button
+                    className={"btn_register"}
+                    variant="primary"
+                    disabled={isSubmitting}
+                    type="submit"
+                  >
+                    Submit
+                  </Button>
+                  <Button variant="secondary" href={"/register"}>
+                    Register
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+          </div>
+        </Jumbotron>
+      </div>
+    );
+  }
 }
 
-export default LoginForm
+export default LoginForm;
