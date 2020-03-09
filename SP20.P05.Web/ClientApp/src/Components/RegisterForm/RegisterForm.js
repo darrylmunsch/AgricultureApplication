@@ -19,27 +19,31 @@ export default function RegisterForm() {
     let user = {
       username: data.username,
       password: data.password,
-      verifypassword: data.verifypassowrd
+      verifypassword: data.verifypassword
     };
 
-    if (user.password === user.verifypassword)
+    if (user.password === user.verifypassword){
       await axios
-        .post(url, user, {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-        .then(res => {
-          console.log(res);
-          console.log(res.data);
+          .post(url, user, {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+          .then(res => {
+            console.log(res);
+            console.log(res.data);
 
-          if (res.status === 200) {
-            return <Redirect to={{ pathname: "/login" }} />;
-          }
+            if (res.status === 201) {
+              return <Redirect to={{ pathname: "/login" }} />;
+            }
 
-          return false;
-        });
-    resetForm();
+            return false;
+          });
+      resetForm();
+    }
+    else{
+      console.log(user)
+    }
   };
 
   return (
@@ -47,7 +51,7 @@ export default function RegisterForm() {
       <Jumbotron className={"jumbo_clr"}>
         <div className={"formMargins"}>
           <Formik
-            initialValues={{ username: "", password: "", verifypassowrd: "" }}
+            initialValues={{ username: "", password: "", verifypassword: "" }}
             onSubmit={handleSubmit}
           >
             {({
