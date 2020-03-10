@@ -7,6 +7,7 @@ import {Link, Redirect} from "react-router-dom";
 import {Jumbotron} from 'react-bootstrap';
 import { Formik } from "formik";
 import Toast from 'react-bootstrap/Toast';
+import * as yup from 'yup';
 
 // CSS
 import './LoginForm.css';
@@ -21,6 +22,11 @@ export default function LoginForm() {
   const [_password, _setPassword] = useState('default');
   const [_signedIn, _setSignedIn] = useState(false);
   const url = 'api/authentication/login';
+
+    const schema = yup.object({
+        username: yup.string().required(),
+        password: yup.string().required()
+    });
 
   const handleSubmit = async (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
@@ -63,13 +69,17 @@ export default function LoginForm() {
             <Formik
                 initialValues={{ username: "", password: "" }}
                 onSubmit={handleSubmit}
+                validationSchema={schema}
             >
               {({
                   values,
                   isSubmitting,
                   handleChange,
                   handleBlur,
-                  handleSubmit
+                  handleSubmit,
+                  isInvalid,
+                  errors,
+                  touched
                 }) => (
                   <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicUsername">
@@ -81,7 +91,9 @@ export default function LoginForm() {
                           value={values.username}
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          isInvalid={!!errors.username}
                       />
+                        <Form.Control.Feedback type={'invalid'}>{errors.username}</Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
                       <Form.Label>Password</Form.Label>
@@ -92,7 +104,9 @@ export default function LoginForm() {
                           value={values.password}
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          isInvalid={!!errors.password}
                       />
+                        <Form.Control.Feedback type={'invalid'}>{errors.password}</Form.Control.Feedback>
                     </Form.Group>
                     <Button
                         className={"btn_register"}
