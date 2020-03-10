@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
+import * as yup from 'yup';
 
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,6 +14,15 @@ import { Formik } from "formik";
 export default function RegisterForm() {
   const [_registered, _setRegistered] = useState(false);
   const url = "api/customers";
+
+  const schema = yup.object({
+    username: yup.string().required().test('len', 'Must be at least 4 characters', val => val.length >= 4),
+    password: yup.string().required() .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
+        "Must Contain 6 Characters, 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character"
+    ),
+    verifypassword: yup.string().required()
+  });
 
   const handleSubmit = async (data, { setSubmitting, resetForm }) => {
     setSubmitting(true);
@@ -56,13 +66,17 @@ export default function RegisterForm() {
           <Formik
             initialValues={{ username: "", password: "", verifypassword: "" }}
             onSubmit={handleSubmit}
+            validationSchema={schema}
           >
             {({
               values,
               isSubmitting,
               handleChange,
               handleBlur,
-              handleSubmit
+              handleSubmit,
+                isInvalid,
+                errors,
+                touched
             }) => (
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicUsername">
@@ -74,7 +88,9 @@ export default function RegisterForm() {
                     value={values.username}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    isInvalid={!!errors.username}
                   />
+                  <Form.Control.Feedback type={'invalid'}>{errors.username}</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
@@ -85,7 +101,9 @@ export default function RegisterForm() {
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    isInvalid={!!errors.password}
                   />
+                  <Form.Control.Feedback type={'invalid'}>{errors.password}</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Verify Password</Form.Label>
@@ -96,7 +114,9 @@ export default function RegisterForm() {
                     value={values.verifypassword}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    isInvalid={!!errors.verifypassword}
                   />
+                  <Form.Control.Feedback type={'invalid'}>{errors.verifypassword}</Form.Control.Feedback>
                 </Form.Group>
                 <Button
                   className={"btn_register"}

@@ -25,7 +25,10 @@ export default function LoginForm() {
 
     const schema = yup.object({
         username: yup.string().required(),
-        password: yup.string().required()
+        password: yup.string().required() .matches(
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
+            "Must Contain 6 Characters, 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character"
+        ),
     });
 
   const handleSubmit = async (data, { setSubmitting, resetForm }) => {
