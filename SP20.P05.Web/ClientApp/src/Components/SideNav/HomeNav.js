@@ -4,6 +4,7 @@ import { Sidenav, Nav, Icon, Dropdown } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 import "./SideNav";
 
+
 class SideNavbar extends Component {
   constructor() {
     super();
@@ -59,6 +60,12 @@ class SideNavbar extends Component {
                     Browse Fields
                   </Nav.Item>
                 </Link>
+                
+                <Link to ='/Baskets'>
+                  <Nav.Item id="sidebar_iconGreen" eventKey="3" icon={<Icon icon="shopping-basket" />}>
+                       Baskets
+                    </Nav.Item>
+                  </Link>
 
                 <Link to={"/tickets"}>
                   <Nav.Item
@@ -69,15 +76,7 @@ class SideNavbar extends Component {
                     Order Ticket
                   </Nav.Item>
                 </Link>
-                <Link to="/about-us">
-                  <Nav.Item
-                    id="sidebar_iconGreen"
-                    eventKey="5"
-                    icon={<Icon icon="info" />}
-                  >
-                    About Us
-                  </Nav.Item>
-                </Link>
+                
 
                 <Link to="/login">
                   <Nav.Item
