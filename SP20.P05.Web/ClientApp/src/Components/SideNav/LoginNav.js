@@ -7,7 +7,9 @@ import {
     Dropdown
 } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
+import "./SideNav";
 import './SideNav.css'
+
 
 class LoginNav extends Component {
     constructor() {
@@ -68,7 +70,7 @@ class LoginNav extends Component {
                                 </Nav.Item>
                                 </Link>
                                <Link to ='/Login'>
-                                <Nav.Item id="sidebar_iconGreen" eventKey="6" icon= {<Icon icon="user-circle-o"/>}>
+                                <Nav.Item id="icon_brown" eventKey="6" icon= {<Icon icon="user-circle-o"/>}>
                                     Login/Register
                                 </Nav.Item>
                                 </Link>

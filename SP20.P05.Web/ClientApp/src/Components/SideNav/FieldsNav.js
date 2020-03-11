@@ -52,7 +52,7 @@ class FieldsNav extends Component {
                                 </Link>
 
                                 <Link to ='/fields'>
-                                    <Nav.Item id="sidebar_iconGreen" eventKey="2" icon={<Icon icon="tree" />} >
+                                    <Nav.Item id="icon_Brown" eventKey="2" icon={<Icon icon="tree" />} >
                                         Browse Fields
                                     </Nav.Item>
                                 </Link>
