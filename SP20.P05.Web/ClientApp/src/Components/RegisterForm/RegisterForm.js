@@ -27,7 +27,7 @@ export default function RegisterForm() {
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
         "Must Contain 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character"
       )
-      .min(6, "Password must contain 6 Characters"),
+      .matches(/^(?=.{8,})$/, "Password must contain 6 Characters"),
     verifypassword: yup.string().required()
   });
 

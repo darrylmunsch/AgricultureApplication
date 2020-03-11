@@ -27,7 +27,7 @@ export default function LoginForm() {
       .string()
       .required()
       .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$/,
         "Must have 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character"
       )
   });
