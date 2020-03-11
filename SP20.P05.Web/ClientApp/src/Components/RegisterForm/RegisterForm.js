@@ -18,17 +18,21 @@ export default function RegisterForm() {
   const schema = yup.object({
     username: yup
       .string()
-      .required()
-      .test("len", "Must be at least 4 characters", val => val.length >= 4),
+      .required("Username is a required field")
+      .matches(/^.{6,}$/, "Must be at least 4 characters"),
     password: yup
       .string()
-      .required()
+      .required("Password is a required field")
+      .matches(/^(?=.{8,})$/, "Password must contain 6 Characters")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
         "Must Contain 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character"
-      )
-      .matches(/^(?=.{8,})$/, "Password must contain 6 Characters"),
-    verifypassword: yup.string().required()
+      ),
+
+    verifypassword: yup
+      .string()
+      .required("Verify Password is a required field")
+      .matches(/^(?=.{8,})$/, "Password must contain 6 Characters")
   });
 
   const handleSubmit = async (data, { setSubmitting, resetForm }) => {
@@ -138,10 +142,11 @@ export default function RegisterForm() {
                   variant="primary"
                   disabled={isSubmitting}
                   type="submit"
+                  onClick={() => validateForm()}
                 >
                   Register
                 </Button>
-                <Button variant="secondary" onClick={() => validateForm()}>
+                <Button variant="secondary">
                   <Link to={"/login"}>Login</Link>
                 </Button>
               </Form>
