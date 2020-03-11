@@ -74,6 +74,7 @@ export default function RegisterForm() {
             onSubmit={handleSubmit}
             validationSchema={schema}
             validateOnChange={false}
+            validateOnBlur={false}
           >
             {({
               values,
@@ -83,7 +84,8 @@ export default function RegisterForm() {
               handleSubmit,
               isInvalid,
               errors,
-              touched
+              touched,
+              validateForm
             }) => (
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicUsername">
@@ -139,7 +141,7 @@ export default function RegisterForm() {
                 >
                   Register
                 </Button>
-                <Button variant="secondary">
+                <Button variant="secondary" onClick={() => validateForm()}>
                   <Link to={"/login"}>Login</Link>
                 </Button>
               </Form>

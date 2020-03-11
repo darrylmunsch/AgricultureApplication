@@ -73,6 +73,7 @@ export default function LoginForm() {
             onSubmit={handleSubmit}
             validationSchema={schema}
             validateOnChange={false}
+            validateOnBlur={false}
           >
             {({
               values,
@@ -82,7 +83,8 @@ export default function LoginForm() {
               handleSubmit,
               isInvalid,
               errors,
-              touched
+              touched,
+              validateForm
             }) => (
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicUsername">
@@ -120,6 +122,7 @@ export default function LoginForm() {
                   variant="primary"
                   disabled={isSubmitting}
                   type="submit"
+                  onClick={() => validateForm()}
                 >
                   Submit
                 </Button>
