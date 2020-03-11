@@ -26,14 +26,18 @@ export default function RegisterForm() {
       .matches(/^.{6,}$/, "Must be at least 6 characters")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
-        "Must Contain 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character"
+        "Must Contain 1 Uppercase, Lowercase, Number and special Character"
       ),
 
     verifypassword: yup
       .string()
       .required("Verify Password is required")
-      .oneOf([yup.ref("password"), null], "Passwords must match")
       .matches(/^.{6,}$/, "Must be at least 6 characters")
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
+        "Must Contain 1 Uppercase, Lowercase, Number and special Character"
+      )
+      .oneOf([yup.ref("password"), null], "Passwords must match")
   });
 
   const handleSubmit = async (data, { setSubmitting, resetForm }) => {

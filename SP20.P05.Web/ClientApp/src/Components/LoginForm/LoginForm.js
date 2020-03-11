@@ -28,7 +28,7 @@ export default function LoginForm() {
       .required('Password is required')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$/,
-        "Must have 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character"
+        "Must have 1 Uppercase, Lowercase, Number and special Character"
       )
   });
 
