@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SP20.P05.Web.Features.Authentication;
@@ -19,7 +21,7 @@ namespace SP20.P05.Web.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<UserDto>> Login(LoginDto dto)
+        public async Task<ActionResult<UserRoleDto>> Login(LoginDto dto)
         {
             var user = await userManager.FindByNameAsync(dto.Username);
             if (user == null)
@@ -32,10 +34,15 @@ namespace SP20.P05.Web.Controllers
                 return BadRequest();
             }
             await signInManager.SignInAsync(user, false, "Password");
-            return Ok(new UserDto
+
+            var roles = await userManager.GetRolesAsync(user);
+
+
+            return Ok(new UserRoleDto
             {
-                Username = user.UserName
-            });
+                Username = user.UserName,
+                UserRoles = roles
+        });
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -47,6 +48,7 @@ namespace SP20.P05.Web
                     context.Response.StatusCode = 401;
                     return Task.CompletedTask;
                 };
+                //options.ExpireTimeSpan = TimeSpan.FromHours(1);
             });
 
             services.AddSwaggerGen(c =>

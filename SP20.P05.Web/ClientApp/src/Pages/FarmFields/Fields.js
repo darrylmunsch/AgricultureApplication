@@ -34,10 +34,6 @@ export class Fields extends Component {
                             <div>
                                 <div className={"p1_icons"}>
                                     <button className={"btn"}>
-                                        <Icon className={"icon_style"}  icon={"share"} />
-                                    </button>
-                                    &nbsp;
-                                    <button className={"btn"}>
                                         <Icon className={"icon_style"} icon={"ticket"}/>
                                     </button>
                                 </div>
@@ -53,10 +49,6 @@ export class Fields extends Component {
                             </div>
                             <div>
                                 <div className={"p1_icons"}>
-                                    <button className={"btn"}>
-                                        <Icon className={"icon_style"}  icon={"share"} />
-                                    </button>
-                                    &nbsp;
                                     <button className={"btn"}>
                                         <Icon className={"icon_style"} icon={"ticket"} />
                                     </button>
@@ -74,10 +66,6 @@ export class Fields extends Component {
                             <div>
                                 <div className={"p1_icons"}>
                                     <button className={"btn"}>
-                                        <Icon className={"icon_style"}  icon={"share"} />
-                                    </button>
-                                    &nbsp;
-                                    <button className={"btn"}>
                                         <Icon className={"icon_style"} icon={"ticket"}/>
                                     </button>
                                 </div>
@@ -93,10 +81,6 @@ export class Fields extends Component {
                             <div>
                                 <div className={"p1_icons"}>
                                     <button className={"btn"}>
-                                        <Icon className={"icon_style"}  icon={"share"} />
-                                    </button>
-                                    &nbsp;
-                                    <button className={"btn"}>
                                         <Icon className={"icon_style"} icon={"ticket"}/>
                                     </button>
                                 </div>
@@ -104,17 +88,13 @@ export class Fields extends Component {
                         </div>
                     </div>
                     <div className={"p5"}>
-                        <div className={"overlay"} > </div>
+                        <div className={"overlayCS"} >Coming Soon </div>
                         <div className={"text_background"}>
                             <div className={"p1_text"}>
                                 Check out our corn farm and buy tickets now!
                             </div>
                             <div>
                                 <div className={"p1_icons"}>
-                                    <button className={"btn"}>
-                                        <Icon className={"icon_style"}  icon={"share"} />
-                                    </button>
-                                    &nbsp;
                                     <button className={"btn"}>
                                         <Icon className={"icon_style"} icon={"ticket"}/>
                                     </button>
@@ -123,17 +103,13 @@ export class Fields extends Component {
                         </div>
                     </div>
                     <div className={"p6"}>
-                        <div className={"overlay"} > </div>
+                        <div className={"overlayCS"} >Coming Soon </div>
                         <div className={"text_background"}>
                             <div className={"p1_text"}>
                                 Check out our corn farm and buy tickets now!
                             </div>
                             <div>
                                 <div className={"p1_icons"}>
-                                    <button className={"btn"}>
-                                        <Icon className={"icon_style"}  icon={"share"} />
-                                    </button>
-                                    &nbsp;
                                     <button className={"btn"}>
                                         <Icon className={"icon_style"} icon={"ticket"}/>
                                     </button>
