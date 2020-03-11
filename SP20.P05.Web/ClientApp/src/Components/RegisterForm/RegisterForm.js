@@ -18,11 +18,11 @@ export default function RegisterForm() {
   const schema = yup.object({
     username: yup
       .string()
-      .required("Username is a required field")
+      .required("Username is required")
       .matches(/^.{4,}$/, "Must be at least 4 characters"),
     password: yup
       .string()
-      .required("Password is a required field")
+      .required("Password is required")
       .matches(/^.{6,}$/, "Must be at least 6 characters")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
@@ -31,7 +31,8 @@ export default function RegisterForm() {
 
     verifypassword: yup
       .string()
-      .required("Verify Password is a required field")
+      .required("Verify Password is required")
+      .oneOf([yup.ref("password"), null], "Passwords must match")
       .matches(/^.{6,}$/, "Must be at least 6 characters")
   });
 

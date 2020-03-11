@@ -22,10 +22,10 @@ export default function LoginForm() {
   const url = "api/authentication/login";
 
   const schema = yup.object({
-    username: yup.string().required(),
+    username: yup.string().required('Username is required'),
     password: yup
       .string()
-      .required()
+      .required('Password is required')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$/,
         "Must have 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character"
