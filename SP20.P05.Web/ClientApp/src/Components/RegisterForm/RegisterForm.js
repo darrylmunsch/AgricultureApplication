@@ -19,11 +19,11 @@ export default function RegisterForm() {
     username: yup
       .string()
       .required("Username is a required field")
-      .matches(/^.{6,}$/, "Must be at least 4 characters"),
+      .matches(/^.{4,}$/, "Must be at least 4 characters"),
     password: yup
       .string()
       .required("Password is a required field")
-      .matches(/^(?=.{8,})$/, "Password must contain 6 Characters")
+      .matches(/^.{6,}$/, "Must be at least 6 characters")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
         "Must Contain 1 Uppercase, 1 Lowercase, 1 Number and 1 special case Character"
@@ -32,7 +32,7 @@ export default function RegisterForm() {
     verifypassword: yup
       .string()
       .required("Verify Password is a required field")
-      .matches(/^(?=.{8,})$/, "Password must contain 6 Characters")
+      .matches(/^.{6,}$/, "Must be at least 6 characters")
   });
 
   const handleSubmit = async (data, { setSubmitting, resetForm }) => {
