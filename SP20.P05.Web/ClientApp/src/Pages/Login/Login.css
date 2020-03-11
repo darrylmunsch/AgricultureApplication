@@ -1,12 +1,12 @@
 body {
-    /* Set a background color that will be displayed
+  /* Set a background color that will be displayed
    while the background image is loading */
-
 }
 
 .background-img {
-    /* Set up positioning */
-    background-size: cover;
-    background-image: url('../../Resources/field.jpg') ;
-    position: relative;
+  /* Set up positioning */
+  background-size: cover;
+  background-image: url("../../Resources/field.jpg");
+  position: relative;
+  margin-left: 56px;
 }

@@ -5,7 +5,7 @@
     align-items: center;
     text-align: center;
     min-height: 100vh;
-}​
+}
 
 html, body, .container {
     height: 100%;
@@ -21,6 +21,7 @@ html, body, .container {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .btn_register{

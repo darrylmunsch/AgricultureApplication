@@ -44,5 +44,13 @@ namespace SP20.P05.Web.Controllers
                 UserRoles = roles
         });
         }
+
+        [HttpPost("logout")]
+        public async Task<ActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+
+            return Ok();
+        }
     }
 }

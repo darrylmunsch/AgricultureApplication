@@ -1,27 +1,23 @@
-import React, {Component, useContext} from 'react';
-import {Link} from "react-router-dom";
+import React from "react";
 
 // Components
-import LoginNav from '../../Components/SideNav/LoginNav';
-import LoginForm from '../../Components/LoginForm/LoginForm';
+import LoginNav from "../../Components/SideNav/LoginNav";
+import LoginForm from "../../Components/LoginForm/LoginForm";
 
 // CSS
-import './Login.css';
-import {UserContext} from "../../Components/Hooks/Context/UserContext";
+import "./Login.css";
 
 function Login() {
-    const {_user} = useContext(UserContext);
-
-        return (
-            <div>
-                <LoginNav />
-                <div className={'background-img'}>
-                    <div id={'divElement'} >
-                        <LoginForm />
-                    </div>
-                </div>
-            </div>
-        )
+  return (
+    <div>
+      <LoginNav />
+      <div className={"background-img"}>
+        <div id={"divElement"}>
+          <LoginForm />
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Login
+export default Login;

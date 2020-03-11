@@ -1,16 +1,13 @@
-
 .home_carddecks {
-    position: absolute;
-    left: 56px;
-    top: 50%;
-    
- 
+  position: absolute;
+  left: 56px;
+  top: 50%;
 
-    /* move to right of navbar */
+  /* move to right of navbar */
 }
-.base_card{
-    background-color: rgb(74, 124, 8); 
-    border-bottom: rgb(74,124,8);
+.base_card {
+  background-color: rgb(74, 124, 8);
+  border-bottom: rgb(74, 124, 8);
 }
 
 /* .home_card{
@@ -18,30 +15,28 @@
     background-color: rgb(74, 124, 8);
 } */
 
-.home_cardtitle{
-    background-color: rgb(74, 124, 8);
-    text-decoration-line: underline;
-    margin-bottom: 0 !important;
+.home_cardtitle {
+  background-color: rgb(74, 124, 8);
+  text-decoration-line: underline;
+  margin-bottom: 0 !important;
 }
-
 
 .home_cardbody {
-    font-weight: bolder;
-    list-style: circle;
-    
-    color: rgb(17, 17, 17);
-    border-bottom: rgb(74,124,8);
-    background-color: rgb(74, 124, 8);
-    padding-top: 0 !important;
-    /* colors of cards themselves */ 
+  font-weight: bolder;
+  list-style: circle;
+
+  color: rgb(17, 17, 17);
+  border-bottom: rgb(74, 124, 8);
+  background-color: rgb(74, 124, 8);
+  padding-top: 0 !important;
+  /* colors of cards themselves */
 }
 
-.carousel_marginLeft{
-    margin-left: 56px;
-   /* background-size: cover;*/
+.carousel_marginLeft {
+  margin-left: 56px;
+  /* background-size: cover;*/
 }
 
 .toast {
-    margin-left: 56px;
+  margin-left: 56px;
 }
-

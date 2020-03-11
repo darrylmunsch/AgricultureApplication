@@ -1,20 +1,20 @@
 .background-img {
-    /* Set up positioning */
-    background-size: cover;
-    background-image: url('../../Resources/field.jpg') ;
-    position: relative;
+  /* Set up positioning */
+  background-size: cover;
+  background-image: url("../../Resources/field.jpg");
+  position: relative;
 }
 
 #content_window {
-    height: 100%;
-    position: fixed;
-    background-color: white;
+  height: 100%;
+  position: fixed;
+  background-color: white;
 }
 
-#sidebar_iconGreen{
-    color: darkgreen !important
+#sidebar_iconGreen {
+  color: darkgreen !important;
 }
 
-#icon_Brown{
-    color: saddlebrown !important;
+#icon_Brown {
+  color: saddlebrown !important;
 }

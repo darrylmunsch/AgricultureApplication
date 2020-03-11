@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Sidenav, Nav, Icon, Dropdown } from "rsuite";
+import { Sidenav, Nav, Icon } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
-import "./SideNav";
-
 
 class SideNavbar extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isOpen: false,
-      activeKey: "1"
+      activeKey: "1",
+      currentUser: {}
     };
     this.handleToggle = this.handleToggle.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  componentDidMount() {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    this.setState({ currentUser });
   }
 
   handleToggle() {
@@ -30,6 +34,7 @@ class SideNavbar extends Component {
 
   render() {
     const { isOpen } = this.state;
+    const currentUser = this.state;
 
     return (
       <div style={{ width: 200 }}>
@@ -60,13 +65,6 @@ class SideNavbar extends Component {
                     Browse Fields
                   </Nav.Item>
                 </Link>
-                
-                <Link to ='/Baskets'>
-                  <Nav.Item id="sidebar_iconGreen" eventKey="3" icon={<Icon icon="shopping-basket" />}>
-                       Baskets
-                    </Nav.Item>
-                  </Link>
-
                 <Link to={"/tickets"}>
                   <Nav.Item
                     id="sidebar_iconGreen"
@@ -76,8 +74,15 @@ class SideNavbar extends Component {
                     Order Ticket
                   </Nav.Item>
                 </Link>
-                
-
+                <Link to="/about-us">
+                  <Nav.Item
+                    id="sidebar_iconGreen"
+                    eventKey="5"
+                    icon={<Icon icon="info" />}
+                  >
+                    About Us
+                  </Nav.Item>
+                </Link>
                 <Link to="/login">
                   <Nav.Item
                     id="sidebar_iconGreen"
@@ -85,6 +90,15 @@ class SideNavbar extends Component {
                     icon={<Icon icon="user-circle-o" />}
                   >
                     Login/Register
+                  </Nav.Item>
+                </Link>
+                <Link to={"/Admin"}>
+                  <Nav.Item
+                    id={"sidebar_iconGreen"}
+                    eventKey={"6"}
+                    icon={<Icon icon={"building2"} />}
+                  >
+                    Admin Access
                   </Nav.Item>
                 </Link>
               </Nav>
