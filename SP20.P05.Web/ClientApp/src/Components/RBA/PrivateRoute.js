@@ -5,7 +5,6 @@ import Role from "./Role";
 
 function PrivateRoute({ component: Component, ...rest }) {
   const { _user, _setUser } = useContext(UserContext);
-   _setUser(JSON.parse(localStorage.getItem("currentUser")));
   if (!_user) {
     return <Redirect to={"login"} />;
   }
@@ -13,7 +12,7 @@ function PrivateRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={props =>
-        _user.userRoles === Role.Admin ? (
+        _user.userRoles == Role.Admin ? (
           <Component {...props} />
         ) : (
           <Redirect to={"/login"} />

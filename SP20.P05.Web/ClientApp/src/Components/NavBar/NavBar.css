@@ -1,3 +1,31 @@
 .fruit-tree-icon-green {
-    color: lightgreen;
+  color: lightgreen;
+  position: relative;
+  top: -5px;
+}
+.envoc-brand {
+  margin-left: 5px;
+  font-family: "Baloo Thambi 2", cursive;
+  color: #ad8c6f;
+}
+.nav-link-item {
+  color: lightgreen !important;
+  font-family: "Baloo Thambi 2", cursive;
+}
+.navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  top: 10px;
+  position: absolute;
+}
+.nav-link-item-right {
+  color: lightgreen !important;
+  font-family: "Baloo Thambi 2", cursive;
+}
+.astext {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 }

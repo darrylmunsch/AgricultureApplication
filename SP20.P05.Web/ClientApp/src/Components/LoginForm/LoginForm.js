@@ -15,9 +15,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function LoginForm() {
   const { _user, _setUser } = useContext(UserContext);
-  const [show, setShow] = useState(true);
-  const [_username, _setUsername] = useState("default");
-  const [_password, _setPassword] = useState("default");
   const [_signedIn, _setSignedIn] = useState(false);
   const url = "api/authentication/login";
 
@@ -51,10 +48,10 @@ export default function LoginForm() {
         console.log(res.data);
 
         if (res.status === 200) {
+          localStorage.setItem("user", JSON.stringify(res.data));
           _setUser(res.data);
           _setSignedIn(true);
         }
-
         return false;
       });
 

@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../Hooks/Context/UserContext";
 
+import "../NavBar/NavBar.css";
+
 const Logout = () => {
   const { _user, _setUser } = useContext(UserContext);
   function handleLogOut() {
