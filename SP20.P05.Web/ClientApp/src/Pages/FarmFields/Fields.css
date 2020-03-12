@@ -1,146 +1,141 @@
-
-
 .p1 {
-    height: 400px;
-    background-image: url("../../Resources/blueberry_46420153.jpg");
-    background-size: cover;
-    position: relative;
-    margin-left: 56px;
+  height: 400px;
+  background-image: url("../../Resources/blueberry_46420153.jpg");
+  background-size: cover;
+  position: relative;
+  margin-left: 56px;
 }
 .p1:hover > .overlay {
-    width:100%;
-    height:100%;
-    position:absolute;
-    background-color:#000;
-    opacity:0.2;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.2;
+  cursor: pointer;
 }
 .p1_text {
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    color: whitesmoke;
-    background-color: rgba(26, 26, 26, 0.8);
-    line-height: 50px;
-    padding-bottom: 0;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  color: whitesmoke;
+  background-color: rgba(26, 26, 26, 0.8);
+  line-height: 50px;
+  padding-bottom: 0;
 }
 .p1_icons {
-    position: absolute;
-    bottom: 0;
-    color: whitesmoke;
-    line-height: 55px;
-    left: 85%;
+  position: absolute;
+  bottom: 0;
+  color: whitesmoke;
+  line-height: 55px;
+  left: 85%;
 }
 .p2 {
-    height: 400px;
-    background-image: url("../../Resources/strawberry3.jpg");
-    background-size: cover;
-    position: relative;
+  height: 400px;
+  background-image: url("../../Resources/strawberry3.jpg");
+  background-size: cover;
+  position: relative;
 }
 .p2:hover > .overlay {
-    width:100%;
-    height:100%;
-    position:absolute;
-    background-color:#000;
-    opacity:0.2;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.2;
+  cursor: pointer;
 }
 .p3 {
-    height: 400px;
-    background-image: url("../../Resources/blackberry.jpg");
-    background-size: cover;
-    position: relative;
-    margin-left: 56px;
+  height: 400px;
+  background-image: url("../../Resources/blackberry.jpg");
+  background-size: cover;
+  position: relative;
+  margin-left: 56px;
 }
 .p3:hover > .overlay {
-    width:100%;
-    height:100%;
-    position:absolute;
-    background-color:#000;
-    opacity:0.2;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.2;
+  cursor: pointer;
 }
 .p4 {
-    height: 400px;
-    background-image: url("../../Resources/cornpickin.jpg");
-    background-size: cover;
-    position: relative;
+  height: 400px;
+  background-image: url("../../Resources/cornpickin.jpg");
+  background-size: cover;
+  position: relative;
 }
 .p4:hover > .overlay {
-    width:100%;
-    height:100%;
-    position:absolute;
-    background-color:#000;
-    opacity:0.2;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.2;
+  cursor: pointer;
 }
 .p5 {
-    height: 400px;
-    background-image: url("../../Resources/taters.jpg");
-    background-size: cover;
-    position: relative;
-    margin-left: 56px;
-    color: transparent;
-    text-align: center;
+  height: 400px;
+  background-image: url("../../Resources/taters.jpg");
+  background-size: cover;
+  position: relative;
+  margin-left: 56px;
+  color: transparent;
+  text-align: center;
 }
 .p5:hover > .overlayCS {
-    width:100%;
-    height:100%;
-    position:absolute;
-    background-color:#000;
-    opacity:0.9;
-    cursor: pointer;
-    text-align: center;
-    color: whitesmoke;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.9;
+  cursor: pointer;
+  text-align: center;
+  color: whitesmoke;
 }
 .p6 {
-    height: 400px;
-    background-image: url("../../Resources/tomatoes.jpeg");
-    background-size: cover;
-    position: relative;
-    color: transparent;
-    text-align: center;
+  height: 400px;
+  background-image: url("../../Resources/tomatoes.jpeg");
+  background-size: cover;
+  position: relative;
+  color: transparent;
+  text-align: center;
 }
 .p6:hover > .overlayCS {
-    width:100%;
-    height:100%;
-    position:absolute;
-    background-color:#000;
-    opacity:0.9;
-    cursor: pointer;
-    text-align: center;
-    color: whitesmoke;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.9;
+  cursor: pointer;
+  text-align: center;
+  color: whitesmoke;
 }
 
 .icon_style {
-    font-size: larger;
-
+  font-size: larger;
 }
 .btn {
-    background: none;
-    color: whitesmoke;
-    border-color: whitesmoke;
+  background: none;
+  color: whitesmoke;
+  border-color: whitesmoke;
 }
 .btn:hover {
-    background: none;
-    color: green;
-    border-color: green;
-    transition-duration: 0.5ms;
+  background: none;
+  color: green;
+  border-color: green;
+  transition-duration: 0.5ms;
 }
 .btn:active {
-    background: none;
-    color: dodgerblue;
-    border-color: dodgerblue;
+  background: none;
+  color: dodgerblue;
+  border-color: dodgerblue;
 }
 
 /*       ###########################################       */
 .grid_container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 0;
-    grid-row-gap: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
 }
-
-

@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/RBA/PrivateRoute";
 
-
 // Context
 import { UserContext } from "./Components/Hooks/Context/UserContext";
 
@@ -17,33 +16,31 @@ import TestStorageMapping from "./Components/TestingLocalStorage";
 
 // CSS
 import "./Pages/HomePage/HomePage.css";
-import {AboutUs} from "./Pages/AboutUs/AboutUs";
-
-
+import { AboutUs } from "./Pages/AboutUs/AboutUs";
 
 function App() {
-  const [_user, _setUser] = useState(localStorage.getItem('user') || null);
-  const value = useMemo(() => ({ _user, _setUser}), [_user, _setUser]);
+  const [_user, _setUser] = useState(localStorage.getItem("user") || null);
+  const value = useMemo(() => ({ _user, _setUser }), [_user, _setUser]);
 
   return (
-      <BrowserRouter>
-        <UserContext.Provider value={value}>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/fields" component={Fields} />
-          <Route exact path="/about-us" component={AboutUs} />
-          <Route exact path="/tickets" component={Tickets} />
-          <Route exact path={"/login"} component={Login} />
-          <Route exact path={"/register"} component={Register} />
-          <Route
-              exact
-              path={"/TestStorageMapping"}
-              component={TestStorageMapping}
-          />
-          <Switch>
-            <PrivateRoute exact path="/Admin" component={Admin} />
-          </Switch>
-        </UserContext.Provider>
-      </BrowserRouter>
+    <BrowserRouter>
+      <UserContext.Provider value={value}>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/fields" component={Fields} />
+        <Route exact path="/about-us" component={AboutUs} />
+        <Route exact path="/tickets" component={Tickets} />
+        <Route exact path={"/login"} component={Login} />
+        <Route exact path={"/register"} component={Register} />
+        <Route
+          exact
+          path={"/TestStorageMapping"}
+          component={TestStorageMapping}
+        />
+        <Switch>
+          <PrivateRoute exact path="/Admin" component={Admin} />
+        </Switch>
+      </UserContext.Provider>
+    </BrowserRouter>
   );
 }
 
