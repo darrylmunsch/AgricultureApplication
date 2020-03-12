@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "axios": "^0.19.2",
+    "ionicons": "^5.0.1",
+    "react-native-elements": "^1.2.7",
     "rsuite": "^4.2.1"
   }
 }
