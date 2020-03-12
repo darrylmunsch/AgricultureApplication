@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import ImageResizeMode from 'react-native/Libraries/Image/ImageResizeMode'
+
 import { ScrollView } from 'react-native-gesture-handler';
 import * as WebBrowser from 'expo-web-browser';
 
@@ -11,43 +13,27 @@ export default function HomeScreen() {
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <View style={styles.welcomeContainer}>
           <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
+          style={{flex:1}}
+            source={require('../assets/images/blackberrydeath.png')}
+                resizeMode={ImageResizeMode.contain} 
+            
+            //style={styles.welcomeImage}
           />
-        </View>
-
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Open up the code for this screen:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
+          <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={styles.WelcomeText}>Welcome to {"\n"}FarmHub</Text>
           </View>
-
-          <Text style={styles.getStartedText}>
-            Change any of the text, save the file, and your app will automatically reload.
-          </Text>
         </View>
 
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-          </TouchableOpacity>
-        </View>
+     
       </ScrollView>
 
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
+      {/* <View style={styles.tabBarInfoContainer}>
+        
 
         <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
           <MonoText style={styles.codeHighlightText}>navigation/BottomTabNavigator.js</MonoText>
         </View>
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -110,11 +96,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   welcomeImage: {
-    width: 100,
-    height: 80,
+    flex: 1,
+    width: undefined,
+    height: undefined,
     resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
+    //alignSelf: 'stretch',
+    
   },
   getStartedContainer: {
     alignItems: 'center',
@@ -157,6 +144,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fbfbfb',
     paddingVertical: 20,
   },
+  WelcomeText:{
+    fontSize: 32,
+    color: 'rgba(122,193,122,1)',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+
+  
   tabBarInfoText: {
     fontSize: 17,
     color: 'rgba(96,100,109, 1)',
