@@ -25,7 +25,7 @@ export default function RegisterForm() {
       .required("Password is required")
       .matches(/^.{6,}$/, "Must be at least 6 characters")
       .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
+        /^(?=.{10,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).*$/,
         "Must Contain 1 Uppercase, Lowercase, Number and special Character"
       ),
 
@@ -34,7 +34,7 @@ export default function RegisterForm() {
       .required("Verify Password is required")
       .matches(/^.{6,}$/, "Must be at least 6 characters")
       .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
+        /^(?=.{10,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).*$/,
         "Must Contain 1 Uppercase, Lowercase, Number and special Character"
       )
       .oneOf([yup.ref("password"), null], "Passwords must match")
