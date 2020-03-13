@@ -2,7 +2,7 @@ import React from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Col, Row } from "react-bootstrap";
-import {Button} from 'rsuite';
+import { Button } from "rsuite";
 
 export default function TicketForm() {
   return (
@@ -24,9 +24,6 @@ export default function TicketForm() {
           </Form.Group>
 
           <Form.Group as={Row}>
-            <Form.Label as="legend" column sm={2}>
-              Radios
-            </Form.Label>
             <Col sm={10}>
               <Form.Check
                 type="radio"
@@ -49,12 +46,6 @@ export default function TicketForm() {
             </Col>
           </Form.Group>
         </fieldset>
-
-        <Form.Group as={Row}>
-          <Col sm={{ span: 10, offset: 2 }}>
-            <Button type="submit">Sign in</Button>
-          </Col>
-        </Form.Group>
       </Form.Row>
 
       <Button variant="primary" type="submit">
