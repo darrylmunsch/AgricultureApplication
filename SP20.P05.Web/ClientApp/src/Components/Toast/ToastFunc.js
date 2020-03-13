@@ -9,7 +9,7 @@ export default function ToastFunc() {
   return (
     <div>
       {_user ? (
-        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide className={'toast'}>
           <Toast.Header>
             <img
               src="../../Resources/tree.png"

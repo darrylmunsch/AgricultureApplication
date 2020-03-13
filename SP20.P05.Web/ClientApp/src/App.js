@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/RBA/PrivateRoute";
+import NavBar from "./Components/NavBar/NavBar";
 
 // Context
 import { UserContext } from "./Components/Hooks/Context/UserContext";
@@ -18,6 +19,7 @@ import { AboutUs } from "./Pages/AboutUs/AboutUs";
 // CSS
 import "./Pages/HomePage/HomePage.css";
 
+
 function App() {
   const [_user, _setUser] = useState(localStorage.getItem("user") || null);
   const value = useMemo(() => ({ _user, _setUser }), [_user, _setUser]);
@@ -25,6 +27,7 @@ function App() {
   return (
     <BrowserRouter>
       <UserContext.Provider value={value}>
+        <NavBar/>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/fields" component={Fields} />
         <Route exact path="/about-us" component={AboutUs} />

@@ -6,12 +6,12 @@ import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
 import { Formik } from "formik";
-import Toast from "react-bootstrap/Toast";
 import * as yup from "yup";
 
 // CSS
-import "./LoginForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./LoginForm.css";
+
 
 export default function LoginForm() {
   const { _user, _setUser } = useContext(UserContext);
@@ -135,16 +135,3 @@ export default function LoginForm() {
   );
 }
 
-export function UserToast() {
-  const [show, setShow] = useState(true);
-  const { _user } = useContext(UserContext);
-  return (
-    <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-      <Toast.Header>
-        <img src="../../Resources/tree.png" className="rounded mr-2" alt="" />
-        <strong className="mr-auto">Welcome! {_user.username}</strong>
-      </Toast.Header>
-      <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
-    </Toast>
-  );
-}

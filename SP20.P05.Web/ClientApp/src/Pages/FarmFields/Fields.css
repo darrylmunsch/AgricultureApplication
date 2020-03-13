@@ -3,7 +3,6 @@
   background-image: url("../../Resources/blueberry_46420153.jpg");
   background-size: cover;
   position: relative;
-  margin-left: 56px;
 }
 .p1:hover > .overlay {
   width: 100%;
@@ -49,7 +48,6 @@
   background-image: url("../../Resources/blackberry.jpg");
   background-size: cover;
   position: relative;
-  margin-left: 56px;
 }
 .p3:hover > .overlay {
   width: 100%;
@@ -78,7 +76,6 @@
   background-image: url("../../Resources/taters.jpg");
   background-size: cover;
   position: relative;
-  margin-left: 56px;
   color: transparent;
   text-align: center;
 }

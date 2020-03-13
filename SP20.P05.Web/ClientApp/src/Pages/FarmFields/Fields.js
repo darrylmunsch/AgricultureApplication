@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Icon } from "rsuite";
 
-// Components
-import FieldsNav from "../../Components/SideNav/FieldsNav";
-
 // Style sheets
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Fields.css";
+import {TiTicket} from "react-icons/ti";
 
 export class Fields extends Component {
   constructor(props) {
@@ -17,7 +15,6 @@ export class Fields extends Component {
   render() {
     return (
       <div>
-        <FieldsNav />
         <div className={"grid_container"}>
           <div className={"p1"}>
             <div className={"overlay"}> </div>
@@ -28,7 +25,7 @@ export class Fields extends Component {
               <div>
                 <div className={"p1_icons"}>
                   <button className={"btn"}>
-                    <Icon className={"icon_style"} icon={"ticket"} />
+                    <TiTicket className={"icon_style"}/>
                   </button>
                 </div>
               </div>
@@ -43,7 +40,7 @@ export class Fields extends Component {
               <div>
                 <div className={"p1_icons"}>
                   <button className={"btn"}>
-                    <Icon className={"icon_style"} icon={"ticket"} />
+                    <TiTicket className={"icon_style"}/>
                   </button>
                 </div>
               </div>
@@ -58,7 +55,7 @@ export class Fields extends Component {
               <div>
                 <div className={"p1_icons"}>
                   <button className={"btn"}>
-                    <Icon className={"icon_style"} icon={"ticket"} />
+                    <TiTicket className={"icon_style"}/>
                   </button>
                 </div>
               </div>
@@ -73,7 +70,7 @@ export class Fields extends Component {
               <div>
                 <div className={"p1_icons"}>
                   <button className={"btn"}>
-                    <Icon className={"icon_style"} icon={"ticket"} />
+                    <TiTicket className={"icon_style"}/>
                   </button>
                 </div>
               </div>
@@ -88,7 +85,7 @@ export class Fields extends Component {
               <div>
                 <div className={"p1_icons"}>
                   <button className={"btn"}>
-                    <Icon className={"icon_style"} icon={"ticket"} />
+                    <TiTicket className={"icon_style"}/>
                   </button>
                 </div>
               </div>
@@ -103,7 +100,7 @@ export class Fields extends Component {
               <div>
                 <div className={"p1_icons"}>
                   <button className={"btn"}>
-                    <Icon className={"icon_style"} icon={"ticket"} />
+                    <TiTicket className={"icon_style"}/>
                   </button>
                 </div>
               </div>

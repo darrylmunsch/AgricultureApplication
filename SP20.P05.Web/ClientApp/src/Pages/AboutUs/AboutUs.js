@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import SideNav from "../../Components/SideNav/AboutUsNav";
 import Card from "react-bootstrap/Card";
-import CardColumns from "react-bootstrap/CardColumns";
 import Jumbotron from "react-bootstrap/Jumbotron";
 
 // Style sheets
@@ -13,9 +11,8 @@ export class AboutUs extends Component {
   render() {
     return (
       <div>
-        <SideNav />
-        <div className="background-img"></div>
-        <div class="d-flex flex-row justify-content-end mt-4">
+        <div className="background-img"/>
+        <div className="d-flex flex-row justify-content-end mt-4">
           <Card>
             <Card.Body>
               <Card.Title>From our home to yours..</Card.Title>
