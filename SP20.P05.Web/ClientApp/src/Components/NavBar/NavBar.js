@@ -38,7 +38,7 @@ export default function NavBar() {
             <GiFruitTree className={"fruit-tree-icon-green"} />
             <strong className={"envoc-brand"}>Envoc Agriculture Co.</strong>
           </Navbar.Brand>
-        <Nav >
+        <Nav defaultActiveKey="home">
           <Nav.Link  as={Link} to="/" className={'nav-link-item'} eventKey={'home'}>
             <TiHomeOutline />
             Home
