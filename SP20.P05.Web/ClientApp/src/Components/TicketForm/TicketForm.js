@@ -16,6 +16,7 @@ import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { RadioGroup } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const GreenRadio = withStyles({
   root: {
@@ -29,9 +30,11 @@ const GreenRadio = withStyles({
 
 export default function TicketForm() {
   const [selectedValue, setSelectedValue] = React.useState("Small");
+  const [value, setValue] = React.useState("Small");
 
   const handleChange = event => {
     setSelectedValue(event.target.value);
+    setValue(event.target.value);
   };
 
   return (
@@ -41,8 +44,7 @@ export default function TicketForm() {
           <fieldset>
             <Form.Group controlId="formGridState">
               <h1>Choose a Field</h1>
-              <Form.Label>Choose a Field</Form.Label>
-              <Form.Control as="select" value="Choose...">
+              <Form.Control as="select" >
                 <option>Choose...</option>
                 <option>Apples</option>
                 <option>Oranges</option>
@@ -58,33 +60,27 @@ export default function TicketForm() {
               <h1>Buckets</h1>
               <Col sm={10}>
                 <FormControl>
-                  <RadioGroup  defaultValue={'Small'}>
-                    <GreenRadio
-                        checked={selectedValue === "Small"}
-                        onChange={handleChange}
-                        value="Small"
-                        name="radio-button-small-bucket"
-                        label={"Small"}
-                        labelPLacement={"end"}
-                        inputProps={{ "aria-label": "Small" }}
+                  <RadioGroup defaultValue={"Small"}>
+                    <FormControlLabel
+                      checked={selectedValue === "Small"}
+                      onChange={handleChange}
+                      value="Small"
+                      control={<GreenRadio />}
+                      label="Small"
                     />
-                    <GreenRadio
-                        checked={selectedValue === "Medium"}
-                        onChange={handleChange}
-                        value="Medium"
-                        label={"Medium"}
-                        labelPLacement={"end"}
-                        name="radio-button-medium-bucket"
-                        inputProps={{ "aria-label": "Medium" }}
+                    <FormControlLabel
+                      checked={selectedValue === "Medium"}
+                      onChange={handleChange}
+                      value="Medium"
+                      control={<GreenRadio />}
+                      label="Medium"
                     />
-                    <GreenRadio
-                        checked={selectedValue === "Large"}
-                        onChange={handleChange}
-                        value="Large"
-                        label={"Large"}
-                        labelPLacement={"end"}
-                        name="radio-button-large-bucket"
-                        inputProps={{ "aria-label": "Large" }}
+                    <FormControlLabel
+                      checked={selectedValue === "Large"}
+                      onChange={handleChange}
+                      value="Large"
+                      control={<GreenRadio />}
+                      label="Large"
                     />
                   </RadioGroup>
                 </FormControl>
