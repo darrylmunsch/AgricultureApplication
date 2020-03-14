@@ -118,7 +118,7 @@ export default function LoginForm() {
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Button
-                  className={"btn_register"}
+                  className={"btn_login"}
                   variant="primary"
                   disabled={isSubmitting}
                   type="submit"
