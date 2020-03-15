@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../../Components/Hooks/Context/UserContext";
 
 // Components
-import HomeNav from "../../Components/SideNav/HomeNav";
 import ToastFunc from "../../Components/Toast/ToastFunc";
 import CardColumns from "react-bootstrap/CardColumns";
 import Card from "react-bootstrap/Card";
@@ -16,11 +15,7 @@ export default function HomePage() {
   const { _user } = useContext(UserContext);
 
   return (
-    <body>
-      <div>
-        <HomeNav />
-
-        <Carousel_Home />
+      <body className={'div-background'}>
         <CardColumns className="home_carddecks">
           <Card>
             <Card.Title className="home_cardtitle">
@@ -49,8 +44,6 @@ export default function HomePage() {
             </Card.Title>
           </Card>
         </CardColumns>
-        {_user ? <ToastFunc className={"toast"} /> : null}
-      </div>
-    </body>
+      </body>
   );
 }

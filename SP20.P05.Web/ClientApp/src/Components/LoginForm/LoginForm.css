@@ -1,35 +1,36 @@
-#divElement{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
+#divElement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
 }
 
-html, body, .container {
-    height: 100%;
+html,
+body,
+.container {
+  height: 100%;
 }
 
 .formMargins {
-    margin-left: 100px !important;
-    margin-right: 100px;
-    color: darkgreen;
+  margin-left: 100px !important;
+  margin-right: 100px;
+  color: darkgreen;
 }
 
-.centerForm{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.centerForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn_register{
-    background-color: darkgreen;
-    color: whitesmoke;
-    margin-right: 10px;
+.btn_register {
+  background-color: darkgreen;
+  color: whitesmoke;
+  margin-right: 10px;
 }
 
 .jumbo_clr {
-    background-color: whitesmoke;
+  background-color: whitesmoke;
 }
