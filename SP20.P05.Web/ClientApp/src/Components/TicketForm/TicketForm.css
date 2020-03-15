@@ -1,0 +1,35 @@
+#divElement{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+html, body, .container {
+    height: 100%;
+}
+
+.formMargins {
+    margin-left: 100px !important;
+    margin-right: 100px;
+    color: darkgreen;
+}
+
+.centerForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.btn_submit{
+    background-color: darkgreen;
+    color: whitesmoke;
+    margin-right: 10px;
+}
+
+.jumbo_clr {
+    background-color: whitesmoke;
+}
