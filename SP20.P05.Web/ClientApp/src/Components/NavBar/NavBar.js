@@ -38,24 +38,24 @@ export default function NavBar() {
             <GiFruitTree className={"fruit-tree-icon-green"} />
             <strong className={"envoc-brand"}>Envoc Agriculture Co.</strong>
           </Navbar.Brand>
-        <Nav defaultActiveKey="home">
-          <Nav.Link  as={Link} to="/" className={'nav-link-item'} eventKey={'home'}>
-            <TiHomeOutline />
-            Home
-          </Nav.Link>
-          <Nav.Link  as={Link} to="/fields" className={'nav-link-item'} eventKey={'fields'}>
-            <GiStrawberry />
-             Fields
-          </Nav.Link>
-          <Nav.Link as={Link} to="/tickets" className={"nav-link-item"} eventKey={"tickets"}>
-            <TiTicket/>
-            Tickets
-          </Nav.Link>
-          <Nav.Link as={Link} to="/About-us" className={"nav-link-item"} eventKey={"aboutUs"}>
-            <FiInfo/>
-            About Us
-          </Nav.Link>
-          <Nav.Item className={"nav-link-item"}>
+        <Nav defaultActiveKey={localStorage.getItem('activeTab') || 'home'} onSelect={selectedKey => localStorage.setItem('activeTab', `${selectedKey}`)} >
+            <Nav.Link  as={Link} to="/" className={'nav-link-item'} eventKey={'home'}>
+              <TiHomeOutline />
+              Home
+            </Nav.Link>
+            <Nav.Link  as={Link} to="/fields" className={'nav-link-item'} eventKey={'fields'}>
+              <GiStrawberry />
+              Fields
+            </Nav.Link>
+            <Nav.Link as={Link} to="/tickets" className={"nav-link-item"} eventKey={"tickets"}>
+              <TiTicket/>
+              Tickets
+            </Nav.Link>
+            <Nav.Link as={Link} to="/About-us" className={"nav-link-item"} eventKey={"aboutUs"}>
+              <FiInfo/>
+              About Us
+            </Nav.Link>
+            <Nav.Item className={"nav-link-item"}>
             {_user ? (
                 <NavDropdown  title={<FaUserCheck/>}  id={'nav-link-item'}>
                   <NavDropdown.Item as={Link} to={'/admin'}>Admin Access</NavDropdown.Item>
