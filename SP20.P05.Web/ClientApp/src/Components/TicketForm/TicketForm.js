@@ -11,12 +11,13 @@ import * as yup from "yup";
 import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
 import Radio from "@material-ui/core/Radio";
-
-import "./TicketForm.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { RadioGroup } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+
+import "./TicketForm.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 const GreenRadio = withStyles({
   root: {
@@ -35,6 +36,7 @@ export default function TicketForm() {
   const handleChange = event => {
     setSelectedValue(event.target.value);
     setValue(event.target.value);
+    event.preventDefault();
   };
 
   return (
