@@ -36,12 +36,16 @@ export default function TicketForm() {
   const handleChange = event => {
     setSelectedValue(event.target.value);
     setValue(event.target.value);
+
+  };
+
+  const handleSubmit = event => {
     event.preventDefault();
   };
 
   return (
     <Jumbotron className={"jumbo_clr"}>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Row>
           <fieldset>
             <Form.Group controlId="formGridState">
@@ -91,7 +95,7 @@ export default function TicketForm() {
           </fieldset>
         </Form.Row>
 
-        <Button className={"btn_submit"} variant="primary" type="submit">
+        <Button className={"btn_submit"} variant="primary" type="submit" >
           Submit
         </Button>
       </Form>
