@@ -32,13 +32,12 @@ export default function NavBar() {
   }
 
   return (
-    <div>
       <Navbar bg={"dark"} sticky={"top"}>
           <Navbar.Brand className={"navbar-brand"}  >
             <GiFruitTree className={"fruit-tree-icon-green"} />
             <strong className={"envoc-brand"}>Envoc Agriculture Co.</strong>
           </Navbar.Brand>
-        <Nav defaultActiveKey={localStorage.getItem('activeTab') || 'home'} onSelect={selectedKey => localStorage.setItem('activeTab', `${selectedKey}`)} >
+        <Nav defaultActiveKey={sessionStorage.getItem('activeTab') || 'home'} onSelect={selectedKey => sessionStorage.setItem('activeTab', `${selectedKey}`)} >
             <Nav.Link  as={Link} to="/" className={'nav-link-item'} eventKey={'home'}>
               <TiHomeOutline />
               Home
@@ -75,7 +74,6 @@ export default function NavBar() {
 
         </Nav>
       </Navbar>
-    </div>
   );
 };
 
