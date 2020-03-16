@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/RBA/PrivateRoute";
 import NavBar from "./Components/NavBar/NavBar";
+import PayPal from "./Components/Paypal/PayPal";
 
 // Context
 import { UserContext } from "./Components/Hooks/Context/UserContext";
@@ -24,6 +25,7 @@ function App() {
   const [_user, _setUser] = useState(localStorage.getItem("user") || null);
   const value = useMemo(() => ({ _user, _setUser }), [_user, _setUser]);
 
+
   return (
     <BrowserRouter>
       <UserContext.Provider value={value}>
@@ -35,6 +37,7 @@ function App() {
         <Route exact path={"/login"} component={Login} />
         <Route exact path={"/register"} component={Register} />
         <Route exact path={"/Admin"} component={Admin} />
+        <Route exact path={"/trial"} component={PayPal} />
         <Route
           exact
           path={"/TestStorageMapping"}
