@@ -14,7 +14,7 @@ export default function PayPal() {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "https://www.paypal.com/sdk/js?client-id=SB_AdNhjT0uci2cwUCDVDi5fLNz0shPH5ALuzMWG1DqABu7ESmBWb6wm5E58AjYzMsxqLfwRHAzqLnHsaZa";
+      "https://www.paypal.com/sdk/js?client-id=AdNhjT0uci2cwUCDVDi5fLNz0shPH5ALuzMWG1DqABu7ESmBWb6wm5E58AjYzMsxqLfwRHAzqLnHsaZa";
     script.addEventListener("load", () => setLoaded(true));
     document.body.appendChild(script);
 
@@ -58,6 +58,7 @@ export default function PayPal() {
           <h1>
             {product.description} for ${product.price}
           </h1>
+          <div ref={v =>(paypalRef = v)} />
         </div>
       )}
     </div>
