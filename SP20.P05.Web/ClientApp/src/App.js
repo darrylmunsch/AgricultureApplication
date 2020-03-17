@@ -20,16 +20,14 @@ import { AboutUs } from "./Pages/AboutUs/AboutUs";
 // CSS
 import "./Pages/HomePage/HomePage.css";
 
-
 function App() {
   const [_user, _setUser] = useState(localStorage.getItem("user") || null);
   const value = useMemo(() => ({ _user, _setUser }), [_user, _setUser]);
 
-
   return (
     <BrowserRouter>
       <UserContext.Provider value={value}>
-        <NavBar/>
+        <NavBar />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/fields" component={Fields} />
         <Route exact path="/about-us" component={AboutUs} />

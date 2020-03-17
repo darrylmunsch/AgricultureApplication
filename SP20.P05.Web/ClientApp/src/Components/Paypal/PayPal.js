@@ -58,7 +58,7 @@ export default function PayPal() {
           <h1>
             {product.description} for ${product.price}
           </h1>
-          <div ref={v =>(paypalRef = v)} />
+          <div ref={v => (paypalRef = v)} />
         </div>
       )}
     </div>
