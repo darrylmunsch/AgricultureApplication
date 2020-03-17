@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as WebBrowser from "expo-web-browser";
 import { RectButton, ScrollView } from "react-native-gesture-handler";
 import PayPalTokenRequest from "../helpers/PayPalTokenRequest";
+import PayPal from "../helpers/PayPalTokenRequest";
 
 export default function LinksScreen() {
   return (
@@ -23,12 +24,12 @@ export default function LinksScreen() {
         //   WebBrowser.openBrowserAsync("https://reactnavigation.org")
         //}
       />
-      <OptionButton
+      {/* <OptionButton
         icon="md-leaf"
         label="Buy tickets for field Z"
-        onPress={() => WebBrowser.openBrowserAsync("https://forums.expo.io")}
+        onPress={() => PayPalTokenRequest.PayPal.useEffect()}
         isLastOption
-      />
+      /> */}
     </ScrollView>
   );
 }

@@ -1,136 +1,66 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { View, WebView, ActivityIndicator } from "react-native";
+import React, { useState, useRef, useEffect } from "react";
 
-export default class Paypal extends Component {
-  state = {
-    accessToken: null,
-    approvalUrl: null,
-    paymentId: null
+export default function PayPal() {
+  const [paidFor, setPaidFor] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  let paypalRef = useRef();
+
+  const product = {
+    price: 1.11,
+    description: ""
   };
 
-  componentDidMount() {
-    let currency = "100 USD";
-    currency.replace(" USD", "");
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://www.paypal.com/sdk/js?client-id=AdNhjT0uci2cwUCDVDi5fLNz0shPH5ALuzMWG1DqABu7ESmBWb6wm5E58AjYzMsxqLfwRHAzqLnHsaZa";
+    script.addEventListener("load", () => setLoaded(true));
+    document.body.appendChild(script);
 
-    const dataDetail = {
-      intent: "sale",
-      payer: {
-        payment_method: "paypal"
-      },
-      transactions: [
-        {
-          amount: {
-            total: currency,
-            currency: "THB",
-            details: {
-              subtotal: currency,
-              tax: "0",
-              shipping: "0",
-              handling_fee: "0",
-              shipping_discount: "0",
-              insurance: "0"
+    if (loaded) {
+      setTimeout(() => {
+        window.paypal
+          .Buttons({
+            createOrder: (data, actions) => {
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    description: product.description,
+                    amount: {
+                      currency_code: "USD",
+                      value: product.price
+                    }
+                  }
+                ]
+              });
+            },
+
+            onApprove: async (data, actions) => {
+              const order = await actions.order.capture();
+              setPaidFor(true);
+              console.log(order);
             }
-          }
-        }
-      ],
-      redirect_urls: {
-        return_url: "https://example.com",
-        cancel_url: "https://example.com"
-      }
-    };
-
-    axios
-      .post(
-        "https://api.sandbox.paypal.com/v1/oauth2/token",
-        { grant_type: "client_credentials" },
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Authorization: `A21AAHRGUa_jTEoLNnt18JMFI-pqy-EDq2E6hxDD_AFAli9vjxm0VSP6hPiPYkZCLc1cVliQIwfdua7sye1RuRX9BuJxCygTQ`
-          }
-        }
-      )
-      .then(response => {
-        this.setState({
-          accessToken: response.data.access_token
-        });
-
-        axios
-          .post(
-            "https://api.sandbox.paypal.com/v1/payments/payment",
-            dataDetail,
-            {
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${this.state.accessToken}`
-              }
-            }
-          )
-          .then(response => {
-            const { id, links } = response.data;
-            const approvalUrl = links.find(data => data.rel == "approval_url");
-
-            this.setState({
-              paymentId: id,
-              approvalUrl: approvalUrl.href
-            });
           })
-          .catch(err => {
-            console.log({ ...err });
-          });
-      })
-      .catch(err => {
-        console.log({ ...err });
+          .render(paypalRef);
       });
-  }
-
-  _onNavigationStateChange = webViewState => {
-    if (webViewState.url.includes("https://example.com/")) {
-      this.setState({
-        approvalUrl: null
-      });
-
-      const { PayerID, paymentId } = webViewState.url;
-
-      axios
-        .post(
-          `https://api.sandbox.paypal.com/v1/payments/payment/${paymentId}/execute`,
-          { payer_id: PayerID },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${this.state.accessToken}`
-            }
-          }
-        )
-        .then(response => {
-          console.log(response);
-        })
-        .catch(err => {
-          console.log({ ...err });
-        });
     }
-  };
+  });
 
-  render() {
-    const { approvalUrl } = this.state;
-    return (
-      <View style={{ flex: 1 }}>
-        {approvalUrl ? (
-          <WebView
-            style={{ height: 400, width: 300 }}
-            source={{ uri: approvalUrl }}
-            onNavigationStateChange={this._onNavigationStateChange}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
-            startInLoadingState={false}
-            style={{ marginTop: 20 }}
-          />
-        ) : (
-          <ActivityIndicator />
-        )}
-      </View>
-    );
-  }
+  return (
+    <div>
+      {paidFor ? (
+        <div>
+          <h1>Thanks for the Monies!</h1>
+        </div>
+      ) : (
+        <div>
+          <h1>
+            {product.description} for ${product.price}
+          </h1>
+          <div ref={v => (paypalRef = v)} />
+        </div>
+      )}
+    </div>
+  );
 }
