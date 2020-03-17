@@ -35,7 +35,10 @@ namespace SP20.P05.Web.Controllers
                 {
                     Width = x.Dimensions.Width,
                     Height = x.Dimensions.Height
-                }
+                },
+                PriceSmallBucket = x.PriceSmallBucket,
+                PriceMediumBucket = x.PriceMediumBucket,
+                PriceLargeBucket = x.PriceLargeBucket
             };
         }
 
@@ -81,7 +84,10 @@ namespace SP20.P05.Web.Controllers
                 {
                     Width = targetValue.Dimensions.Width,
                     Height = targetValue.Dimensions.Height
-                }
+                },
+                PriceSmallBucket = targetValue.PriceSmallBucket,
+                PriceMediumBucket = targetValue.PriceMediumBucket,
+                PriceLargeBucket = targetValue.PriceLargeBucket
             });
 
             context.SaveChanges();
@@ -107,6 +113,9 @@ namespace SP20.P05.Web.Controllers
                 Width = targetValue.Dimensions.Width,
                 Height = targetValue.Dimensions.Height
             };
+            data.PriceSmallBucket = targetValue.PriceSmallBucket;
+            data.PriceMediumBucket = targetValue.PriceMediumBucket;
+            data.PriceLargeBucket = targetValue.PriceLargeBucket;
 
             context.SaveChanges();
 
