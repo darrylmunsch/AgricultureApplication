@@ -20,23 +20,20 @@ import { AboutUs } from "./Pages/AboutUs/AboutUs";
 // CSS
 import "./Pages/HomePage/HomePage.css";
 
-
 function App() {
   const [_user, _setUser] = useState(localStorage.getItem("user") || null);
   const value = useMemo(() => ({ _user, _setUser }), [_user, _setUser]);
 
-
   return (
     <BrowserRouter>
       <UserContext.Provider value={value}>
-        <NavBar/>
+        <NavBar />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/fields" component={Fields} />
         <Route exact path="/about-us" component={AboutUs} />
         <Route exact path="/tickets" component={Tickets} />
         <Route exact path={"/login"} component={Login} />
         <Route exact path={"/register"} component={Register} />
-        <Route exact path={"/Admin"} component={Admin} />
         <Route exact path={"/trial"} component={PayPal} />
         <Route
           exact
@@ -44,7 +41,7 @@ function App() {
           component={TestStorageMapping}
         />
         <Switch>
-          <PrivateRoute exact path="/notAdmin" component={Admin} />
+          <PrivateRoute exact path="/Admin" component={Admin} />
         </Switch>
       </UserContext.Provider>
     </BrowserRouter>
