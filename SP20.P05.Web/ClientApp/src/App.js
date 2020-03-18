@@ -34,7 +34,6 @@ function App() {
         <Route exact path="/tickets" component={Tickets} />
         <Route exact path={"/login"} component={Login} />
         <Route exact path={"/register"} component={Register} />
-        <Route exact path={"/Admin"} component={Admin} />
         <Route exact path={"/trial"} component={PayPal} />
         <Route
           exact
@@ -42,7 +41,7 @@ function App() {
           component={TestStorageMapping}
         />
         <Switch>
-          <PrivateRoute exact path="/notAdmin" component={Admin} />
+          <PrivateRoute exact path="/Admin" component={Admin} />
         </Switch>
       </UserContext.Provider>
     </BrowserRouter>
