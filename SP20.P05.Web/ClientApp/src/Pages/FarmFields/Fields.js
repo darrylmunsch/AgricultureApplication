@@ -22,7 +22,6 @@ export class Fields extends Component {
     this.handleStrawberryOpen = this.handleStrawberryOpen.bind(this);
     this.handlePumpkinOpen = this.handlePumpkinOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
-
   }
 
   componentWillMount() {
@@ -40,7 +39,7 @@ export class Fields extends Component {
       MBody: FieldPrompts.blueberryPrompt.MBody,
       MFooter: FieldPrompts.blueberryPrompt.MFooter
     });
-    console.log("blueberries," + this.state.show)
+    console.log("blueberries," + this.state.show);
   }
   handleStrawberryOpen() {
     this.setState({
@@ -49,7 +48,7 @@ export class Fields extends Component {
       MBody: FieldPrompts.strawberryPrompt.MBody,
       MFooter: FieldPrompts.strawberryPrompt.MFooter
     });
-    console.log("strawberries,"+ this.state.show)
+    console.log("strawberries," + this.state.show);
   }
   handleBlackberryOpen() {
     this.setState({
@@ -58,7 +57,7 @@ export class Fields extends Component {
       MBody: FieldPrompts.blackberryPrompt.MBody,
       MFooter: FieldPrompts.blackberryPrompt.MFooter
     });
-    console.log("blackberries,"+ this.state.show)
+    console.log("blackberries," + this.state.show);
   }
   handlePumpkinOpen() {
     this.setState({
@@ -67,7 +66,7 @@ export class Fields extends Component {
       MBody: FieldPrompts.pumpkinPrompt.MBody,
       MFooter: FieldPrompts.pumpkinPrompt.MFooter
     });
-    console.log("pumpkins,"+ this.state.show)
+    console.log("pumpkins," + this.state.show);
   }
   handleClose() {
     this.setState({
@@ -79,11 +78,11 @@ export class Fields extends Component {
     return (
       <div>
         <ModalFunc
-            show={this.state.show}
-            handleClose={this.handleClose}
-            MTitle={this.state.MTitle}
-            MBody={this.state.MBody}
-            MFooter={this.state.MFooter}
+          show={this.state.show}
+          handleClose={this.handleClose}
+          MTitle={this.state.MTitle}
+          MBody={this.state.MBody}
+          MFooter={this.state.MFooter}
         />
         <div className={"grid_container"}>
           <div className={"p1"}>
@@ -94,7 +93,10 @@ export class Fields extends Component {
               </div>
               <div>
                 <div className={"p1_icons"}>
-                  <button className={"btn blueberry"} onClick={this.handleBlueberryOpen}>
+                  <button
+                    className={"btn blueberry"}
+                    onClick={this.handleBlueberryOpen}
+                  >
                     <TiTicket className={"icon_style"} />
                   </button>
                 </div>
@@ -109,7 +111,10 @@ export class Fields extends Component {
               </div>
               <div>
                 <div className={"p1_icons"}>
-                  <button className={"btn strawberry"} onClick={this.handleStrawberryOpen}>
+                  <button
+                    className={"btn strawberry"}
+                    onClick={this.handleStrawberryOpen}
+                  >
                     <TiTicket className={"icon_style"} />
                   </button>
                 </div>
@@ -124,7 +129,10 @@ export class Fields extends Component {
               </div>
               <div>
                 <div className={"p1_icons"}>
-                  <button className={"btn blackberry"} onClick={this.handleBlackberryOpen}>
+                  <button
+                    className={"btn blackberry"}
+                    onClick={this.handleBlackberryOpen}
+                  >
                     <TiTicket className={"icon_style"} />
                   </button>
                 </div>
@@ -139,7 +147,10 @@ export class Fields extends Component {
               </div>
               <div>
                 <div className={"p1_icons"}>
-                  <button className={"btn pumpkin"} onClick={this.handlePumpkinOpen}>
+                  <button
+                    className={"btn pumpkin"}
+                    onClick={this.handlePumpkinOpen}
+                  >
                     <TiTicket className={"icon_style"} />
                   </button>
                 </div>
