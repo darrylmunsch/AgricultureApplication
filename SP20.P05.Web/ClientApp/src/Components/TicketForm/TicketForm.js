@@ -89,10 +89,9 @@ export default function TicketForm() {
             </Form.Group>
           </fieldset>
         </Form.Row>
-
       </Form>
-      <div className={'payPalMargins'}>
-        <PayPal price={1000.00} description={'probs should buy this'} />
+      <div className={"payPalMargins"}>
+        <PayPal price={1000.0} description={"probs should buy this"} />
       </div>
     </Jumbotron>
   );
