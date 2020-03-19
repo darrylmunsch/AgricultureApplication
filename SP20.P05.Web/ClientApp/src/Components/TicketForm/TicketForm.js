@@ -13,6 +13,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import PayPal from "../Paypal/PayPal";
 
 const GreenRadio = withStyles({
   root: {
@@ -89,10 +90,10 @@ export default function TicketForm() {
           </fieldset>
         </Form.Row>
 
-        <Button className={"btn_submit"} variant={'contained'} color={'primary'} type="submit">
-          Submit
-        </Button>
       </Form>
+      <div className={'payPalMargins'}>
+        <PayPal price={1000.00} description={'probs should buy this'} />
+      </div>
     </Jumbotron>
   );
 }

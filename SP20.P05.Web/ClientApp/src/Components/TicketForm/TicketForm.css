@@ -30,6 +30,10 @@ html, body, .container {
     margin-right: 10px;
 }
 
+.payPalMargins{
+    margin: 200px;
+}
+
 .jumbo_clr {
     background-color: whitesmoke;
 }

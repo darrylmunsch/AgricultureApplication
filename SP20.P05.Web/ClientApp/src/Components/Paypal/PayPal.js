@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 
-export default function PayPal() {
+export default function PayPal(props) {
   const [paidFor, setPaidFor] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   let paypalRef = useRef();
 
   const product = {
-    price: 1.11,
-    description: ""
+    price: props.price,
+    description: props.description
   };
 
   useEffect(() => {
