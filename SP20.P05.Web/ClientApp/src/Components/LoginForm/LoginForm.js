@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Hooks/Context/UserContext";
 import { Form } from "react-bootstrap";
-import { Button } from "rsuite";
+import Button from '@material-ui/core/Button';
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
@@ -116,7 +116,8 @@ export default function LoginForm() {
                 </Form.Group>
                 <Button
                   className={"btn_login"}
-                  variant="primary"
+                  variant={'contained'}
+                  color="primary"
                   disabled={isSubmitting}
                   type="submit"
                   onClick={() => validateForm()}

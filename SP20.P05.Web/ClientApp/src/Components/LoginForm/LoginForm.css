@@ -25,7 +25,7 @@ body,
   align-items: center;
 }
 
-.btn_register {
+.btn_login {
   background-color: darkgreen;
   color: whitesmoke;
   margin-right: 10px;

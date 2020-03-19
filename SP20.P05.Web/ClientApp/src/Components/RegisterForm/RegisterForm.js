@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Button } from "rsuite";
+import Button from '@material-ui/core/Button';
 import { Form } from "react-bootstrap";
 import axios from "axios";
+import { Formik } from "formik";
 import { Link, Redirect } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
 import * as yup from "yup";
@@ -9,7 +10,6 @@ import * as yup from "yup";
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./RegisterForm.css";
-import { Formik } from "formik";
 
 export default function RegisterForm() {
   const [_registered, _setRegistered] = useState(false);
@@ -144,7 +144,8 @@ export default function RegisterForm() {
                 </Form.Group>
                 <Button
                   className={"btn_register"}
-                  variant="primary"
+                  variant={'contained'}
+                  color={'primary'}
                   disabled={isSubmitting}
                   type="submit"
                   onClick={() => validateForm()}
