@@ -25,7 +25,7 @@ export default class TicketsScreen extends React.Component {
   handleButton = () => {
     this.setState({});
   };
-
+  // object declared with  {} not preceded by =>
   render() {
     return (
       <View style={styles.container}>
