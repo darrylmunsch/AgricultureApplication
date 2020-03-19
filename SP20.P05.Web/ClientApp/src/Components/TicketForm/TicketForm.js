@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Hooks/Context/UserContext";
 import { Form, Col, Row } from "react-bootstrap";
-import { Button } from "rsuite";
+import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
@@ -17,7 +17,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 
 const GreenRadio = withStyles({
   root: {
@@ -36,7 +35,6 @@ export default function TicketForm() {
   const handleChange = event => {
     setSelectedValue(event.target.value);
     setValue(event.target.value);
-
   };
 
   const handleSubmit = event => {
@@ -50,7 +48,7 @@ export default function TicketForm() {
           <fieldset>
             <Form.Group controlId="formGridState">
               <h1>Choose a Field</h1>
-              <Form.Control as="select" >
+              <Form.Control as="select">
                 <option>Choose...</option>
                 <option>Apples</option>
                 <option>Oranges</option>
@@ -95,7 +93,7 @@ export default function TicketForm() {
           </fieldset>
         </Form.Row>
 
-        <Button className={"btn_submit"} variant="primary" type="submit" >
+        <Button className={"btn_submit"} variant={'contained'} color={'primary'} type="submit">
           Submit
         </Button>
       </Form>
