@@ -1,13 +1,7 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../Hooks/Context/UserContext";
+import React from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import { Button } from "rsuite";
-import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
-import { Formik } from "formik";
-import Toast from "react-bootstrap/Toast";
-import * as yup from "yup";
 import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
 import Radio from "@material-ui/core/Radio";
@@ -17,7 +11,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 
 const GreenRadio = withStyles({
   root: {
@@ -31,12 +24,11 @@ const GreenRadio = withStyles({
 
 export default function TicketForm() {
   const [selectedValue, setSelectedValue] = React.useState("Small");
-  const [value, setValue] = React.useState("Small");
+  const [setValue] = React.useState("Small");
 
   const handleChange = event => {
     setSelectedValue(event.target.value);
     setValue(event.target.value);
-
   };
 
   const handleSubmit = event => {
@@ -50,7 +42,7 @@ export default function TicketForm() {
           <fieldset>
             <Form.Group controlId="formGridState">
               <h1>Choose a Field</h1>
-              <Form.Control as="select" >
+              <Form.Control as="select">
                 <option>Choose...</option>
                 <option>Apples</option>
                 <option>Oranges</option>
@@ -95,7 +87,7 @@ export default function TicketForm() {
           </fieldset>
         </Form.Row>
 
-        <Button className={"btn_submit"} variant="primary" type="submit" >
+        <Button className={"btn_submit"} variant="primary" type="submit">
           Submit
         </Button>
       </Form>

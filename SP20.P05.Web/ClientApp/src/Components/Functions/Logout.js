@@ -5,7 +5,7 @@ import { UserContext } from "../Hooks/Context/UserContext";
 import "../NavBar/NavBar.css";
 
 const Logout = () => {
-  const { _user, _setUser } = useContext(UserContext);
+  const { _setUser } = useContext(UserContext);
   function handleLogOut() {
     axios.post("api/authentication/logout").then(r => console.log(r));
     localStorage.removeItem("currentUser");

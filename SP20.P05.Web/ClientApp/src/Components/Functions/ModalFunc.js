@@ -1,8 +1,8 @@
 import React from "react";
-
-// Modal imports
 import Modal from "react-bootstrap/Modal";
-import PayPal from "../Paypal/PayPal";
+
+import "./Modal.css";
+import Button from "@material-ui/core/Button";
 
 const ModalFunc = props => {
   return (
@@ -15,13 +15,11 @@ const ModalFunc = props => {
       <Modal.Header closeButton>
         <Modal.Title>{props.MTitle}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        {props.MBody}
-        <div>{PayPal()}</div>
-      </Modal.Body>
-      <Modal.Footer>{props.MFooter}</Modal.Footer>
+      <Modal.Body>{props.MBody}</Modal.Body>
+      <Modal.Footer>
+        <Button className={"purchase"}>{props.MFooter}</Button>
+      </Modal.Footer>
     </Modal>
   );
 };
-
 export default ModalFunc;

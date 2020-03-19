@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { UserContext } from "../Hooks/Context/UserContext";
@@ -16,7 +16,7 @@ import { FaUserCheck } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
 
-export default function NavBar() {
+export default function NavBar(props) {
   const { _user, _setUser } = useContext(UserContext);
 
   function handleLogOut() {
@@ -32,7 +32,7 @@ export default function NavBar() {
         <strong className={"envoc-brand"}>Envoc Agriculture Co.</strong>
       </Navbar.Brand>
       <Nav
-        defaultActiveKey={sessionStorage.getItem("activeTab") || "home"}
+        defaultActiveKey={props.activeKey || "home"}
         onSelect={selectedKey =>
           sessionStorage.setItem("activeTab", `${selectedKey}`)
         }
