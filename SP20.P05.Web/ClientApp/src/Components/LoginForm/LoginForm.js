@@ -12,9 +12,8 @@ import * as yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./LoginForm.css";
 
-
 export default function LoginForm() {
-  const { _user, _setUser } = useContext(UserContext);
+  const { _setUser } = useContext(UserContext);
   const [_signedIn, _setSignedIn] = useState(false);
   const url = "api/authentication/login";
 
@@ -135,4 +134,3 @@ export default function LoginForm() {
     </div>
   );
 }
-

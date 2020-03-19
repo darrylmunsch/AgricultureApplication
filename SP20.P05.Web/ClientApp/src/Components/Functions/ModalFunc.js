@@ -1,18 +1,25 @@
 import React from "react";
-
-// Modal imports
 import Modal from "react-bootstrap/Modal";
+
+import "./Modal.css";
+import Button from "@material-ui/core/Button";
 
 const ModalFunc = props => {
   return (
-    <Modal show={props.show} onHide={() => props.handleClose()}>
+    <Modal
+      centered
+      size={"lg"}
+      show={props.show}
+      onHide={() => props.handleClose()}
+    >
       <Modal.Header closeButton>
         <Modal.Title>{props.MTitle}</Modal.Title>
       </Modal.Header>
       <Modal.Body>{props.MBody}</Modal.Body>
-      <Modal.Footer>{props.MFooter}</Modal.Footer>
+      <Modal.Footer>
+        <Button className={"purchase"}>{props.MFooter}</Button>
+      </Modal.Footer>
     </Modal>
   );
 };
-
 export default ModalFunc;

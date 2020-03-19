@@ -22,12 +22,13 @@ import "./Pages/HomePage/HomePage.css";
 
 function App() {
   const [_user, _setUser] = useState(localStorage.getItem("user") || null);
+  const [activeKey] = useState(sessionStorage.getItem("activeTab") || "home");
   const value = useMemo(() => ({ _user, _setUser }), [_user, _setUser]);
 
   return (
     <BrowserRouter>
       <UserContext.Provider value={value}>
-        <NavBar />
+        <NavBar activeKey={activeKey} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/fields" component={Fields} />
         <Route exact path="/about-us" component={AboutUs} />

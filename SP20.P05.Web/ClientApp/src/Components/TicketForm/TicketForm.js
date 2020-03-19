@@ -1,13 +1,9 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../Hooks/Context/UserContext";
+import React from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
-import { Formik } from "formik";
-import Toast from "react-bootstrap/Toast";
-import * as yup from "yup";
 import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
 import Radio from "@material-ui/core/Radio";
@@ -30,7 +26,7 @@ const GreenRadio = withStyles({
 
 export default function TicketForm() {
   const [selectedValue, setSelectedValue] = React.useState("Small");
-  const [value, setValue] = React.useState("Small");
+  const [setValue] = React.useState("Small");
 
   const handleChange = event => {
     setSelectedValue(event.target.value);
