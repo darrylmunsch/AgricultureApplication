@@ -12,7 +12,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function HomePage() {
   return (
     <div>
-      <Carousel />
+      <div className={'carousel'}>
+        <Carousel />
+      </div>
       <body className={"div-background"}>
         <CardColumns className="home_carddecks">
           <Card>

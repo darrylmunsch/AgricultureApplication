@@ -1,17 +1,18 @@
-.Carousel {
-/* Set rules to fill background */
-min-height: 50%;
-min-width: auto;
-/* Set up proportionate scaling */
-width: auto;
-height: 50%;
-/* Set up positioning */
-position: absolute;
-top: 0;
-left: 0;
-    /* position: relative; */
-    /* height: 968px; */
+.carousel .item {
+    height: 400px;
 }
-.Carousel img {
-    object-fit: cover;
+
+.item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+}
+
+.carousel-item{
+    height: 400px;
+}
+.carousel-item img{
+
+    bottom: 30%;
 }
