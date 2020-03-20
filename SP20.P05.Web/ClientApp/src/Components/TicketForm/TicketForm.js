@@ -1,97 +1,115 @@
 import React from "react";
-import { Form, Col, Row } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
+import { Form, Col } from "react-bootstrap";
 import { Jumbotron } from "react-bootstrap";
-import { withStyles } from "@material-ui/core/styles";
-import { green } from "@material-ui/core/colors";
-import Radio from "@material-ui/core/Radio";
-import { RadioGroup } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const GreenRadio = withStyles({
-  root: {
-    color: green[400],
-    "&$checked": {
-      color: green[600]
-    }
-  },
-  checked: {}
-})(props => <Radio color="default" {...props} />);
-
 export default function TicketForm() {
-  const [selectedValue, setSelectedValue] = React.useState("Small");
-  const [setValue] = React.useState("Small");
+  const [selectedField, setSelectedField] = React.useState("");
+  const [selectedBucket, setSelectedBucket] = React.useState("");
+  const [fields, setFields] = React.useState([
+    "Blueberry",
+    "Blackberry",
+    "Strawberry"
+  ]);
 
-  const handleChange = event => {
-    setSelectedValue(event.target.value);
-    setValue(event.target.value);
-  };
-
-  const handleSubmit = event => {
+  function handleFieldChange(e) {
+    if (e.target.value === "Choose Farm Field...") {
+      setSelectedField("");
+    } else {
+      setSelectedField(e.target.value);
+    }
+  }
+  function handleBucketChange(e) {
+    setSelectedBucket(e.target.value);
+  }
+  function getPrice() {}
+  function setBucketPriceSm(selectedField) {
+    switch (selectedField) {
+      case "Blueberry":
+        return "$11";
+      case "Strawberry":
+        return "$10";
+      case "Blackberry":
+        return "$13";
+      case "Choose Bucket Size...":
+        return "";
+    }
+  }
+  function setBucketPriceMd(selectedField) {
+    switch (selectedField) {
+      case "Blueberry":
+        return "$16";
+      case "Strawberry":
+        return "$15";
+      case "Blackberry":
+        return "$17";
+      case "Choose Bucket Size...":
+        return "";
+    }
+  }
+  function setBucketPriceLg(selectedField) {
+    switch (selectedField) {
+      case "Blueberry":
+        return "$21";
+      case "Strawberry":
+        return "$20";
+      case "Blackberry":
+        return "$24";
+      case "Choose Bucket Size...":
+        return "";
+    }
+  }
+  function handleSubmit(event) {
     event.preventDefault();
-  };
+  }
 
   return (
     <Jumbotron className={"jumbo_clr"}>
-      <Form onSubmit={handleSubmit}>
-        <Form.Row>
-          <fieldset>
-            <Form.Group controlId="formGridState">
-              <h1>Choose a Field</h1>
-              <Form.Control as="select">
-                <option>Choose...</option>
-                <option>Apples</option>
-                <option>Oranges</option>
-                <option>Tangerines</option>
-                <option>PineCones</option>
-                <option>Walnuts</option>
-                <option>Wheat</option>
-                <option>Cacti</option>
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-              <h1>Buckets</h1>
-              <Col sm={10}>
-                <FormControl>
-                  <RadioGroup defaultValue={"Small"}>
-                    <FormControlLabel
-                      checked={selectedValue === "Small"}
-                      onChange={handleChange}
-                      value="Small"
-                      control={<GreenRadio />}
-                      label="Small"
-                    />
-                    <FormControlLabel
-                      checked={selectedValue === "Medium"}
-                      onChange={handleChange}
-                      value="Medium"
-                      control={<GreenRadio />}
-                      label="Medium"
-                    />
-                    <FormControlLabel
-                      checked={selectedValue === "Large"}
-                      onChange={handleChange}
-                      value="Large"
-                      control={<GreenRadio />}
-                      label="Large"
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </Col>
-            </Form.Group>
-          </fieldset>
-        </Form.Row>
-
-        <Button className={"btn_submit"} variant={'contained'} color={'primary'} type="submit">
-          Submit
-        </Button>
+      <h1>bUy tickEtS nOW</h1>
+      <Form>
+        <Form.Group as={Col} controlId={"FarmField"}>
+          <Form.Label>Farm Field</Form.Label>
+          <Form.Control
+            as={"select"}
+            value={selectedField}
+            onChange={handleFieldChange}
+          >
+            <option>Choose Farm Field...</option>
+            {fields.map(field => (
+              <option>{field}</option>
+            ))}
+          </Form.Control>
+        </Form.Group>
+        <div className={"divider div-transparent"} />
+        <Form.Group as={Col} controlId={"Buckets"}>
+          <Form.Label>Bucket</Form.Label>
+          <Form.Control
+            as={"select"}
+            value={selectedBucket}
+            onChange={handleBucketChange}
+          >
+            <option>Choose Bucket Size</option>
+            <option>Small {setBucketPriceSm(selectedField)}</option>
+            <option>Medium {setBucketPriceMd(selectedField)}</option>
+            <option>Large {setBucketPriceLg(selectedField)}</option>
+          </Form.Control>
+        </Form.Group>
+        {selectedField && selectedBucket ? (
+          <div>
+            {selectedField} Field Ticket with {selectedBucket} bucket
+          </div>
+        ) : null}
+        <div className={"divider div-transparent"} />
+        <Form.Group>
+          <Form.Label>How Many Tickets?</Form.Label>
+          <Form.Control defaultValue={1} onChange={getPrice} />
+        </Form.Group>
+        <div>
+          <div>Total:</div>
+          <div>{getPrice}</div>
+        </div>
       </Form>
     </Jumbotron>
   );

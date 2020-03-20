@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 import axios from "axios";
 import { Formik } from "formik";
@@ -144,8 +144,8 @@ export default function RegisterForm() {
                 </Form.Group>
                 <Button
                   className={"btn_register"}
-                  variant={'contained'}
-                  color={'primary'}
+                  variant={"contained"}
+                  color={"primary"}
                   disabled={isSubmitting}
                   type="submit"
                   onClick={() => validateForm()}
