@@ -6,8 +6,19 @@ import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function TicketForm() {
-  const [selectedField, setSelectedField] = React.useState("");
-  const [selectedBucket, setSelectedBucket] = React.useState("");
+  const [_ticket, _setTicketState] = React.useState({
+    selectedField: "",
+    selectedBucket: {
+      size: "",
+      price: ""
+    },
+    bucketPrices: {
+      small: "",
+      medium: "",
+      large: ""
+    },
+    ticketTotal: ""
+  });
   const [fields, setFields] = React.useState([
     "Blueberry",
     "Blackberry",
@@ -15,54 +26,92 @@ export default function TicketForm() {
   ]);
 
   function handleFieldChange(e) {
-    if (e.target.value === "Choose Farm Field...") {
-      setSelectedField("");
+    const val = e.target.value;
+    if (val === "Choose Farm Field...") {
+      _setTicketState(prevState => {
+        return { ...prevState, selectedField: "" };
+      });
     } else {
-      setSelectedField(e.target.value);
+      _setTicketState(prevState => {
+        return { ...prevState, selectedField: val };
+      });
     }
+    setBucketPriceSm(val);
+    setBucketPriceMd(val);
+    setBucketPriceLg(val);
   }
   function handleBucketChange(e) {
-    setSelectedBucket(e.target.value);
+    const val = e.target.value;
+    if (val === "Choose Bucket Size") {
+      _setTicketState(prevState => {
+        return { ...prevState, selectedBucket: "" };
+      });
+    } else {
+      _setTicketState(prevState => {
+        return { ...prevState, selectedBucket: val };
+      });
+    }
   }
-  function getPrice() {}
+  function getTotal(e) {}
   function setBucketPriceSm(selectedField) {
     switch (selectedField) {
       case "Blueberry":
-        return "$11";
+        return _setTicketState(prevState => {
+          return { ...prevState, small: "$11" };
+        });
       case "Strawberry":
-        return "$10";
+        return _setTicketState(prevState => {
+          return { ...prevState, small: "$10" };
+        });
       case "Blackberry":
-        return "$13";
+        return _setTicketState(prevState => {
+          return { ...prevState, small: "$13" };
+        });
       case "Choose Bucket Size...":
-        return "";
+        return _setTicketState(prevState => {
+          return { ...prevState, small: "" };
+        });
     }
   }
   function setBucketPriceMd(selectedField) {
     switch (selectedField) {
       case "Blueberry":
-        return "$16";
+        return _setTicketState(prevState => {
+          return { ...prevState, medium: "$16" };
+        });
       case "Strawberry":
-        return "$15";
+        return _setTicketState(prevState => {
+          return { ...prevState, medium: "$15" };
+        });
       case "Blackberry":
-        return "$17";
+        return _setTicketState(prevState => {
+          return { ...prevState, medium: "$17" };
+        });
       case "Choose Bucket Size...":
-        return "";
+        return _setTicketState(prevState => {
+          return { ...prevState, medium: "" };
+        });
     }
   }
   function setBucketPriceLg(selectedField) {
     switch (selectedField) {
       case "Blueberry":
-        return "$21";
+        return _setTicketState(prevState => {
+          return { ...prevState, large: "$21" };
+        });
       case "Strawberry":
-        return "$20";
+        return _setTicketState(prevState => {
+          return { ...prevState, large: "$20" };
+        });
       case "Blackberry":
-        return "$24";
+        return _setTicketState(prevState => {
+          return { ...prevState, large: "$24" };
+        });
       case "Choose Bucket Size...":
-        return "";
+        return _setTicketState(prevState => {
+          return { ...prevState, large: "" };
+        });
     }
-  }
-  function handleSubmit(event) {
-    event.preventDefault();
   }
 
   return (
@@ -73,7 +122,7 @@ export default function TicketForm() {
           <Form.Label>Farm Field</Form.Label>
           <Form.Control
             as={"select"}
-            value={selectedField}
+            value={_ticket.selectedField}
             onChange={handleFieldChange}
           >
             <option>Choose Farm Field...</option>
@@ -87,28 +136,32 @@ export default function TicketForm() {
           <Form.Label>Bucket</Form.Label>
           <Form.Control
             as={"select"}
-            value={selectedBucket}
+            value={_ticket.selectedBucket}
             onChange={handleBucketChange}
           >
             <option>Choose Bucket Size</option>
-            <option>Small {setBucketPriceSm(selectedField)}</option>
-            <option>Medium {setBucketPriceMd(selectedField)}</option>
-            <option>Large {setBucketPriceLg(selectedField)}</option>
+            <option>Small </option>
+            {_ticket.bucketPrices.small}
+            <option>Medium </option>
+            {_ticket.bucketPrices.medium}
+            <option>Large </option>
+            {_ticket.bucketPrices.large}
           </Form.Control>
         </Form.Group>
-        {selectedField && selectedBucket ? (
+        {_ticket.selectedField && _ticket.selectedBucket.size ? (
           <div>
-            {selectedField} Field Ticket with {selectedBucket} bucket
+            {_ticket.selectedField} Field Ticket with{" "}
+            {_ticket.selectedBucket.size}, {_ticket.selectedBucket.price} bucket
           </div>
         ) : null}
         <div className={"divider div-transparent"} />
         <Form.Group>
           <Form.Label>How Many Tickets?</Form.Label>
-          <Form.Control defaultValue={1} onChange={getPrice} />
+          <Form.Control defaultValue={1} onChange={getTotal} />
         </Form.Group>
         <div>
           <div>Total:</div>
-          <div>{getPrice}</div>
+          <div>{_ticket.ticketTotal}</div>
         </div>
       </Form>
     </Jumbotron>
