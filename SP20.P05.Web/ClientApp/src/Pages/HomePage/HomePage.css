@@ -1,10 +1,10 @@
-body{
+body {
   height: 100%;
 }
-.div-background{
-  background-image: url('../../Resources/orchard.jpg') !important;
+.div-background {
+  background-image: url("../../Resources/orchard.jpg") !important;
   background-size: cover;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
 }
 .home_carddecks {
   position: absolute;
@@ -28,11 +28,6 @@ body{
   padding-top: 0 !important;
   /* colors of cards themselves */
 }
-
-.carousel{
+.carousel {
   height: 300px;
-}
-
-.toast {
-
 }

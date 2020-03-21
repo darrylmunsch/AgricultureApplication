@@ -1,18 +1,15 @@
 .carousel .item {
-    height: 400px;
+  height: 400px;
 }
-
 .item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
 }
-
-.carousel-item{
-    height: 400px;
+.carousel-item {
+  height: 400px;
 }
-.carousel-item img{
-
-    bottom: 30%;
+.carousel-item img {
+  bottom: 30%;
 }

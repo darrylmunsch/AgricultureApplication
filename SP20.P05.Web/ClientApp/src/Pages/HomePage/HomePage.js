@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function HomePage() {
   return (
     <div>
-      <div className={'carousel'}>
+      <div className={"carousel"}>
         <Carousel />
       </div>
       <body className={"div-background"}>
@@ -35,7 +35,6 @@ export default function HomePage() {
               </Card.Body>
             </Card.Title>
           </Card>
-
           <Card>
             <Card.Title className="home_cardtitle">
               Seasonal Fruit Feature:
