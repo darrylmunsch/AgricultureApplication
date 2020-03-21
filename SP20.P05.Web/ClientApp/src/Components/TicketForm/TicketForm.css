@@ -54,10 +54,16 @@ html, body, .container {
     background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
 }
 .padding{
-    padding: 5px;
+    padding-bottom: 5px;
 }
 .form-group.col{
     width: auto;
+}
+.prices{
+    background-color: white;
+    height: 180px;
+    width: 300px;
+    transform: translateX(560px) translateY(-300px);
 }
 
 
