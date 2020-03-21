@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import TicketForm from "../../Components/TicketForm/TicketForm";
 import TicketForm2 from "../../Components/TicketForm/TicketForm2";
 
 export class Tickets extends Component {
