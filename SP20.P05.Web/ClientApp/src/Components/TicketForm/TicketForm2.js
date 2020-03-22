@@ -181,10 +181,10 @@ class TicketForm extends Component {
             <div className={"divider div-transparent"} />
             <Form.Group>
               <Form.Label>How Many Tickets?</Form.Label>
-              <Form.Control />
+              <Form.Control onChange={this.handleNumberChange()} />
             </Form.Group>
             <div>
-              <div>Total: $</div>
+              <div>Total: ${this.getTicketTotal()}</div>
             </div>
           </Form>
         </Jumbotron>
