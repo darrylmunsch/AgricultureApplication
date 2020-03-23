@@ -1,13 +1,43 @@
 import React, { Component } from "react";
+import axios from "axios";
+
 // React-Bootstrap
 import { Button, Col, Form, Jumbotron } from "react-bootstrap";
+
 // CSS
 import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Link} from "react-router-dom";
+
 import PayPal from "../Paypal/PayPal";
 
 class TicketForm extends Component {
+  ticketUrl = "api/tickets";
+
+
+  getFarmFieldId = async (data) =>{
+    let thing = 0
+  };
+
+
+  handleProcessTicket = async data => {
+    let ticket = {
+      id: 0,
+      ticketTimeSlot: "9999-03-23T22:24:13.306Z",
+      farmFieldId: this.getFarmFieldId
+    };
+
+    await axios
+      .post(this.ticketUrl, ticket, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      });
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -195,7 +225,7 @@ class TicketForm extends Component {
               <Form.Control onChange={this.handleNumberChange} />
             </Form.Group>
             <div>
-              <PayPal price={this.state.ticketTotal}/>
+              <PayPal price={this.state.ticketTotal} />
             </div>
           </Form>
         </Jumbotron>
