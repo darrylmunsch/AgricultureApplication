@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 // React-Bootstrap
-import { Col, Form, Jumbotron } from "react-bootstrap";
+import { Button, Col, Form, Jumbotron } from "react-bootstrap";
 // CSS
 import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
+import PayPal from "../Paypal/PayPal";
 
 class TicketForm extends Component {
   constructor(props) {
@@ -138,7 +139,7 @@ class TicketForm extends Component {
     return (
       <div>
         <Jumbotron className={"jumbo_clr"}>
-          <h1>bUy tickEtS nOW</h1>
+          <h1>Purchase Tickets</h1>
           <Form>
             <Form.Group as={Col} controlId={"FarmField"}>
               <Form.Label>Farm Field</Form.Label>
@@ -194,10 +195,7 @@ class TicketForm extends Component {
               <Form.Control onChange={this.handleNumberChange} />
             </Form.Group>
             <div>
-              <div>Total: ${this.state.ticketTotal}</div>
-            </div>
-            <div>
-              <button>Buy Tickets</button>
+              <PayPal price={this.state.ticketTotal}/>
             </div>
           </Form>
         </Jumbotron>
