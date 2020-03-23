@@ -4,6 +4,7 @@ import { Col, Form, Jumbotron } from "react-bootstrap";
 // CSS
 import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "react-bootstrap/Button";
 
 class TicketForm extends Component {
   constructor(props) {
@@ -17,8 +18,8 @@ class TicketForm extends Component {
       bucketPriceSM: "unset",
       bucketPriceMD: "unset",
       bucketPriceLG: "unset",
-      numTickets: "1",
-      ticketTotal: ""
+      numTickets: "",
+      ticketTotal: "0"
     };
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handleBucketChange = this.handleBucketChange.bind(this);
@@ -29,6 +30,12 @@ class TicketForm extends Component {
     this.setSelectedBucketPrice = this.setSelectedBucketPrice.bind(this);
     this.getTicketTotal = this.getTicketTotal.bind(this);
   }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.numTickets !== prevState.numTickets) {
+      this.getTicketTotal();
+    }
+  }
+
   handleFieldChange(e) {
     console.log("handleFieldChange hit");
     // Set val to form value
@@ -63,6 +70,9 @@ class TicketForm extends Component {
     console.log("getTicketTotal hit");
     console.log("numTickets: " + this.state.numTickets);
     console.log("selectedBucketPrice: " + this.state.selectedBucketPrice);
+    this.setState({
+      ticketTotal: this.state.numTickets * this.state.selectedBucketPrice
+    });
     return this.state.numTickets * this.state.selectedBucketPrice;
   }
   setSelectedBucketPrice(size) {
@@ -181,10 +191,13 @@ class TicketForm extends Component {
             <div className={"divider div-transparent"} />
             <Form.Group>
               <Form.Label>How Many Tickets?</Form.Label>
-              <Form.Control onChange={this.handleNumberChange()} />
+              <Form.Control onChange={this.handleNumberChange} />
             </Form.Group>
             <div>
-              <div>Total: ${this.getTicketTotal()}</div>
+              <div>Total: ${this.state.ticketTotal}</div>
+            </div>
+            <div>
+              <button>Buy Tickets</button>
             </div>
           </Form>
         </Jumbotron>

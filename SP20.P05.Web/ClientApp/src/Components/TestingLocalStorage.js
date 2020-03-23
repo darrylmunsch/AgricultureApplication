@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import { UserContext } from "./Hooks/Context/UserContext";
 import { Link } from "react-router-dom";
+import QR from "./Functions/QR";
 
 class TestStorageMapping extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: {}
+      currentUser: {},
+      ticket: {}
     };
     this.handleLogOut = this.handleLogOut.bind(this);
   }
@@ -43,6 +45,7 @@ class TestStorageMapping extends Component {
             <Link to={"/login"}>
               <button>Log In</button>
             </Link>
+            <QR ticket={JSON.stringify(this.state.ticket)} />
           </div>
         )}
       </UserContext.Consumer>
