@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 
-class LoginForm extends React.Component {
+export default class LoginForm extends React.Component {
   render() {
     return (
       <View style={styles.container}>

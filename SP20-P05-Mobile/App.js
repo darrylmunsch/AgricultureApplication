@@ -3,7 +3,10 @@ import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import { SplashScreen } from "expo";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  createSwitchNavigator
+} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import BottomTabNavigator from "./navigation/BottomTabNavigator";
 import useLinking from "./navigation/useLinking";
@@ -55,7 +58,6 @@ export default function App(props) {
         >
           <Stack.Navigator>
             <Stack.Screen name="Root" component={BottomTabNavigator} />
-            <Stack.Screen name="Home" component={HomeScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
@@ -69,3 +71,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   }
 });
+
+//conditionally render different screens based on current state
+// ie if payment processing -> blah
