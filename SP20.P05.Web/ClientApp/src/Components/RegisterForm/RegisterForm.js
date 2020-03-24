@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Button } from "rsuite";
+import Button from 'react-bootstrap/Button';
 import { Form } from "react-bootstrap";
 import axios from "axios";
+import { Formik } from "formik";
 import { Link, Redirect } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
 import * as yup from "yup";
@@ -9,7 +10,6 @@ import * as yup from "yup";
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./RegisterForm.css";
-import { Formik } from "formik";
 
 export default function RegisterForm() {
   const [_registered, _setRegistered] = useState(false);
@@ -25,7 +25,7 @@ export default function RegisterForm() {
       .required("Password is required")
       .matches(/^.{6,}$/, "Must be at least 6 characters")
       .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
+        /^(?=.{10,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).*$/,
         "Must Contain 1 Uppercase, Lowercase, Number and special Character"
       ),
 
@@ -34,7 +34,7 @@ export default function RegisterForm() {
       .required("Verify Password is required")
       .matches(/^.{6,}$/, "Must be at least 6 characters")
       .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
+        /^(?=.{10,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).*$/,
         "Must Contain 1 Uppercase, Lowercase, Number and special Character"
       )
       .oneOf([yup.ref("password"), null], "Passwords must match")
@@ -144,7 +144,8 @@ export default function RegisterForm() {
                 </Form.Group>
                 <Button
                   className={"btn_register"}
-                  variant="primary"
+                  variant={'contained'}
+                  color={'primary'}
                   disabled={isSubmitting}
                   type="submit"
                   onClick={() => validateForm()}

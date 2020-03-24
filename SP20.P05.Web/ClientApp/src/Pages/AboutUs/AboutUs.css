@@ -1,6 +1,5 @@
 .background-img {
-
-    /* Set up positioning /
+  /* Set up positioning /
 
     background-size: cover;
     background-image: url('../../Resources/orchard.jpg') ;
@@ -29,15 +28,13 @@ body {
     / colors of cards themselves */
 }
 .mt-0 {
-    margin-top: 130px !important;
+  margin-top: 130px !important;
 }
-.jumbotron{
-    margin-top: 0px !important;
-    margin-left: 56px !important;
-    opacity: 1;
+.jumbotron {
+  margin-top: 0px !important;
+  margin-left: 56px !important;
+  opacity: 1;
 }
-.d-flex{
-    margin-left: 56px;
-
-
+.d-flex {
+  margin-left: 56px;
 }

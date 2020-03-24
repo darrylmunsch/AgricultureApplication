@@ -157,10 +157,9 @@ namespace SP20.P05.Web
                     return;
                 }
 
-                context.Set<FarmField>().Add(new FarmField {Name = "Blue Berries", Active = true, Dimensions = new Dimensions {Width = 10, Height = 5}});
-                context.Set<FarmField>().Add(new FarmField {Name = "Black Berries", Active = false, Dimensions = new Dimensions {Width = 10, Height = 5}});
-                context.Set<FarmField>().Add(new FarmField {Name = "Potatoes", Active = true, Dimensions = new Dimensions {Width = 10, Height = 5}});
-                context.Set<FarmField>().Add(new FarmField {Name = "Tomatoes", Active = true, Dimensions = new Dimensions {Width = 10, Height = 5}});
+                context.Set<FarmField>().Add(new FarmField {Name = "Blue Berries", Active = true, Dimensions = new Dimensions {Width = 10, Height = 5}, PriceSmallBucket = 11.00, PriceMediumBucket = 16.00, PriceLargeBucket = 21.00});
+                context.Set<FarmField>().Add(new FarmField {Name = "Black Berries", Active = true, Dimensions = new Dimensions {Width = 10, Height = 5}, PriceSmallBucket = 13.00, PriceMediumBucket = 17.00, PriceLargeBucket= 24.00});
+                context.Set<FarmField>().Add(new FarmField {Name = "Strawberries", Active = true, Dimensions = new Dimensions {Width = 10, Height = 5}, PriceSmallBucket = 10.00, PriceMediumBucket = 15.00, PriceLargeBucket = 20.00});
                 context.SaveChanges();
             }
         }

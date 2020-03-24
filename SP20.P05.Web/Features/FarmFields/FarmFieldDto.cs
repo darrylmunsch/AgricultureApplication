@@ -13,5 +13,8 @@ namespace SP20.P05.Web.Features.FarmFields
 
         [Required]
         public DimensionsDto Dimensions { get; set; }
+        public double PriceSmallBucket { get; set; }
+        public double PriceMediumBucket { get; set; }
+        public double PriceLargeBucket { get; set; }
     }
 }

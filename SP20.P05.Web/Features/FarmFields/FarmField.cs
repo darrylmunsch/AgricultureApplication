@@ -11,5 +11,8 @@ namespace SP20.P05.Web.Features.FarmFields
         public bool Active { get; set; }
         public Dimensions Dimensions { get; set; } = new Dimensions();
         public virtual ICollection<FarmFieldTicket> Tickets { get; set; }= new List<FarmFieldTicket>();
+        public double PriceSmallBucket { get; set; }
+        public double PriceMediumBucket { get; set; }
+        public double PriceLargeBucket { get; set; }
     }
 }

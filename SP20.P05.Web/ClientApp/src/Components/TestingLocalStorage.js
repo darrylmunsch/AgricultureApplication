@@ -4,50 +4,50 @@ import { UserContext } from "./Hooks/Context/UserContext";
 import { Link } from "react-router-dom";
 
 class TestStorageMapping extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentUser: {}
-        };
-        this.handleLogOut = this.handleLogOut.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: {}
+    };
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
 
-    componentDidMount() {
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        this.setState({ currentUser });
-    }
+  componentDidMount() {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    this.setState({ currentUser });
+  }
 
-    handleLogOut() {
-        axios.post("api/authentication/logout").then(r => console.log(r));
-        localStorage.removeItem("currentUser");
-        this.setState({ currentUser: null });
-    }
+  handleLogOut() {
+    axios.post("api/authentication/logout").then(r => console.log(r));
+    localStorage.removeItem("currentUser");
+    this.setState({ currentUser: null });
+  }
 
-    render() {
-        const { currentUser } = this.state;
-        return (
-            <UserContext.Consumer>
-                {({ _user, _setUser }) => (
-                    <div>
-                        {currentUser ? (
-                            <div>
-                                {currentUser.username} is signed in
-                                <button onClick={this.handleLogOut}>Log out</button>
-                            </div>
-                        ) : (
-                            <div>no one is signed in</div>
-                        )}
-                        <Link to={"/"}>
-                            <button>Home</button>
-                        </Link>
-                        <Link to={"/login"}>
-                            <button>Log In</button>
-                        </Link>
-                    </div>
-                )}
-            </UserContext.Consumer>
-        );
-    }
+  render() {
+    const { currentUser } = this.state;
+    return (
+      <UserContext.Consumer>
+        {({ _user, _setUser }) => (
+          <div>
+            {currentUser ? (
+              <div>
+                {currentUser.username} is signed in
+                <button onClick={this.handleLogOut}>Log out</button>
+              </div>
+            ) : (
+              <div>no one is signed in</div>
+            )}
+            <Link to={"/"}>
+              <button>Home</button>
+            </Link>
+            <Link to={"/login"}>
+              <button>Log In</button>
+            </Link>
+          </div>
+        )}
+      </UserContext.Consumer>
+    );
+  }
 }
 
 export default TestStorageMapping;

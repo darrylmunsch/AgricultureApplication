@@ -1,23 +1,19 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Hooks/Context/UserContext";
 import { Form } from "react-bootstrap";
-import { Button } from "rsuite";
+import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
 import { Formik } from "formik";
-import Toast from "react-bootstrap/Toast";
 import * as yup from "yup";
 
 // CSS
-import "./LoginForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./LoginForm.css";
 
 export default function LoginForm() {
-  const { _user, _setUser } = useContext(UserContext);
-  const [show, setShow] = useState(true);
-  const [_username, _setUsername] = useState("default");
-  const [_password, _setPassword] = useState("default");
+  const { _setUser } = useContext(UserContext);
   const [_signedIn, _setSignedIn] = useState(false);
   const url = "api/authentication/login";
 
@@ -27,7 +23,7 @@ export default function LoginForm() {
       .string()
       .required("Password is required")
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$/,
+        /^(?=.{10,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).*$/,
         "Must have 1 Uppercase, Lowercase, Number and special Character"
       )
   });
@@ -51,10 +47,10 @@ export default function LoginForm() {
         console.log(res.data);
 
         if (res.status === 200) {
+          localStorage.setItem("user", JSON.stringify(res.data));
           _setUser(res.data);
           _setSignedIn(true);
         }
-
         return false;
       });
 
@@ -118,8 +114,9 @@ export default function LoginForm() {
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Button
-                  className={"btn_register"}
-                  variant="primary"
+                  className={"btn_login"}
+                  variant={'contained'}
+                  color="primary"
                   disabled={isSubmitting}
                   type="submit"
                   onClick={() => validateForm()}
@@ -135,19 +132,5 @@ export default function LoginForm() {
         </div>
       </Jumbotron>
     </div>
-  );
-}
-
-export function UserToast() {
-  const [show, setShow] = useState(true);
-  const { _user } = useContext(UserContext);
-  return (
-    <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-      <Toast.Header>
-        <img src="../../Resources/tree.png" className="rounded mr-2" alt="" />
-        <strong className="mr-auto">Welcome! {_user.username}</strong>
-      </Toast.Header>
-      <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
-    </Toast>
   );
 }

@@ -1,0 +1,44 @@
+.fruit-tree-icon-green {
+  color: lightgreen;
+  position: relative;
+  top: -5px;
+}
+.envoc-brand {
+  margin-left: 5px;
+  font-family: "Baloo Thambi 2", cursive;
+  color: #ad8c6f;
+  position: relative;
+  top: -4px;
+}
+.nav-link-item {
+  color: lightgreen !important;
+  font-family: "Baloo Thambi 2", cursive;
+}
+.nav-link-item:hover {
+  color: #fbe1a5 !important;
+}
+.nav-link-item:active {
+  color: #aefbbb !important;
+}
+
+.navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  top: 10px;
+  position: absolute;
+}
+.navbar-light .navbar-nav .nav-link.active {
+  border-bottom-width: 2px !important;
+  border-bottom-style: double;
+  border-bottom-color: lightgreen !important;
+  border-radius: 0px 0px 4px 4px;
+}
+#nav-link-item{
+  color: lightgreen !important;
+  font-family: "Baloo Thambi 2", cursive;
+}
+
+.dropdown-toggle.nav-link{
+  color: lightgreen !important;
+  font-family: "Baloo Thambi 2", cursive;
+}
