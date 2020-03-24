@@ -1,13 +1,19 @@
 import * as React from "react";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
 import {
   Image,
   Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
+  TextInput,
+  Button
 } from "react-native";
+import { Formik } from "formik";
 import ImageResizeMode from "react-native/Libraries/Image/ImageResizeMode";
+import LoginForm from "../authentication/LoginForm";
 
 import { ScrollView } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
@@ -16,43 +22,45 @@ import { MonoText } from "../components/StyledText";
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
-      >
-        <View style={styles.welcomeContainer}>
-          <Image
-            style={{ flex: 1 }}
-            source={require("../assets/images/blackberrydeath.png")}
-            resizeMode={ImageResizeMode.contain}
-
-            //style={styles.welcomeImage}
-          />
-          <View
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <Text style={styles.WelcomeText}>Welcome to {"\n"}FarmHub</Text>
+    <NavigationContainer independent={true}>
+      <View style={styles.container}>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+        >
+          <View style={styles.welcomeContainer}>
+            <Image
+              style={{ flex: 1 }}
+              source={require("../assets/images/blackberrydeath.png")}
+              resizeMode={ImageResizeMode.contain}
+            />
+            <View
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <Text style={styles.WelcomeText}>Welcome to {"\n"}FarmHub</Text>
+              <Button
+                onPress={handleLoginPress}
+                title={"Login"}
+                style={styles.loginbutton}
+              ></Button>
+              <Button
+                onPress={handleCreateAccountPress}
+                title={"Create Account"}
+                style={styles.createAccbutton}
+              ></Button>
+            </View>
           </View>
-        </View>
-      </ScrollView>
-
-      {/* <View style={styles.tabBarInfoContainer}>
-        
-
-        <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>navigation/BottomTabNavigator.js</MonoText>
-        </View>
-      </View> */}
-    </View>
+        </ScrollView>
+      </View>
+    </NavigationContainer>
   );
 }
 
@@ -89,6 +97,15 @@ function handleLearnMorePress() {
   );
 }
 
+function handleLoginPress() {
+  this.props.navigation.navigate("LoginForm");
+  // TODO : Navigate to LoginForm
+}
+
+function handleCreateAccountPress() {
+  // TODO : Navigate to LoginForm
+}
+
 function handleHelpPress() {
   WebBrowser.openBrowserAsync(
     "https://docs.expo.io/versions/latest/get-started/create-a-new-app/#making-your-first-change"
@@ -108,12 +125,13 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   contentContainer: {
-    paddingTop: 30
+    paddingTop: 30,
+    padding: 30
   },
   welcomeContainer: {
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 20
+    marginTop: -30,
+    marginBottom: -30
   },
   welcomeImage: {
     flex: 1,
@@ -188,5 +206,7 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: "#2e78b7"
-  }
+  },
+  loginbutton: {},
+  createAccbutton: {}
 });

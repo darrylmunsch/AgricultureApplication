@@ -2,29 +2,39 @@ import * as React from "react";
 import { StyleSheet, Text, View, Image, SectionList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import * as WebBrowser from "expo-web-browser";
-import { RectButton, ScrollView, FlatList } from "react-native-gesture-handler";
+import {
+  RectButton,
+  ScrollView,
+  FlatList,
+  TouchableOpacity
+} from "react-native-gesture-handler";
 
 export default class TicketsScreen extends React.Component {
   state = {
     fields: [
       {
         name: "Strawberries",
-        imageSrc: require("../assets/images/strawberry.png")
+        source: "https://i.imgur.com/B7Ui6fk.png"
       },
       {
         name: "Potato",
-        imageSrc: "SP20-P05-Mobileassetsimagestaters.png"
+        source: "https://i.imgur.com/QjEb5As.png"
       },
       {
         name: "Corn",
-        imageSrc: "SP20-P05-Mobile/assets/images/cornpickin.png"
+        source: "https://i.imgur.com/iDHW7B9.png"
+      },
+      {
+        name: "BlackBerries",
+        source: "https://i.imgur.com/ERdwVwR.png"
       }
     ]
   };
 
-  handleButton = () => {
+  handleTap = item => {
     this.setState({});
   };
+
   // object declared with  {} not preceded by =>
   render() {
     return (
@@ -39,17 +49,15 @@ export default class TicketsScreen extends React.Component {
           data={this.state.fields}
           keyExtractor={item => item.name}
           renderItem={({ item }) => (
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Image
-                source={require("../assets/images/strawberry.png")}
-                style={{ width: 50, height: 50 }}
-              />
-              <Image
-                source={require("../assets/images/taters.png")}
-                style={{ width: 50, height: 50 }}
-              />
-              <Text style={{ padding: 10 }}>{item.name}</Text>
-            </View>
+            <TouchableOpacity onPress={() => this.handleTap(item)}>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Image
+                  source={{ uri: item.source }}
+                  style={{ width: 80, height: 80, borderRadius: 35 }}
+                />
+                <Text style={{ padding: 10 }}>{item.name}</Text>
+              </View>
+            </TouchableOpacity>
           )}
         />
       </View>

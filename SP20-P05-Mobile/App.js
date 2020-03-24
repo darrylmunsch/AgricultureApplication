@@ -7,7 +7,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import BottomTabNavigator from "./navigation/BottomTabNavigator";
 import useLinking from "./navigation/useLinking";
-
+import HomeScreen from "./screens/HomeScreen";
+import LoginForm from "./authentication/LoginForm";
 const Stack = createStackNavigator();
 
 export default function App(props) {
@@ -54,6 +55,7 @@ export default function App(props) {
         >
           <Stack.Navigator>
             <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen name="Home" component={HomeScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

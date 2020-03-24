@@ -25,7 +25,7 @@ export default class PayPal extends React.Component {
 
   componentDidMount() {
     const credentials = {
-      sandbox: "YOUR_SANDBOX_CREDENTIALS",
+      sandbox: "sb-6bv9z1200177@business.example.com",
       production: "YOUR_PRODUCTION_CREDENTIALS"
     };
     let currency = "100 USD";
@@ -64,7 +64,7 @@ export default class PayPal extends React.Component {
         {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
-            Authorization: `A21AAHrrwmrkovPeZTRJZ2tvqgVEHTw1w2Co6Vpadh5o8q2bFuJoqx5-U_MP4oH6wN3D7NhE0sYhy5lZhObXe5IKy99YM0fbQ` // Your Authorization Value
+            Authorization: `A21AAF8SmelprF6p72CzJPdEolhqj44-7pNspiYXgOytlVF9WY0EGBJSxd_jiHCQ1viqScvsQzVArroeWSlUoQyuBXolsnWnA` // Your Authorization Value
           }
         }
       )
