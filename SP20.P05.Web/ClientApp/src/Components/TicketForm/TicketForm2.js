@@ -50,7 +50,7 @@ class TicketForm extends Component {
       .get(this.farmFieldActiveUrl)
       .then(response => {
         if (response.data.name === this.state.selectedField) {
-          console.log(data.id);
+          console.log(response.data.id);
         }
       })
       .catch(error => console.log(error.response));
