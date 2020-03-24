@@ -12,12 +12,49 @@ import PayPal from "../Paypal/PayPal";
 
 class TicketForm extends Component {
   ticketUrl = "api/tickets";
+  farmFieldActiveUrl = "api/farm-fields/active";
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      fields: ["Blueberry", "Blackberry", "Strawberry"],
+      selectedField: "",
+      selectedBucket: "",
+      selectedBucketSize: "",
+      selectedBucketPrice: "",
+      bucketPriceSM: "unset",
+      bucketPriceMD: "unset",
+      bucketPriceLG: "unset",
+      numTickets: "",
+      ticketTotal: "0",
+      data: []
+    };
+    this.handleFieldChange = this.handleFieldChange.bind(this);
+    this.handleBucketChange = this.handleBucketChange.bind(this);
+    this.handleNumberChange = this.handleNumberChange.bind(this);
+    this.setBucketPriceSM = this.setBucketPriceSM.bind(this);
+    this.setBucketPriceMD = this.setBucketPriceMD.bind(this);
+    this.setBucketPriceLG = this.setBucketPriceLG.bind(this);
+    this.setSelectedBucketPrice = this.setSelectedBucketPrice.bind(this);
+    this.getTicketTotal = this.getTicketTotal.bind(this);
+    this.handleProcessTicket = this.handleProcessTicket.bind(this);
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.numTickets !== prevState.numTickets) {
+      this.getTicketTotal();
+    }
+  }
 
-  getFarmFieldId = async (data) =>{
-    let thing = 0
+  getFarmFieldId = async data => {
+    await axios
+      .get(this.farmFieldActiveUrl)
+      .then(response => {
+        if (response.data.name === this.state.selectedField) {
+          console.log(data.id);
+        }
+      })
+      .catch(error => console.log(error.response));
   };
-
 
   handleProcessTicket = async data => {
     let ticket = {
@@ -37,35 +74,6 @@ class TicketForm extends Component {
         console.log(res.data);
       });
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      fields: ["Blueberry", "Blackberry", "Strawberry"],
-      selectedField: "",
-      selectedBucket: "",
-      selectedBucketSize: "",
-      selectedBucketPrice: "",
-      bucketPriceSM: "unset",
-      bucketPriceMD: "unset",
-      bucketPriceLG: "unset",
-      numTickets: "",
-      ticketTotal: "0"
-    };
-    this.handleFieldChange = this.handleFieldChange.bind(this);
-    this.handleBucketChange = this.handleBucketChange.bind(this);
-    this.handleNumberChange = this.handleNumberChange.bind(this);
-    this.setBucketPriceSM = this.setBucketPriceSM.bind(this);
-    this.setBucketPriceMD = this.setBucketPriceMD.bind(this);
-    this.setBucketPriceLG = this.setBucketPriceLG.bind(this);
-    this.setSelectedBucketPrice = this.setSelectedBucketPrice.bind(this);
-    this.getTicketTotal = this.getTicketTotal.bind(this);
-  }
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.state.numTickets !== prevState.numTickets) {
-      this.getTicketTotal();
-    }
-  }
 
   handleFieldChange(e) {
     console.log("handleFieldChange hit");

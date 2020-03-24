@@ -55,6 +55,24 @@ namespace SP20.P05.Web.Controllers
             return context.Set<FarmField>().Where(x=>x.Active).Select(MapEntityToDto()).ToList();
         }
 
+        [HttpGet("{name}")]
+        public ActionResult<FarmFieldDto> GetByName(string name)
+        {
+            var data= context.Set<FarmField>().Where(x => x.Name == name).Select(MapEntityToDto()).FirstOrDefault();
+
+            if(data == null)
+            {
+                return NotFound();
+            }
+
+            if(!data.Active && !Roles.IsManagerPlus(User))
+            {
+                return NotFound();
+            }
+
+            return data;
+        }
+
         [HttpGet("{id}")]
         public ActionResult<FarmFieldDto> GetById(int id)
         {
