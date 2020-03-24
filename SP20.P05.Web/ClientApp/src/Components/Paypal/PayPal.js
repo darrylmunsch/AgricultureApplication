@@ -55,14 +55,10 @@ export default function PayPal(props) {
         </div>
       ) : (
         <div>
-          <h1>
-            Total: ${product.price}
-          </h1>
+          <h1>Total: ${product.price}</h1>
           <div ref={v => (paypalRef = v)} />
         </div>
       )}
     </div>
   );
 }
-
-

@@ -2,18 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 
 // React-Bootstrap
-import { Button, Col, Form, Jumbotron } from "react-bootstrap";
+import { Col, Form, Jumbotron } from "react-bootstrap";
 
 // CSS
 import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import PayPal from "../Paypal/PayPal";
-
 class TicketForm extends Component {
-  ticketUrl = "api/tickets";
-  farmFieldActiveUrl = "api/farm-fields/active";
-
   constructor(props) {
     super(props);
     this.state = {
@@ -22,29 +17,17 @@ class TicketForm extends Component {
       selectedBucket: "",
       selectedBucketSize: "",
       selectedBucketPrice: "",
-      bucketPriceSM: "unset",
-      bucketPriceMD: "unset",
-      bucketPriceLG: "unset",
-      numTickets: "",
-      ticketTotal: "0",
-      data: []
+      bucketPriceSM: "",
+      bucketPriceMD: "",
+      bucketPriceLG: "",
+      numTickets: ""
     };
-    this.handleFieldChange = this.handleFieldChange.bind(this);
-    this.handleBucketChange = this.handleBucketChange.bind(this);
-    this.handleNumberChange = this.handleNumberChange.bind(this);
-    this.setBucketPriceSM = this.setBucketPriceSM.bind(this);
-    this.setBucketPriceMD = this.setBucketPriceMD.bind(this);
-    this.setBucketPriceLG = this.setBucketPriceLG.bind(this);
-    this.setSelectedBucketPrice = this.setSelectedBucketPrice.bind(this);
-    this.getTicketTotal = this.getTicketTotal.bind(this);
-    this.handleProcessTicket = this.handleProcessTicket.bind(this);
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.state.numTickets !== prevState.numTickets) {
       this.getTicketTotal();
     }
   }
-
   getFarmFieldId = async data => {
     await axios
       .get(this.farmFieldActiveUrl)
@@ -55,123 +38,135 @@ class TicketForm extends Component {
       })
       .catch(error => console.log(error.response));
   };
-
-  handleProcessTicket = async data => {
-    let ticket = {
-      id: 0,
-      ticketTimeSlot: "9999-03-23T22:24:13.306Z",
-      farmFieldId: this.getFarmFieldId
-    };
-
-    await axios
-      .post(this.ticketUrl, ticket, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      });
-  };
-
-  handleFieldChange(e) {
-    console.log("handleFieldChange hit");
-    // Set val to form value
-    const val = e.target.value;
-    // Set state unless unchanged
+  handleFieldChange = e => {
+    let val = e.target.value;
     if (val === "Choose Farm Field...") {
       this.setState({ selectedField: "" });
+      sessionStorage.setItem("selectedField", "");
     } else {
       this.setState({ selectedField: val });
+      sessionStorage.setItem("selectedField", val);
     }
     this.setBucketPriceSM(val);
     this.setBucketPriceMD(val);
     this.setBucketPriceLG(val);
-  }
-  handleBucketChange(e) {
-    console.log("handleBucketChange hit");
+  };
+  setBucketPriceSM = selectedField => {
+    console.log("setBucketPriceSM hit");
+    switch (selectedField) {
+      case "Blueberry":
+        sessionStorage.setItem("bucketPriceSM", "$11");
+        return;
+      case "Strawberry":
+        sessionStorage.setItem("bucketPriceSM", "$10");
+        return;
+      case "Blackberry":
+        sessionStorage.setItem("bucketPriceSM", "$13");
+        return;
+      default:
+        sessionStorage.setItem("bucketPriceSM", "");
+        return;
+    }
+  };
+  setBucketPriceMD = selectedField => {
+    console.log("setBucketPriceMD hit");
+    switch (selectedField) {
+      case "Blueberry":
+        sessionStorage.setItem("bucketPriceMD", "$16");
+        return;
+      case "Strawberry":
+        sessionStorage.setItem("bucketPriceMD", "$15");
+        return;
+      case "Blackberry":
+        sessionStorage.setItem("bucketPriceMD", "$17");
+        return;
+      default:
+        sessionStorage.setItem("bucketPriceMD", "");
+        return;
+    }
+  };
+  setBucketPriceLG = selectedField => {
+    console.log("setBucketPriceLG hit");
+    switch (selectedField) {
+      case "Blueberry":
+        sessionStorage.setItem("bucketPriceLG", "$21");
+        return;
+      case "Strawberry":
+        sessionStorage.setItem("bucketPriceLG", "$20");
+        return;
+      case "Blackberry":
+        sessionStorage.setItem("bucketPriceLG", "$24");
+        return;
+      default:
+        sessionStorage.setItem("bucketPriceLG", "");
+        return;
+    }
+  };
+  handleBucketChange = e => {
+    console.log("Bucket Changed...");
     // Set val to form value
     const val = e.target.value;
     if (val === "Choose Bucket Size...") {
-      this.setState({ selectedBucket: "" });
-    } else this.setState({ selectedBucket: val, selectedBucketSize: val });
+      sessionStorage.setItem("selectedBucket", "");
+    } else {
+      sessionStorage.setItem("selectedBucket", val);
+      sessionStorage.setItem("selectedBucketSize", val);
+    }
     this.setSelectedBucketPrice(val);
-  }
-  handleNumberChange(e) {
-    console.log("handleNumberChange hit");
+  };
+  handleNumberChange = e => {
+    console.log("Number of Tickets Changed...");
     // Set val to form value
     const val = e.target.value;
-    this.setState({ numTickets: val });
-    this.getTicketTotal();
-  }
-  getTicketTotal() {
-    console.log("getTicketTotal hit");
-    console.log("numTickets: " + this.state.numTickets);
-    console.log("selectedBucketPrice: " + this.state.selectedBucketPrice);
+    sessionStorage.setItem("numTickets", val);
+    this.setState({
+      numTickets: val
+    });
+  };
+  getTicketTotal = () => {
+    console.log("Getting Ticket Total..");
+    let numTick = sessionStorage.getItem("numTickets");
+    let SBP = sessionStorage.getItem("selectedBucketPrice");
+    let ans = numTick * SBP;
+    sessionStorage.setItem("ticketTotal", ans.toString());
+
     this.setState({
       ticketTotal: this.state.numTickets * this.state.selectedBucketPrice
     });
+
     return this.state.numTickets * this.state.selectedBucketPrice;
-  }
-  setSelectedBucketPrice(size) {
-    console.log("setSelectedBucketPrice hit");
+  };
+  setSelectedBucketPrice = size => {
+    console.log("Setting Selected Bucket Price...");
     switch (size) {
       case "Small":
+        sessionStorage.setItem(
+          "selectedBucketPrice",
+          sessionStorage.getItem("bucketPriceSM").substring(1)
+        );
         return this.setState({
           selectedBucketPrice: this.state.bucketPriceSM.substring(1)
         });
       case "Medium":
+        sessionStorage.setItem(
+          "selectedBucketPrice",
+          sessionStorage.getItem("bucketPriceMD").substring(1)
+        );
         return this.setState({
           selectedBucketPrice: this.state.bucketPriceMD.substring(1)
         });
       case "Large":
+        sessionStorage.setItem(
+          "selectedBucketPrice",
+          sessionStorage.getItem("bucketPriceLG").substring(1)
+        );
         return this.setState({
           selectedBucketPrice: this.state.bucketPriceLG.substring(1)
         });
       default:
         return console.log("Error setting selected bucket price");
     }
-  }
-  setBucketPriceSM(selectedField) {
-    console.log("setBucketPriceSM hit");
-    switch (selectedField) {
-      case "Blueberry":
-        return this.setState({ bucketPriceSM: "$11" });
-      case "Strawberry":
-        return this.setState({ bucketPriceSM: "$10" });
-      case "Blackberry":
-        return this.setState({ bucketPriceSM: "$13" });
-      default:
-        return this.setState({ bucketPriceSM: "" });
-    }
-  }
-  setBucketPriceMD(selectedField) {
-    console.log("setBucketPriceMD hit");
-    switch (selectedField) {
-      case "Blueberry":
-        return this.setState({ bucketPriceMD: "$16" });
-      case "Strawberry":
-        return this.setState({ bucketPriceMD: "$15" });
-      case "Blackberry":
-        return this.setState({ bucketPriceMD: "$17" });
-      default:
-        return this.setState({ bucketPriceMD: "" });
-    }
-  }
-  setBucketPriceLG(selectedField) {
-    console.log("setBucketPriceLG hit");
-    switch (selectedField) {
-      case "Blueberry":
-        return this.setState({ bucketPriceLG: "$21" });
-      case "Strawberry":
-        return this.setState({ bucketPriceLG: "$20" });
-      case "Blackberry":
-        return this.setState({ bucketPriceLG: "$24" });
-      default:
-        return this.setState({ bucketPriceLG: "" });
-    }
-  }
+  };
 
   render() {
     return (
@@ -183,7 +178,7 @@ class TicketForm extends Component {
               <Form.Label>Farm Field</Form.Label>
               <Form.Control
                 as={"select"}
-                value={this.state.selectedField}
+                value={sessionStorage.getItem("selectedField")}
                 onChange={this.handleFieldChange}
               >
                 <option>Choose Farm Field...</option>
@@ -196,22 +191,27 @@ class TicketForm extends Component {
             <Form.Group as={Col} controlId={"Buckets"}>
               <Form.Label>Bucket</Form.Label>
               <div>
-                {this.state.selectedField ? (
+                {sessionStorage.getItem("selectedField") ? (
                   <div>
                     <strong>
-                      Bucket Prices for {this.state.selectedField} Field:
+                      Bucket Prices for{" "}
+                      {sessionStorage.getItem("selectedField")} Field:
                     </strong>
-                    <div>Small Bucket: {this.state.bucketPriceSM}</div>
-                    <div>Medium Bucket: {this.state.bucketPriceMD}</div>
+                    <div>
+                      Small Bucket: {sessionStorage.getItem("bucketPriceSM")}
+                    </div>
+                    <div>
+                      Medium Bucket: {sessionStorage.getItem("bucketPriceMD")}
+                    </div>
                     <div className={"padding"}>
-                      Large Bucket: {this.state.bucketPriceLG}
+                      Large Bucket: {sessionStorage.getItem("bucketPriceLG")}
                     </div>
                   </div>
                 ) : null}
               </div>
               <Form.Control
                 as={"select"}
-                value={this.state.selectedBucket}
+                value={sessionStorage.getItem("selectedBucket")}
                 onChange={this.handleBucketChange}
               >
                 <option>Choose Bucket Size</option>
@@ -220,20 +220,25 @@ class TicketForm extends Component {
                 <option>Large</option>
               </Form.Control>
             </Form.Group>
-            {this.state.selectedField && this.state.selectedBucket ? (
+            {sessionStorage.getItem("selectedField") &&
+            sessionStorage.getItem("selectedBucket") ? (
               <div>
-                {this.state.selectedField} Field Ticket with{" "}
-                {this.state.selectedBucket}, ${this.state.selectedBucketPrice}{" "}
-                bucket
+                {sessionStorage.getItem("selectedField")} Field Ticket with{" "}
+                {sessionStorage.getItem("selectedBucket")}, $
+                {sessionStorage.getItem("selectedBucketPrice")} bucket
               </div>
             ) : null}
             <div className={"divider div-transparent"} />
             <Form.Group>
               <Form.Label>How Many Tickets?</Form.Label>
-              <Form.Control onChange={this.handleNumberChange} />
+              <Form.Control
+                value={sessionStorage.getItem("numTickets")}
+                onChange={this.handleNumberChange}
+              />
             </Form.Group>
+            <div>Total: ${sessionStorage.getItem("ticketTotal")}</div>
             <div>
-              <PayPal price={this.state.ticketTotal} />
+              <button onClick={this.props.changeForm}>Buy Tickets</button>
             </div>
           </Form>
         </Jumbotron>
