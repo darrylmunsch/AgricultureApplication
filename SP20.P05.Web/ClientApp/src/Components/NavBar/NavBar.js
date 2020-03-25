@@ -21,8 +21,8 @@ export default function NavBar(props) {
 
   function handleLogOut() {
     axios.post("api/authentication/logout").then(r => console.log(r));
-    localStorage.removeItem("currentUser");
-    _setUser(JSON.parse(localStorage.getItem("currentUser")));
+    localStorage.removeItem("user");
+    _setUser(JSON.parse(localStorage.getItem("user")));
   }
 
   return (

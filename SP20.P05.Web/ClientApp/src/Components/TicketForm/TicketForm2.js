@@ -312,7 +312,6 @@ class TicketForm extends Component {
             <div>
               <Button
                 variant={"contained"}
-
                 onClick={this.props.changeForm}
                 disabled={this.state.buttonDisable}
               >
