@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import TicketsScreen from "../screens/TicketsScreen";
-import PayPal from "../screens/PayPal";
+//import PayPal from "../screens/PayPal";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
@@ -36,16 +36,6 @@ export default function BottomTabNavigator({ navigation, route }) {
           )
         }}
       />
-      <BottomTab.Screen
-        name="PayPal"
-        component={PayPal}
-        options={{
-          title: "Pay Now",
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="ios-cash" />
-          )
-        }}
-      />
     </BottomTab.Navigator>
   );
 }
@@ -59,7 +49,7 @@ function getHeaderTitle(route) {
       return "FarmHub";
     case "Tickets":
       return "Purchase Tickets";
-    case "PayPal":
-      return "PayPal";
+    // case "PayPal":
+    //   return "PayPal";
   }
 }
