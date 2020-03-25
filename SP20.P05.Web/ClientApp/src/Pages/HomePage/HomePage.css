@@ -8,11 +8,11 @@ body {
 .div-background{
   background-image: url('../../Resources/orchard.jpg') !important;
   background-size: cover;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
 }
 .home_carddecks {
   position: absolute;
-  top: 50%;
+  top: 70%;
 }
 .base_card {
   background-color: rgb(74, 124, 8);
@@ -32,6 +32,6 @@ body {
   padding-top: 0 !important;
   /* colors of cards themselves */
 }
-.toast {
-
+.carousel {
+  height: 300px;
 }
