@@ -6,7 +6,9 @@ import { Col, Form, Jumbotron } from "react-bootstrap";
 
 // CSS
 import "./TicketForm.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import LoginForm from "../LoginForm/LoginForm";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 class TicketForm extends Component {
   constructor(props) {
@@ -20,12 +22,30 @@ class TicketForm extends Component {
       bucketPriceSM: "",
       bucketPriceMD: "",
       bucketPriceLG: "",
-      numTickets: ""
+      numTickets: "",
+      bucketDisable: true,
+      amountDisable: true,
+      buttonDisable: true
     };
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.state.numTickets !== prevState.numTickets) {
       this.getTicketTotal();
+      this.checkTotal();
+    }
+    if (this.state.selectedField !== prevState.selectedField) {
+      this.getTicketTotal();
+      this.checkField();
+    }
+    if (this.state.selectedBucket !== prevState.selectedBucket) {
+      this.getTicketTotal();
+      console.log(this.state.ticketTotal);
+      this.checkBucket();
+    }
+    if (this.state.ticketTotal !== prevState.ticketTotal) {
+      this.getTicketTotal();
+      console.log(this.state.ticketTotal);
+      this.checkTotal();
     }
   }
   getFarmFieldId = async data => {
@@ -55,32 +75,69 @@ class TicketForm extends Component {
     console.log("setBucketPriceSM hit");
     switch (selectedField) {
       case "Blueberry":
+        this.setState({ bucketPriceSM: "$11" });
         sessionStorage.setItem("bucketPriceSM", "$11");
         return;
       case "Strawberry":
+        this.setState({ bucketPriceSM: "$10" });
         sessionStorage.setItem("bucketPriceSM", "$10");
         return;
       case "Blackberry":
+        this.setState({ bucketPriceSM: "$13" });
         sessionStorage.setItem("bucketPriceSM", "$13");
         return;
       default:
+        this.setState({ bucketPriceSM: "$11" });
         sessionStorage.setItem("bucketPriceSM", "");
         return;
     }
+  };
+  checkField = () => {
+    if (
+      sessionStorage.getItem("selectedField") !== "" ||
+      sessionStorage.getItem("selectedField") !== null
+    ) {
+      this.setState({
+        bucketDisable: false
+      });
+    }
+  };
+  checkBucket = () => {
+    if (
+      sessionStorage.getItem("selectedBucket") !== "" ||
+      sessionStorage.getItem("selectedBucket") !== null
+    ) {
+      this.setState({ amountDisable: false });
+    }
+  };
+  checkTotal = () => {
+    if (this.state.ticketTotal === 0) {
+      this.setState({ buttonDisable: true });
+    } else if (this.state.ticketTotal === "") {
+      this.setState({ buttonDisable: true });
+    } else if (this.state.ticketTotal === "0") {
+      this.setState({ buttonDisable: true });
+    } else if (this.state.ticketTotal === null) {
+      this.setState({ buttonDisable: true });
+    } else this.setState({ buttonDisable: false });
   };
   setBucketPriceMD = selectedField => {
     console.log("setBucketPriceMD hit");
     switch (selectedField) {
       case "Blueberry":
+        this.setState({ bucketPriceMD: "$16" });
         sessionStorage.setItem("bucketPriceMD", "$16");
         return;
       case "Strawberry":
+        this.setState({ bucketPriceMD: "$15" });
         sessionStorage.setItem("bucketPriceMD", "$15");
         return;
       case "Blackberry":
+        this.setState({ bucketPriceMD: "$17" });
         sessionStorage.setItem("bucketPriceMD", "$17");
         return;
       default:
+        this.setState({ bucketPriceMD: "" });
         sessionStorage.setItem("bucketPriceMD", "");
         return;
     }
@@ -89,15 +146,19 @@ class TicketForm extends Component {
     console.log("setBucketPriceLG hit");
     switch (selectedField) {
       case "Blueberry":
+        this.setState({ bucketPriceLG: "$21" });
         sessionStorage.setItem("bucketPriceLG", "$21");
         return;
       case "Strawberry":
+        this.setState({ bucketPriceLG: "$20" });
         sessionStorage.setItem("bucketPriceLG", "$20");
         return;
       case "Blackberry":
+        this.setState({ bucketPriceLG: "$24" });
         sessionStorage.setItem("bucketPriceLG", "$24");
         return;
       default:
+        this.setState({ bucketPriceLG: "" });
         sessionStorage.setItem("bucketPriceLG", "");
         return;
     }
@@ -108,9 +169,12 @@ class TicketForm extends Component {
     const val = e.target.value;
     if (val === "Choose Bucket Size...") {
       sessionStorage.setItem("selectedBucket", "");
+      this.setState({ selectedBucket: "" });
     } else {
       sessionStorage.setItem("selectedBucket", val);
+      this.setState({ selectedBucket: val });
       sessionStorage.setItem("selectedBucketSize", val);
+      this.setState({ selectedBucketSize: val });
     }
     this.setSelectedBucketPrice(val);
   };
@@ -118,10 +182,12 @@ class TicketForm extends Component {
     console.log("Number of Tickets Changed...");
     // Set val to form value
     const val = e.target.value;
-    sessionStorage.setItem("numTickets", val);
-    this.setState({
-      numTickets: val
-    });
+    if (val !== 0) {
+      sessionStorage.setItem("numTickets", val);
+      this.setState({
+        numTickets: val
+      });
+    }
   };
   getTicketTotal = () => {
     console.log("Getting Ticket Total..");
@@ -133,8 +199,6 @@ class TicketForm extends Component {
     this.setState({
       ticketTotal: this.state.numTickets * this.state.selectedBucketPrice
     });
-
-    return this.state.numTickets * this.state.selectedBucketPrice;
   };
   setSelectedBucketPrice = size => {
     console.log("Setting Selected Bucket Price...");
@@ -167,18 +231,17 @@ class TicketForm extends Component {
         return console.log("Error setting selected bucket price");
     }
   };
-
   render() {
     return (
-      <div>
-        <Jumbotron className={"jumbo_clr"}>
-          <h1>Purchase Tickets</h1>
+      <Jumbotron className={"jumbo_clr"}>
+        <h1>Purchase Tickets</h1>
+        {localStorage.getItem("user") ? (
           <Form>
             <Form.Group as={Col} controlId={"FarmField"}>
               <Form.Label>Farm Field</Form.Label>
               <Form.Control
                 as={"select"}
-                value={sessionStorage.getItem("selectedField")}
+                value={this.state.selectedField}
                 onChange={this.handleFieldChange}
               >
                 <option>Choose Farm Field...</option>
@@ -191,28 +254,24 @@ class TicketForm extends Component {
             <Form.Group as={Col} controlId={"Buckets"}>
               <Form.Label>Bucket</Form.Label>
               <div>
-                {sessionStorage.getItem("selectedField") ? (
+                {this.state.selectedField ? (
                   <div>
                     <strong>
-                      Bucket Prices for{" "}
-                      {sessionStorage.getItem("selectedField")} Field:
+                      Bucket Prices for {this.state.selectedField} Field:
                     </strong>
-                    <div>
-                      Small Bucket: {sessionStorage.getItem("bucketPriceSM")}
-                    </div>
-                    <div>
-                      Medium Bucket: {sessionStorage.getItem("bucketPriceMD")}
-                    </div>
+                    <div>Small Bucket: {this.state.bucketPriceSM}</div>
+                    <div>Medium Bucket: {this.state.bucketPriceMD}</div>
                     <div className={"padding"}>
-                      Large Bucket: {sessionStorage.getItem("bucketPriceLG")}
+                      Large Bucket: {this.state.bucketPriceLG}
                     </div>
                   </div>
                 ) : null}
               </div>
               <Form.Control
                 as={"select"}
-                value={sessionStorage.getItem("selectedBucket")}
+                value={this.state.selectedBucket}
                 onChange={this.handleBucketChange}
+                disabled={this.state.bucketDisable}
               >
                 <option>Choose Bucket Size</option>
                 <option>Small</option>
@@ -220,31 +279,57 @@ class TicketForm extends Component {
                 <option>Large</option>
               </Form.Control>
             </Form.Group>
-            {sessionStorage.getItem("selectedField") &&
-            sessionStorage.getItem("selectedBucket") ? (
+            {this.state.selectedField && this.state.selectedBucket ? (
               <div>
-                {sessionStorage.getItem("selectedField")} Field Ticket with{" "}
-                {sessionStorage.getItem("selectedBucket")}, $
-                {sessionStorage.getItem("selectedBucketPrice")} bucket
+                {this.state.selectedField} Field Ticket with{" "}
+                {this.state.selectedBucket}, ${this.state.selectedBucketPrice}{" "}
+                bucket
               </div>
             ) : null}
             <div className={"divider div-transparent"} />
             <Form.Group>
               <Form.Label>How Many Tickets?</Form.Label>
               <Form.Control
-                value={sessionStorage.getItem("numTickets")}
+                as={"select"}
+                value={this.state.numTickets}
                 onChange={this.handleNumberChange}
-              />
+                disabled={this.state.amountDisable}
+              >
+                <option />
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+              </Form.Control>
             </Form.Group>
-            <div>Total: ${sessionStorage.getItem("ticketTotal")}</div>
+            <div>Total: ${this.state.ticketTotal}</div>
             <div>
-              <button onClick={this.props.changeForm}>Buy Tickets</button>
+              <button
+                onClick={this.props.changeForm}
+                disabled={this.state.buttonDisable}
+              >
+                Buy Tickets
+              </button>
             </div>
           </Form>
-        </Jumbotron>
-      </div>
+        ) : (
+          <div>
+            Please Log in first
+            <div className={"padding-top"}>
+              <Link to={"/Login"}>
+                <Button id={"TicketLogIn"}>Log in</Button>
+              </Link>
+            </div>
+          </div>
+        )}
+      </Jumbotron>
     );
   }
 }
-
 export default TicketForm;

@@ -1,6 +1,10 @@
-body{
-  height: 100%;
-}
+body {
+    background-size: cover;
+    background-image: url('../../Resources/orchard.jpg') ;
+    position: relative;
+    top:0;
+    left:0;
+    }
 .div-background{
   background-image: url('../../Resources/orchard.jpg') !important;
   background-size: cover;

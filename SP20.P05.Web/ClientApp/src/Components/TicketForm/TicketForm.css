@@ -6,24 +6,18 @@
     text-align: center;
     min-height: 100vh;
 }
-
-html, body, .container {
-    height: 100%;
+body {
+    background-size: cover;
+    background-image: url('../../Resources/orchard.jpg') ;
+    position: relative;
+    top:0;
+    left:0;
 }
-
-.formMargins {
-    margin-left: 100px !important;
-    margin-right: 100px;
-    color: darkgreen;
-}
-
 .centerForm{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-
 .btn_submit{
     background-color: darkgreen;
     color: whitesmoke;
@@ -34,10 +28,15 @@ html, body, .container {
     background-color: darkgreen;
     margin-right: 10px;
 }
-.jumbo_clr {
-    background-color: whitesmoke;
+.jumbo_clr.jumbotron {
+    background-color: #343A40 !important;
+    color: lightgreen;
     margin: 0 0 0 0;
     width: 500px ;
+    opacity: 100%;
+}
+.form-label{
+    color: lightgreen;
 }
 .divider
 {
@@ -45,17 +44,8 @@ html, body, .container {
     margin-top: 20px;
     margin-bottom: 15px;
     height: 1px;
-}
-.div-transparent:before
-{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 5%;
-    right: 5%;
-    width: 90%;
-    height: 1px;
-    background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+    color: lightgreen;
+    background-color: lightgreen;
 }
 .padding{
     padding-bottom: 5px;
@@ -63,12 +53,31 @@ html, body, .container {
 .form-group.col{
     width: auto;
 }
-.prices{
-    background-color: white;
-    height: 180px;
-    width: 300px;
-    transform: translateX(560px) translateY(-300px);
+#TicketLogIn{
+    color: lightgreen ;
+    border-color: lightgreen;
 }
-
+#TicketLogIn.btn:hover{
+    border-color: #fbe1a5;
+    color: #fbe1a5
+}
+#TicketLogIn.btn:active{
+    border-color: #fbe1a5;
+    color: #fbe1a5
+}
+#TicketLogIn.btn-primary:not(:disabled):not(.disabled):active{
+    background-color: transparent;
+    border-color: #fbe1a5;
+    color: #fbe1a5
+}
+#TicketLogIn.btn-primary:not(:disabled):not(.disabled):focus{
+    background-color: transparent;
+    color: lightgreen;
+    border-color: lightgreen;
+    box-shadow: none;
+}
+.padding-top{
+    padding-top: 20px;
+}
 
 
