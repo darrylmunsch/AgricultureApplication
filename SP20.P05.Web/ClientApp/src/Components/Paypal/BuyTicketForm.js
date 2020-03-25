@@ -42,7 +42,7 @@ class BuyTicketForm extends Component {
           <PayPal price={this.props.ticketTotal} />
           <div className={"divider div-transparent"} />
           <div>
-            <button onClick={this.props.changeForm}>Back to Tickets</button>
+            <Button onClick={this.props.changeForm}>Back to Tickets</Button>
           </div>
         </Jumbotron>
       </div>

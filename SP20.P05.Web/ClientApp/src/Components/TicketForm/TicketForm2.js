@@ -310,12 +310,14 @@ class TicketForm extends Component {
             </Form.Group>
             <div>Total: ${this.state.ticketTotal}</div>
             <div>
-              <button
+              <Button
+                variant={"contained"}
+
                 onClick={this.props.changeForm}
                 disabled={this.state.buttonDisable}
               >
                 Buy Tickets
-              </button>
+              </Button>
             </div>
           </Form>
         ) : (
