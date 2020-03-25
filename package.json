@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "axios": "^0.19.2",
-    "rsuite": "^4.2.1"
+    "formik": "^2.1.4",
+    "react-native-paypal": "^2.1.0",
+    "react-native-webview": "^9.0.1",
+    "react-paypal-button-v2": "^2.6.1"
   }
 }

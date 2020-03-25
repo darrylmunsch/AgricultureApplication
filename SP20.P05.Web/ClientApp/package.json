@@ -23,8 +23,8 @@
     "yup": "^0.28.3"
   },
   "scripts": {
-    "dev": "concurrently \"npm run start\" \"npm run mobile\"",
-    "mobile": "cd ../../SP20-P05-Mobile && npm run start",
+    "dev": "concurrently \"yarn run start\" \"yarn run mobile\"",
+    "mobile": "cd ../../SP20-P05-Mobile && yarn run start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
