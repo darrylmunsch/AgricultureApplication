@@ -28,6 +28,8 @@ namespace SP20.P05.Web.Data
                 .WithMany(x => x.Users)
                 .HasForeignKey(x => x.RoleId);
 
+            
+
             userRoleBuilder.HasOne(x => x.User)
                 .WithMany(x => x.Roles)
                 .HasForeignKey(x => x.UserId);

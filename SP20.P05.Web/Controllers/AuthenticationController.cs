@@ -41,7 +41,9 @@ namespace SP20.P05.Web.Controllers
             return Ok(new UserRoleDto
             {
                 Username = user.UserName,
-                UserRoles = roles
+                UserRoles = roles,
+                Id = user.Id
+
         });
         }
 

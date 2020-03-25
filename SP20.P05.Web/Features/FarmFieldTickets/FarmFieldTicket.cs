@@ -1,4 +1,5 @@
 ﻿using System;
+using SP20.P05.Web.Features.Authentication;
 using SP20.P05.Web.Features.FarmFields;
 
 namespace SP20.P05.Web.Features.FarmFieldTickets
@@ -12,5 +13,9 @@ namespace SP20.P05.Web.Features.FarmFieldTickets
 
         public int FarmFieldId { get; set; }
         public virtual FarmField FarmField { get; set; }
+
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
+
     }
 }

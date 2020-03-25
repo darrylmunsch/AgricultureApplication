@@ -36,7 +36,8 @@ namespace SP20.P05.Web.Controllers
             var addedItem = context.Set<FarmFieldTicket>().Add(new FarmFieldTicket
             {
                 FarmFieldId = targetValue.FarmFieldId,
-                TicketTimeSlot = targetValue.TicketTimeSlot
+                TicketTimeSlot = targetValue.TicketTimeSlot,
+                UserId = targetValue.UserId
             });
             await context.SaveChangesAsync();
             targetValue.Id = addedItem.Entity.Id;
