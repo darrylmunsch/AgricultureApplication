@@ -6,16 +6,16 @@ import LoginForm from "../../Components/LoginForm/LoginForm";
 // CSS
 import "./Login.css";
 
-function Login() {
+const Login = props => {
   return (
     <div>
       <div className={"background-img"}>
         <div id={"divElement"}>
-          <LoginForm />
+          <LoginForm history={props.location.from} />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Login;
