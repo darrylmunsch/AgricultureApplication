@@ -12,10 +12,11 @@ import * as yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./LoginForm.css";
 
-export default function LoginForm() {
+export default function LoginForm(props) {
   const { _setUser } = useContext(UserContext);
   const [_signedIn, _setSignedIn] = useState(false);
   const url = "api/authentication/login";
+  const history = props.history;
 
   const schema = yup.object({
     username: yup.string().required("Username is required"),
@@ -58,7 +59,13 @@ export default function LoginForm() {
     resetForm();
   };
 
-  if (_signedIn) return <Redirect to={{ pathname: "/" }} />;
+  if (_signedIn) {
+    if (history !== null) {
+      return <Redirect to={{ pathname: history }} />;
+    } else {
+      return <Redirect to={{ pathname: "/" }} />;
+    }
+  }
 
   return (
     <div className={"centerForm"}>

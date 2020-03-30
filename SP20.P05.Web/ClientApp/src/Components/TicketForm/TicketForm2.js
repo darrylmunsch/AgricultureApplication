@@ -323,7 +323,7 @@ class TicketForm extends Component {
           <div>
             Please Log in first
             <div className={"padding-top"}>
-              <Link to={"/Login"}>
+              <Link to={{ pathname: "/Login", from: "/tickets" }}>
                 <Button id={"TicketLogIn"}>Log in</Button>
               </Link>
             </div>
