@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SP20.P05.Web.Features.Authentication;
+using SP20.P05.Web.Features.Stripe;
 using Stripe;
+using Stripe.Checkout;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +15,35 @@ namespace SP20.P05.Web.Controllers
     [Route("api/stripe")]
     public class StripePaymentController : Controller
     {
-        public IActionResult Charge(string stripeEmail, string stripeToken)
+        [HttpPost("charge")]
+        [Authorize(Roles = Roles.Customer)]
+        public IActionResult Charge(StripeChargeDto targetValue)
         {
-            var customers = new CustomerService();
+            var options = new SessionCreateOptions{
+                PaymentMethodTypes = new List<string>
+                {
+                    "card",
+                },
+
+                LineItems = new List<SessionLineItemOptions>
+                {
+                    new SessionLineItemOptions
+                    {
+                        Name= targetValue.Name,
+                        Description= targetValue.Description,
+                        Amount= targetValue.Amount,
+                        Currency="usd"
+                    },
+                },
+
+                SuccessUrl = "https://example.com/success?session_id={CHECKOUT_SESSION_ID}",
+                CancelUrl = "https://example.com/cancel",
+            };
+
+            var service = new SessionService();
+            Session session = service.Create(options);
+
+            /*var customers = new CustomerService();
             var charges = new ChargeService();
 
             var customer = customers.Create(new CustomerCreateOptions{
@@ -27,7 +57,7 @@ namespace SP20.P05.Web.Controllers
                 Currency="USD",
                 CustomerId=customer.Id
 
-            });
+            });*/
 
             return Ok();
         }
