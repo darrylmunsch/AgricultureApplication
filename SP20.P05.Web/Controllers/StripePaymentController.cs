@@ -6,6 +6,7 @@ using Stripe;
 using Stripe.Checkout;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,50 +17,35 @@ namespace SP20.P05.Web.Controllers
     public class StripePaymentController : Controller
     {
         [HttpPost("charge")]
-        [Authorize(Roles = Roles.Customer)]
-        public IActionResult Charge(StripeChargeDto targetValue)
+        public async Task<IActionResult> Charge(StripeChargeDto targetValue)
         {
-            var options = new SessionCreateOptions{
-                PaymentMethodTypes = new List<string>
+            try{
+                StripeConfiguration.ApiKey = ConfigurationManager.AppSettings["stripe:PublishableKey"];
+
+                var options = new ChargeCreateOptions
                 {
-                    "card",
-                },
+                    Amount = targetValue.Amount,
+                    Currency = "USD",
+                    Description = targetValue.Description,
+                    Source = targetValue.stripeToken.Id,
+                    ReceiptEmail = targetValue.stripeEmail           
+                };
+                var service = new ChargeService();
+                Charge charge = await service.CreateAsync(options);
 
-                LineItems = new List<SessionLineItemOptions>
+                if (charge.Paid)
                 {
-                    new SessionLineItemOptions
-                    {
-                        Name= targetValue.Name,
-                        Description= targetValue.Description,
-                        Amount= targetValue.Amount,
-                        Currency="usd"
-                    },
-                },
-
-                SuccessUrl = "https://example.com/success?session_id={CHECKOUT_SESSION_ID}",
-                CancelUrl = "https://example.com/cancel",
-            };
-
-            var service = new SessionService();
-            Session session = service.Create(options);
-
-            /*var customers = new CustomerService();
-            var charges = new ChargeService();
-
-            var customer = customers.Create(new CustomerCreateOptions{
-                Email = stripeEmail,
-                SourceToken = stripeToken
-            });
-
-            var charge = charges.Create(new ChargeCreateOptions{
-                Amount = ammount,
-                Description = description,
-                Currency="USD",
-                CustomerId=customer.Id
-
-            });*/
-
-            return Ok();
+                    return Ok("Success");
+                }
+                else
+                {
+                    return BadRequest("Payment Failed");
+                }
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }
