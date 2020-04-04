@@ -19,8 +19,8 @@ export default Navigator = () => {
         />
 
         <Stack.Screen
-          name="LoginForm"
-          component={LoginForm}
+          name="LoginScreen"
+          component={LoginScreen}
           options={{ title: "" }}
         />
       </Stack.Navigator>
