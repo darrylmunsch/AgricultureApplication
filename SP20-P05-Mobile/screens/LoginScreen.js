@@ -5,10 +5,55 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
+  Alert,
 } from "react-native";
 import { Formik } from "formik";
+import { baseurl } from "../constant";
+import axios from "axios";
 
-export default class LoginForm extends React.Component {
+// function handleLoginPress() {
+//   event.preventDefault();
+
+//   const user = {
+//     Username: this.state.Username,
+//     Password: this.state.Password,
+//   };
+
+//   axios.post(`${baseurl}${authentication}${login}`, { user }).then((res) => {
+//     console.log(res);
+//     console.log(res.data);
+//   });
+// }
+
+export default class LoginScreen extends React.Component {
+  state = {
+    Username: "",
+    Password: "",
+  };
+
+  onUsernameChange = (Username) => {
+    this.setState({ Username });
+  };
+
+  onPasswordChange = (Password) => {
+    this.setState({ Password });
+  };
+
+  onPressLogin() {
+    const { Username, Password } = this.state;
+    const payload = { Username, Password };
+    console.log(payload);
+    axios.post(`${baseurl}/authentication/login`, { payload }).then((res) => {
+      if (res.data.status == 200) {
+        console.log(res);
+        console.log(res.data);
+        Alrt.alert("Success");
+      } else if (error.res) {
+        console.log(error.toJSON());
+      }
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -19,7 +64,8 @@ export default class LoginForm extends React.Component {
           autoCorrect={false}
           keyboardType="email-address"
           returnKeyType="next"
-          placeholder="Email or Mobile Num"
+          placeholder="Username"
+          onChangeText={this.onUsernameChange}
           placeholderTextColor="rgba(225,225,225,0.7)"
         />
 
@@ -28,13 +74,14 @@ export default class LoginForm extends React.Component {
           returnKeyType="go"
           ref={(input) => (this.passwordInput = input)}
           placeholder="Password"
+          onChangeText={this.onPasswordChange}
           placeholderTextColor="rgba(225,225,225,0.7)"
           secureTextEntry
         />
 
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={onButtonPress}
+          onPress={this.onPressLogin()}
         >
           <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableOpacity>
