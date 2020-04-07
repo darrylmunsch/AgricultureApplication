@@ -25,6 +25,10 @@ import axios from "axios";
 //   });
 // }
 
+const headers = {
+  "Content-Type": "application/json",
+};
+
 export default class LoginScreen extends React.Component {
   state = {
     Username: "",
@@ -39,20 +43,21 @@ export default class LoginScreen extends React.Component {
     this.setState({ Password });
   };
 
-  onPressLogin() {
-    const { Username, Password } = this.state;
-    const payload = { Username, Password };
-    console.log(payload);
-    axios.post(`${baseurl}/authentication/login`, { payload }).then((res) => {
-      if (res.data.status == 200) {
-        console.log(res);
-        console.log(res.data);
-        Alrt.alert("Success");
-      } else if (error.res) {
-        console.log(error.toJSON());
-      }
-    });
-  }
+  onPressLogin = () => {
+    axios
+      .post(`${baseurl}/api/authentication/login`, {
+        Username: this.state.Username,
+        Password: this.state.Password,
+      })
+      .then(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
 
   render() {
     return (
@@ -81,7 +86,7 @@ export default class LoginScreen extends React.Component {
 
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={this.onPressLogin()}
+          onPress={this.onPressLogin}
         >
           <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableOpacity>
