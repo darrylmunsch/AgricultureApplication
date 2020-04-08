@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import TicketForm2 from "../../Components/TicketForm/TicketForm2";
-import BuyTicketForm from "../../Components/Stripe/BuyTicketForm";
+import BuyTicketForm from "../../Components/TicketForm/BuyTicketForm";
 
 export class Tickets extends Component {
   constructor(props) {

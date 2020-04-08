@@ -7,7 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
 
 // CSS
-import "../TicketForm/TicketForm.css";
+import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
