@@ -19,6 +19,7 @@ import { AboutUs } from "./Pages/AboutUs/AboutUs";
 
 // CSS
 import "./Pages/HomePage/HomePage.css";
+import TicketForm2 from "./Components/TicketForm/TicketForm2";
 
 function App() {
   const [_user, _setUser] = useState(localStorage.getItem("user") || null);
@@ -41,6 +42,7 @@ function App() {
           path={"/TestStorageMapping"}
           component={TestStorageMapping}
         />
+        <Route exact path={'/test'} component={TicketForm2} />
         <Switch>
           <PrivateRoute exact path="/Admin" component={Admin} />
         </Switch>
