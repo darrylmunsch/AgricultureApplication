@@ -21,6 +21,16 @@
     -react-native-safe-area-context
     -react-native-screens
 
+*****4/9/20 DM
+-Added Constants.js to main project
+-Added LoginScreen.js to Screens
+-Added Button.js and FormTextInput.js to Components folder
+    -These are template functions to be reused in many cases
+-Added Resources folder for images, etc.
+-Added Storage.js to Functions folder. Stores multiple AsyncStorage functions to be used across app.
+-LoginScreen successfully authorizes a valid login.
+    -Need to finish passing data to/from screens via AsyncStorage.
+
 
 
 
