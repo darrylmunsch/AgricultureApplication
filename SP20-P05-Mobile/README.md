@@ -30,6 +30,21 @@
 -Added Storage.js to Functions folder. Stores multiple AsyncStorage functions to be used across app.
 -LoginScreen successfully authorizes a valid login.
     -Need to finish passing data to/from screens via AsyncStorage.
+    
+*****4/10/20 DM
+-Added Dependencies:
+    -redux
+    -react-redux
+    -is-empty
+    -redux-thunk
+-Implemented Redux -- it still sucks.     
+    -The user state, and any other state, can be configured so that we have access to it anywhere in the app.
+    -Added Redux folder with multiple files corresponding to the redux life-cycle. Don't break them.
+-Tested Login & Logout functionality. 
+    -Successfully Logging in redirects used back home.
+-Lines 13-15 of "AuthActions" use "Axios.create()", allowing us to store an instance of 
+ Axios with our baseurl, making api calls shorter to write.
+-NOTE: Logout redirects user back to home. This is not intentional. /shrug
 
 
 

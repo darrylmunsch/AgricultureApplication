@@ -3,7 +3,8 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { AsyncStorage } from "react-native";
+import { Provider } from "react-redux";
+import _Store from "./Redux/Store";
 
 // Screens
 import HomeScreen from "./Screens/HomeScreen";
@@ -11,16 +12,17 @@ import TicketScreen from "./Screens/TicketScreen";
 import LoginScreen from "./Screens/LoginScreen";
 
 const Stack = createStackNavigator();
-const PERSISTENCE_KEY = "NAVIGATION_STATE";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name={"Home"} component={HomeScreen} />
-        <Stack.Screen name={"Tickets"} component={TicketScreen} />
-        <Stack.Screen name={"Login"} component={LoginScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={_Store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name={"Home"} component={HomeScreen} />
+          <Stack.Screen name={"Tickets"} component={TicketScreen} />
+          <Stack.Screen name={"Login"} component={LoginScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }

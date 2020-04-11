@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import { login, ButtonStyle } from "../StyleSheets";
 import FormTextInput from "../Components/FormTextInput";
 import Button from "../Components/Button";
-import Axios from "axios";
-import { baseurl } from "../Constants";
-import { _storeData } from "../Functions/Storage";
+import { loginCurrentUser, logoutUser } from "../Redux/Actions/AuthActions";
+import { connect } from "react-redux";
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -13,9 +12,13 @@ class LoginScreen extends Component {
     this.state = {
       username: "",
       password: "",
-      user: {},
-      isLoggedIn: false,
     };
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.auth.isAuthenticated === true) {
+      this.props.navigation.navigate("Home");
+    }
   }
 
   handleUsernameChange = (username) => {
@@ -24,78 +27,70 @@ class LoginScreen extends Component {
   handlePasswordChange = (Password) => {
     this.setState({ password: Password });
   };
-  handleLogout = () => {
-    Axios.post(`${baseurl}/api/authentication/logout`).then(
-      (res) => {
-        console.log("Logged out...", res);
-        this.setState({
-          isLoggedIn: false,
-        });
-        _removeData("user");
-        this.props.navigation.navigate("Home", { user: {} });
-      },
-      (error) => {
-        console.log("Error Logging out...", error);
-      }
-    );
-  };
-  handleLogin = async () => {
-    const url = baseurl + "/api/authentication/login";
-    let user = {
+  handleLogin = () => {
+    const userData = {
       username: this.state.username,
       password: this.state.password,
     };
 
-    await Axios.post(url, user, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) => {
-      //console.log(res.data);
-
-      if (res.status === 200) {
-        _storeData("@User", res.data);
-        this.setState({
-          user: res.data,
-          isLoggedIn: true,
-        });
-        this.props.navigation.navigate("Home", { user: this.state.user });
-      }
-    });
+    this.props.loginUser(userData);
+    console.log("login pressed" + JSON.stringify(userData));
+    console.log(this.props.auth.loading);
   };
+  handleLogout = () => {
+    console.log("test");
+    this.props.logoutUser();
+  };
+
   render() {
     return (
       <View style={login.container}>
-        <View style={login.formContainer}>
-          <FormTextInput
-            value={this.state.username}
-            onChangeText={this.handleUsernameChange}
-            placeholder={"Username"}
-            textContentType={"username"}
-            style={login.formStyle}
-          />
-          <FormTextInput
-            value={this.state.password}
-            onChangeText={this.handlePasswordChange}
-            placeholder={"Password"}
-            textContentType={"password"}
-            secureTextEntry
-            style={login.formStyle}
-          />
-          <Button
-            label={"Log In"}
-            onPress={this.handleLogin}
-            style={ButtonStyle.light}
-          />
+        {!this.props.auth.isAuthenticated ? (
+          <View style={login.formContainer}>
+            <FormTextInput
+              value={this.state.username}
+              onChangeText={this.handleUsernameChange}
+              placeholder={"Username"}
+              textContentType={"username"}
+              style={login.formStyle}
+            />
+            <FormTextInput
+              value={this.state.password}
+              onChangeText={this.handlePasswordChange}
+              placeholder={"Password"}
+              textContentType={"password"}
+              secureTextEntry
+              style={login.formStyle}
+            />
+            <Button
+              label={"Log In"}
+              onPress={this.handleLogin}
+              style={ButtonStyle.light}
+            />
+          </View>
+        ) : (
           <Button
             label={"Log Out"}
             onPress={this.handleLogout}
             style={ButtonStyle.light}
           />
-        </View>
+        )}
       </View>
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    auth: state.AuthReducer,
+  };
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: (userData) => {
+      dispatch(loginCurrentUser(userData));
+    },
+    logoutUser: () => dispatch(logoutUser()),
+  };
+};
 
-export default LoginScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

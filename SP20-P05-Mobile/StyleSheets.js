@@ -36,6 +36,12 @@ export const home = StyleSheet.create({
     fontSize: 30,
     color: "#90ee90",
   },
+  panel: {
+    flex: 1,
+    color: "#90ee90",
+    borderColor: "#90ee90",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
 });
 export const login = StyleSheet.create({
   container: {
