@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+// Material Ui
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 // React-Bootstrap
 import { Col, Form, Jumbotron } from "react-bootstrap";
 
@@ -23,11 +26,17 @@ class TicketForm extends Component {
       bucketPriceMD: "",
       bucketPriceLG: "",
       numTickets: "",
+      smBucket: "0",
+      medBucket: "0",
+      lgBucket: "0",
       bucketDisable: true,
       amountDisable: true,
       buttonDisable: true
     };
   }
+  /// WIP : Todo : Add incrementer next to small / med / large button .
+  // Remove How many Tickets.. it will be defined by the increments next to the buckets
+
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.state.numTickets !== prevState.numTickets) {
       this.getTicketTotal();
@@ -231,6 +240,15 @@ class TicketForm extends Component {
         return console.log("Error setting selected bucket price");
     }
   };
+
+  handleBucketQtySm = event => {
+    this.setState({ smBucket: event.target.value });
+    console.log(this.state.smBucket);
+  };
+
+  // this.setState({
+  //   numTickets: val
+  // });
   render() {
     return (
       <Jumbotron className={"jumbo_clr"}>
@@ -260,9 +278,66 @@ class TicketForm extends Component {
                       Bucket Prices for {this.state.selectedField} Field:
                     </strong>
                     <div>Small Bucket: {this.state.bucketPriceSM}</div>
+                    <div>
+                      <Select
+                        onChange={this.handleBucketQtySm}
+                        value={this.state.smBucket}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={0}>Zero</MenuItem>
+                        <MenuItem value={1}>One</MenuItem>
+                        <MenuItem value={2}>Two</MenuItem>
+                        <MenuItem value={3}>Three</MenuItem>
+                        <MenuItem value={4}>Four</MenuItem>
+                        <MenuItem value={5}>Five</MenuItem>
+                        <MenuItem value={6}>Six</MenuItem>
+                        <MenuItem value={7}>Seven</MenuItem>
+                        <MenuItem value={8}>Eight</MenuItem>
+                        <MenuItem value={9}>Nine</MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                      </Select>
+                    </div>
                     <div>Medium Bucket: {this.state.bucketPriceMD}</div>
+                    <div>
+                      <Select>
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={0}>Zero</MenuItem>
+                        <MenuItem value={1}>One</MenuItem>
+                        <MenuItem value={2}>Two</MenuItem>
+                        <MenuItem value={3}>Three</MenuItem>
+                        <MenuItem value={4}>Four</MenuItem>
+                        <MenuItem value={5}>Five</MenuItem>
+                        <MenuItem value={6}>Six</MenuItem>
+                        <MenuItem value={7}>Seven</MenuItem>
+                        <MenuItem value={8}>Eight</MenuItem>
+                        <MenuItem value={9}>Nine</MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                      </Select>
+                    </div>
                     <div className={"padding"}>
                       Large Bucket: {this.state.bucketPriceLG}
+                    </div>
+                    <div>
+                      <Select>
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={0}>Zero</MenuItem>
+                        <MenuItem value={1}>One</MenuItem>
+                        <MenuItem value={2}>Two</MenuItem>
+                        <MenuItem value={3}>Three</MenuItem>
+                        <MenuItem value={4}>Four</MenuItem>
+                        <MenuItem value={5}>Five</MenuItem>
+                        <MenuItem value={6}>Six</MenuItem>
+                        <MenuItem value={7}>Seven</MenuItem>
+                        <MenuItem value={8}>Eight</MenuItem>
+                        <MenuItem value={9}>Nine</MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                      </Select>
                     </div>
                   </div>
                 ) : null}
