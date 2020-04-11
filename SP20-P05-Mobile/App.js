@@ -10,6 +10,7 @@ import _Store from "./Redux/Store";
 import HomeScreen from "./Screens/HomeScreen";
 import TicketScreen from "./Screens/TicketScreen";
 import LoginScreen from "./Screens/LoginScreen";
+import PaypalWebView from "./Screens/PaypalWebView";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ export default function App() {
           <Stack.Screen name={"Home"} component={HomeScreen} />
           <Stack.Screen name={"Tickets"} component={TicketScreen} />
           <Stack.Screen name={"Login"} component={LoginScreen} />
+          <Stack.Screen name={"WebView"} component={PaypalWebView} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

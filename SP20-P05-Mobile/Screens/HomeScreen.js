@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, Button, AsyncStorage } from "react-native";
+import { View, Text, Button } from "react-native";
 import { home } from "../StyleSheets";
 import { connect } from "react-redux";
-const isEmpty = require("is-empty");
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -43,6 +42,11 @@ class HomeScreen extends Component {
         />
         <Button
           style={home.textGreen}
+          title="Go to WebView"
+          onPress={() => navigation.navigate("WebView")}
+        />
+        <Button
+          style={home.textGreen}
           title="force update data"
           onPress={() =>
             this.setState({
@@ -50,6 +54,7 @@ class HomeScreen extends Component {
             })
           }
         />
+
         <Text>Testing Data from Redux: </Text>
         <Text>
           isAuthenticated: {JSON.stringify(this.props.auth.isAuthenticated)}
