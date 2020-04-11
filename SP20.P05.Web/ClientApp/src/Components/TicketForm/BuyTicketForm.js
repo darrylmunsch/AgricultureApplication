@@ -1,10 +1,7 @@
+/*
 import React, { Component } from "react";
 import { Button, Col, Form, Jumbotron } from "react-bootstrap";
-import Stripe from "./Stripe";
-import ReactDOM from "react-dom";
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "./CheckoutForm";
 
 // CSS
 import "./TicketForm.css";
@@ -41,8 +38,9 @@ class BuyTicketForm extends Component {
         console.log(res.data);
       });
   };
+*/
 
-  render() {
+  /*render() {
     return (
       <div>
         <Jumbotron className={"jumbo_clr"}>
@@ -60,4 +58,4 @@ class BuyTicketForm extends Component {
   }
 }
 
-export default BuyTicketForm;
+export default BuyTicketForm;*/

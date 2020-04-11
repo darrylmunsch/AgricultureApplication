@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 class PaypalWebView extends Component {
   constructor(props) {
     super(props);
-    this.webView = null;
   }
 
   handleOnMessage = (e) => {
@@ -25,11 +24,7 @@ class PaypalWebView extends Component {
     const INJECTED_JAVASCRIPT = `(function() {
     window.ReactNativeWebView.postMessage(JSON.stringify(window.location));
 })();`;
-    return (
-      <View>
-        <WebView source={{ uri: "https://google.com" }} />
-      </View>
-    );
+    return <WebView source={{ uri: `${baseurl}/tickets` }} />;
   }
 }
 
