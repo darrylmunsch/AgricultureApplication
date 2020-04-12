@@ -37,7 +37,10 @@ namespace SP20.P05.Web.Controllers
             {
                 FarmFieldId = targetValue.FarmFieldId,
                 TicketTimeSlot = targetValue.TicketTimeSlot,
-                UserId = targetValue.UserId
+                UserId = targetValue.UserId,
+                SmallBucketQty = targetValue.SmallBucketQty,
+                MediumBucketQty = targetValue.MediumBucketQty,
+                LargeBucketQty = targetValue.LargeBucketQty
             });
             await context.SaveChangesAsync();
             targetValue.Id = addedItem.Entity.Id;
