@@ -37,11 +37,7 @@ function App() {
         <Route exact path={"/login"} component={Login} />
         <Route exact path={"/register"} component={Register} />
         <Route exact path={"/trial"} component={PayPal} />
-        <Route
-          exact
-          path={"/TestStorageMapping"}
-          component={TestStorageMapping}
-        />
+        <Route exact path={"/TestStorageMapping"} component={TestStorageMapping}/>
         <Route exact path={'/test'} component={TicketForm2} />
         <Switch>
           <PrivateRoute exact path="/Admin" component={Admin} />
