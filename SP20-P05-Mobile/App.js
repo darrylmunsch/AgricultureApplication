@@ -21,7 +21,6 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name={"Home"} component={HomeScreen} />
-          <Stack.Screen name={"Tickets"} component={TicketScreen} />
           <Stack.Screen name={"Login"} component={LoginScreen} />
           <Stack.Screen name={"TicketForm"} component={TicketForm} />
           <Stack.Screen name={"WebView"} component={PaypalWebView} />
