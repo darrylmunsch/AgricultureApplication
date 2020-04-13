@@ -39,6 +39,7 @@ export const getError = (error) => ({
 
 // Login
 export const loginCurrentUser = (userData) => (dispatch) => {
+  loading(true);
   const url = "/api/authentication/login";
   api
     .post(url, userData)
@@ -60,6 +61,7 @@ export const loginCurrentUser = (userData) => (dispatch) => {
 
 // Logout
 export const logoutUser = () => (dispatch) => {
+  loading(true);
   const url = "/api/authentication/logout";
   api.post(url).then((res) => {
     console.log("Logging out...", res.status);

@@ -11,6 +11,7 @@ import HomeScreen from "./Screens/HomeScreen";
 import TicketScreen from "./Screens/TicketScreen";
 import LoginScreen from "./Screens/LoginScreen";
 import PaypalWebView from "./Screens/PaypalWebView";
+import TicketForm from "./Screens/TicketForm";
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
           <Stack.Screen name={"Home"} component={HomeScreen} />
           <Stack.Screen name={"Tickets"} component={TicketScreen} />
           <Stack.Screen name={"Login"} component={LoginScreen} />
+          <Stack.Screen name={"TicketForm"} component={TicketForm} />
           <Stack.Screen name={"WebView"} component={PaypalWebView} />
         </Stack.Navigator>
       </NavigationContainer>

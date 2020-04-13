@@ -10,6 +10,7 @@ class HomeScreen extends Component {
       user: null,
       storage: {},
       count: 0,
+      isAuthenticated: false,
     };
   }
 
@@ -17,6 +18,7 @@ class HomeScreen extends Component {
     if (prevProps !== this.props) {
       this.setState({
         user: this.props.auth.user,
+        isAuthenticated: this.props.auth.isAuthenticated,
       });
     }
   }
@@ -27,24 +29,36 @@ class HomeScreen extends Component {
     return (
       <View style={home.container}>
         <Text style={home.textGreen}>Home Screen</Text>
-        {this.props.auth.isAuthenticated ? (
+        {this.state.isAuthenticated ? (
           <Text style={home.textGreen}>Welcome, you have signed in.</Text>
+        ) : (
+          <Button
+            style={home.textGreen}
+            title="Go to LogIn"
+            onPress={() => navigation.navigate("Login")}
+          />
+        )}
+
+        {this.state.isAuthenticated ? (
+          <Button
+            style={home.textGreen}
+            title="Buy Tickets"
+            onPress={() => navigation.navigate("TicketForm")}
+          />
         ) : null}
-        <Button
-          style={home.textGreen}
-          title="Go to Tickets"
-          onPress={() => navigation.navigate("Tickets")}
-        />
-        <Button
-          style={home.textGreen}
-          title="Go to LogIn"
-          onPress={() => navigation.navigate("Login")}
-        />
         <Button
           style={home.textGreen}
           title="Go to WebView"
           onPress={() => navigation.navigate("WebView")}
         />
+        {this.state.isAuthenticated ? (
+          <Button
+            style={home.textGreen}
+            title="Logout"
+            onPress={() => navigation.navigate("Login")}
+          />
+        ) : null}
+
         <Button
           style={home.textGreen}
           title="force update data"

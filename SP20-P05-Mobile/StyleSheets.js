@@ -115,3 +115,26 @@ export const TEST_STYLE = StyleSheet.create({
     borderColor: "#ee82ee",
   },
 });
+export const ticketForm = StyleSheet.create({
+  container: {
+    flex: 10,
+    backgroundColor: "#dddddd",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonBottom: {
+    marginTop: 200,
+    width: 100,
+    backgroundColor: "#0d5d0d",
+    borderColor: "#0d5d0d",
+  },
+  picker: {
+    color: "#90ee90",
+    height: 50,
+    width: 200,
+  },
+  progress: {
+    flex: 1,
+    backgroundColor: "#0d5d0d",
+  },
+});

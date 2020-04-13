@@ -49,7 +49,10 @@
 *****4/11/20 DM
 -Added Dependencies:
     -react-native-webview
-    
+-Set up a webview component
+    -Began attempting to send/receive data (WIP)
+-When a user logs in, An option to buy tickets will appear on the home page
+-Began working on TicketForm (WIP)
     
 
 

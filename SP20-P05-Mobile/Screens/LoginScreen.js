@@ -12,6 +12,7 @@ class LoginScreen extends Component {
     this.state = {
       username: "",
       password: "",
+      loading: false,
     };
   }
 
