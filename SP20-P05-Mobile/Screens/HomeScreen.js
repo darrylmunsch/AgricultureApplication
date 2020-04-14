@@ -7,7 +7,7 @@ class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
+      user: {},
       storage: {},
       count: 0,
       isAuthenticated: false,
