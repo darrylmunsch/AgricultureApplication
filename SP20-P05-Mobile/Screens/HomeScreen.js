@@ -38,12 +38,9 @@ class HomeScreen extends Component {
       <ImageBackground source={bg} style={home.image}>
         <StatusBar barStyle={"dark-content"} />
         <SafeAreaView style={home.container}>
-          <Text style={home.textGreen}>Envoc Aggriculture Co.</Text>
-          <Text>Testing Data from Redux: </Text>
-          <Text>
-            isAuthenticated: {JSON.stringify(this.props.auth.isAuthenticated)}
-          </Text>
-          <Text>User: {JSON.stringify(this.props.auth.user)}</Text>
+          <Text style={home.h1}>Envoc</Text>
+          <Text style={home.h2}>Aggriculture Co.</Text>
+          <Text style={home.h3}>From our farm to your table.</Text>
         </SafeAreaView>
       </ImageBackground>
     );

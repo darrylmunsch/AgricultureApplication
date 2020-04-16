@@ -24,9 +24,6 @@ export const main = StyleSheet.create({
 
 export const home = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
   textGreen: {
     color: "green",
@@ -44,13 +41,30 @@ export const home = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: "cover",
-    justifyContent: "center",
+
   },
+  h1: {
+    textAlign: "center",
+    fontSize: 55,
+    color: "green",
+    paddingTop: 230
+  },
+  h2: {
+    textAlign: "center",
+    fontSize: 50,
+    color: "brown",
+  },
+  h3: {
+    textAlign: "center",
+    fontSize: 20,
+    paddingTop: 20,
+    color: "#987856"
+  }
 });
 export const login = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#6ee28a",
+    backgroundColor: "#90cd9e",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -116,7 +130,7 @@ export const ButtonStyle = StyleSheet.create({
   light: {
     backgroundColor: "#e1ffdf",
     borderColor: "#e1ffdf",
-    color: "#6ee28a",
+    color: "#90cd9e",
     shadowColor: "#469856",
     shadowOffset: { width: 2, height: 2 },
     shadowRadius: 4,
@@ -124,7 +138,7 @@ export const ButtonStyle = StyleSheet.create({
     width: "40%",
   },
   lightText: {
-    color: "#6ee28a",
+    color: "#90cd9e",
   },
 });
 export const TEST_STYLE = StyleSheet.create({
