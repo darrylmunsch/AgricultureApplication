@@ -1,7 +1,9 @@
+import 'react-native-get-random-values';
 import React, { Component } from "react";
 import { WebView } from "react-native-webview";
 import { baseurl } from "../Constants";
 import { connect } from "react-redux";
+
 
 class PaypalWebView extends Component {
   constructor(props) {
