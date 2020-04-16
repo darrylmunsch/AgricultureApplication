@@ -31,12 +31,13 @@ class TicketForm extends Component {
       lgBucket: "0",
       bucketDisable: true,
       amountDisable: true,
-      buttonDisable: true
+      buttonDisable: true,
+      BucketTotalPrice: ""
     };
   }
   /// WIP : Todo : Add incrementer next to small / med / large button .
   // Remove How many Tickets.. it will be defined by the increments next to the buckets
-
+  // ToDo : add to component did update handler for bucket changing size
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.state.numTickets !== prevState.numTickets) {
       this.getTicketTotal();
@@ -55,6 +56,21 @@ class TicketForm extends Component {
       this.getTicketTotal();
       console.log(this.state.ticketTotal);
       this.checkTotal();
+    }
+    //Todo , make this work.
+    if (this.state.smBucket != prevState.smBucket) {
+      //this.getBucketQty();
+      console.log("Number of small buckets", this.state.smBucket);
+      //TODO: GET TOTAL OF BUCKETS TO CONSOLE LOG
+      //this.getTotalWithBuckets();
+    }
+    if (this.state.medBucket != prevState.medBucket) {
+      //this.getBucketQty();
+      console.log("Number of medium buckets", this.state.medBucket);
+    }
+    if (this.state.lgBucket != prevState.lgBucket) {
+      //this.getBucketQty();
+      console.log("Number of large buckets", this.state.lgBucket);
     }
   }
   getFarmFieldId = async data => {
@@ -209,6 +225,14 @@ class TicketForm extends Component {
       ticketTotal: this.state.numTickets * this.state.selectedBucketPrice
     });
   };
+
+  //TODO:  , calculate the total correctly
+  getTotalWithBuckets = () => {
+    this.setState({
+      BucketTotalPrice: this.state.smBucket * this.state.selectedBucketPrice
+    });
+    console.log("Price of buckets:  ", this.state.BucketTotalPrice);
+  };
   setSelectedBucketPrice = size => {
     console.log("Setting Selected Bucket Price...");
     switch (size) {
@@ -243,7 +267,18 @@ class TicketForm extends Component {
 
   handleBucketQtySm = event => {
     this.setState({ smBucket: event.target.value });
-    console.log(this.state.smBucket);
+
+    //console.log(this.state.smBucket);
+  };
+  handleBucketQtyMed = event => {
+    this.setState({ medBucket: event.target.value });
+
+    //console.log(this.state.smBucket);
+  };
+  handleBucketQtyLg = event => {
+    this.setState({ lgBucket: event.target.value });
+
+    //console.log(this.state.smBucket);
   };
 
   // this.setState({
@@ -301,7 +336,10 @@ class TicketForm extends Component {
                     </div>
                     <div>Medium Bucket: {this.state.bucketPriceMD}</div>
                     <div>
-                      <Select>
+                      <Select
+                        onChange={this.handleBucketQtyMed}
+                        value={this.state.medBucket}
+                      >
                         <MenuItem value="">
                           <em>None</em>
                         </MenuItem>
@@ -322,7 +360,10 @@ class TicketForm extends Component {
                       Large Bucket: {this.state.bucketPriceLG}
                     </div>
                     <div>
-                      <Select>
+                      <Select
+                        onChange={this.handleBucketQtyLg}
+                        value={this.state.lgBucket}
+                      >
                         <MenuItem value="">
                           <em>None</em>
                         </MenuItem>
