@@ -23,12 +23,12 @@
 
 *****4/9/20 DM
 -Added Constants.js to main project
--Added LoginScreen.js to Screens
+-Added Login.js to Screens
 -Added Button.js and FormTextInput.js to Components folder
     -These are template functions to be reused in many cases
 -Added Resources folder for images, etc.
 -Added Storage.js to Functions folder. Stores multiple AsyncStorage functions to be used across app.
--LoginScreen successfully authorizes a valid login.
+-Login successfully authorizes a valid login.
     -Need to finish passing data to/from screens via AsyncStorage.
     
 *****4/10/20 DM
@@ -53,7 +53,14 @@
     -Began attempting to send/receive data (WIP)
 -When a user logs in, An option to buy tickets will appear on the home page
 -Began working on TicketForm (WIP)
-    
+-TicketScreen renamed to TicketForm
+
+*****4/15/20 DM
+-Added Dependencies:
+    -@react-navigation/material-bottom-tabs 
+    -react-native-paper
+-Began refactoring app layout
+    -Added Bottom Tab Navigator
 
 
 

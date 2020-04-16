@@ -20,10 +20,9 @@ class PaypalWebView extends Component {
   };
 
   render() {
-    const INJECTED_JAVASCRIPT = `(function() {
-    window.ReactNativeWebView.postMessage(JSON.stringify(window.location));
-})();`;
-    return <WebView source={{ uri: `${baseurl}/tickets` }} />;
+    console.log("WebView props: " + this.props);
+
+    return <WebView source={{ uri: `${baseurl}/trial` }} />;
   }
 }
 

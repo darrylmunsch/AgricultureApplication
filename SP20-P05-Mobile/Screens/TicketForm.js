@@ -22,6 +22,13 @@ class TicketForm extends Component {
       errorMd: "",
       errorLg: "",
       ticketTotal: "",
+      finalTicket: {
+        field: "",
+        totalCost: "",
+        smBuckets: 0,
+        mdBuckets: 0,
+        lgBuckets: 0,
+      },
     };
   }
 
@@ -82,7 +89,18 @@ class TicketForm extends Component {
     });
   };
   goToPurchase = () => {
-    console.log("Add the goToPurchase function!");
+    this.setState({
+      finalTicket: {
+        field: this.state.selectedField,
+        totalCost: this.state.ticketTotal,
+        smBuckets: this.state.smBuckets,
+        mdBuckets: this.state.mdBuckets,
+        lgBuckets: this.state.lgBuckets,
+      },
+    });
+    this.props.navigation.navigate("WebView", {
+      ticket: this.state.finalTicket,
+    });
   };
   setNumSmBuckets = (value) => {
     const isnum = /^\d+$/.test(value);
@@ -207,9 +225,3 @@ class TicketForm extends Component {
   }
 }
 export default TicketForm;
-
-/*
-Strawberry: 10 15 20
-Blackberry:
-
- */

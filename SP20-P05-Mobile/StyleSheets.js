@@ -25,12 +25,11 @@ export const main = StyleSheet.create({
 export const home = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#343a40",
     alignItems: "center",
     justifyContent: "center",
   },
   textGreen: {
-    color: "#90ee90",
+    color: "green",
   },
   textLarge: {
     fontSize: 30,
@@ -42,28 +41,39 @@ export const home = StyleSheet.create({
     borderColor: "#90ee90",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+  },
 });
 export const login = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#343a40",
+    backgroundColor: "#6ee28a",
     alignItems: "center",
     justifyContent: "center",
-  },
-  textGreen: {
-    color: "#90ee90",
   },
   formContainer: {
     flex: 1,
     justifyContent: "center",
-    width: "80%",
   },
   formStyle: {
     height: 40,
-    borderColor: "#90ee90",
-    color: "#90ee90",
+    borderColor: "#e1ffdf",
+    color: "#e1ffdf",
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginBottom: 20,
+  },
+  centerText: {
+    textAlign: "center",
+    fontSize: 20,
+    color: "#e1ffdf",
+  },
+  centerFooter: {
+    textAlign: "center",
+    fontSize: 15,
+    alignItems: "center",
   },
 });
 export const ticket = StyleSheet.create({
@@ -104,9 +114,17 @@ export const ButtonStyle = StyleSheet.create({
     height: 20,
   },
   light: {
-    backgroundColor: "#90ee90",
-    color: "#343a40",
-    borderColor: "#90ee90",
+    backgroundColor: "#e1ffdf",
+    borderColor: "#e1ffdf",
+    color: "#6ee28a",
+    shadowColor: "#469856",
+    shadowOffset: { width: 2, height: 2 },
+    shadowRadius: 4,
+    shadowOpacity: 0.8,
+    width: "40%",
+  },
+  lightText: {
+    color: "#6ee28a",
   },
 });
 export const TEST_STYLE = StyleSheet.create({
@@ -136,5 +154,16 @@ export const ticketForm = StyleSheet.create({
   progress: {
     flex: 1,
     backgroundColor: "#0d5d0d",
+  },
+});
+export const profile = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#dddddd",
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
   },
 });
