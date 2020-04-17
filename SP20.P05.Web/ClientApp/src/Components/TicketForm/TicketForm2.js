@@ -32,11 +32,11 @@ class TicketForm extends Component {
       bucketDisable: true,
       amountDisable: true,
       buttonDisable: true,
-      BucketTotalPrice: ""
+      BucketTotalPrice: "",
+      cartPrice: "",
     };
   }
-  /// WIP : Todo : Add incrementer next to small / med / large button .
-  // Remove How many Tickets.. it will be defined by the increments next to the buckets
+
   // ToDo : add to component did update handler for bucket changing size
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.state.numTickets !== prevState.numTickets) {
@@ -73,17 +73,17 @@ class TicketForm extends Component {
       console.log("Number of large buckets", this.state.lgBucket);
     }
   }
-  getFarmFieldId = async data => {
+  getFarmFieldId = async (data) => {
     await axios
       .get(this.farmFieldActiveUrl)
-      .then(response => {
+      .then((response) => {
         if (response.data.name === this.state.selectedField) {
           console.log(response.data.id);
         }
       })
-      .catch(error => console.log(error.response));
+      .catch((error) => console.log(error.response));
   };
-  handleFieldChange = e => {
+  handleFieldChange = (e) => {
     let val = e.target.value;
     if (val === "Choose Farm Field...") {
       this.setState({ selectedField: "" });
@@ -96,7 +96,7 @@ class TicketForm extends Component {
     this.setBucketPriceMD(val);
     this.setBucketPriceLG(val);
   };
-  setBucketPriceSM = selectedField => {
+  setBucketPriceSM = (selectedField) => {
     console.log("setBucketPriceSM hit");
     switch (selectedField) {
       case "Blueberry":
@@ -123,7 +123,7 @@ class TicketForm extends Component {
       sessionStorage.getItem("selectedField") !== null
     ) {
       this.setState({
-        bucketDisable: false
+        bucketDisable: false,
       });
     }
   };
@@ -146,7 +146,7 @@ class TicketForm extends Component {
       this.setState({ buttonDisable: true });
     } else this.setState({ buttonDisable: false });
   };
-  setBucketPriceMD = selectedField => {
+  setBucketPriceMD = (selectedField) => {
     console.log("setBucketPriceMD hit");
     switch (selectedField) {
       case "Blueberry":
@@ -167,7 +167,7 @@ class TicketForm extends Component {
         return;
     }
   };
-  setBucketPriceLG = selectedField => {
+  setBucketPriceLG = (selectedField) => {
     console.log("setBucketPriceLG hit");
     switch (selectedField) {
       case "Blueberry":
@@ -188,7 +188,7 @@ class TicketForm extends Component {
         return;
     }
   };
-  handleBucketChange = e => {
+  handleBucketChange = (e) => {
     console.log("Bucket Changed...");
     // Set val to form value
     const val = e.target.value;
@@ -203,14 +203,14 @@ class TicketForm extends Component {
     }
     this.setSelectedBucketPrice(val);
   };
-  handleNumberChange = e => {
+  handleNumberChange = (e) => {
     console.log("Number of Tickets Changed...");
     // Set val to form value
     const val = e.target.value;
     if (val !== 0) {
       sessionStorage.setItem("numTickets", val);
       this.setState({
-        numTickets: val
+        numTickets: val,
       });
     }
   };
@@ -222,18 +222,18 @@ class TicketForm extends Component {
     sessionStorage.setItem("ticketTotal", ans.toString());
 
     this.setState({
-      ticketTotal: this.state.numTickets * this.state.selectedBucketPrice
+      ticketTotal: this.state.numTickets * this.state.selectedBucketPrice,
     });
   };
 
   //TODO:  , calculate the total correctly
   getTotalWithBuckets = () => {
     this.setState({
-      BucketTotalPrice: this.state.smBucket * this.state.selectedBucketPrice
+      BucketTotalPrice: this.state.smBucket * this.state.selectedBucketPrice,
     });
     console.log("Price of buckets:  ", this.state.BucketTotalPrice);
   };
-  setSelectedBucketPrice = size => {
+  setSelectedBucketPrice = (size) => {
     console.log("Setting Selected Bucket Price...");
     switch (size) {
       case "Small":
@@ -242,7 +242,7 @@ class TicketForm extends Component {
           sessionStorage.getItem("bucketPriceSM").substring(1)
         );
         return this.setState({
-          selectedBucketPrice: this.state.bucketPriceSM.substring(1)
+          selectedBucketPrice: this.state.bucketPriceSM.substring(1),
         });
       case "Medium":
         sessionStorage.setItem(
@@ -250,7 +250,7 @@ class TicketForm extends Component {
           sessionStorage.getItem("bucketPriceMD").substring(1)
         );
         return this.setState({
-          selectedBucketPrice: this.state.bucketPriceMD.substring(1)
+          selectedBucketPrice: this.state.bucketPriceMD.substring(1),
         });
       case "Large":
         sessionStorage.setItem(
@@ -258,24 +258,31 @@ class TicketForm extends Component {
           sessionStorage.getItem("bucketPriceLG").substring(1)
         );
         return this.setState({
-          selectedBucketPrice: this.state.bucketPriceLG.substring(1)
+          selectedBucketPrice: this.state.bucketPriceLG.substring(1),
         });
       default:
         return console.log("Error setting selected bucket price");
     }
   };
 
-  handleBucketQtySm = event => {
+  //TODO: Get this to change cart price from empty string to the
+  // Reflected price..
+  handleBucketQtySm = (event) => {
     this.setState({ smBucket: event.target.value });
+    sessionStorage.getItem("bucketPriceSM").substring(1);
+    let price = this.state.smBucket * this.state.selectedBucketPrice;
+    console.log("**Price Logging**: ", price);
+    this.setState({ cartPrice: price });
+    console.log("Cart price: ", this.state.cartPrice);
 
     //console.log(this.state.smBucket);
   };
-  handleBucketQtyMed = event => {
+  handleBucketQtyMed = (event) => {
     this.setState({ medBucket: event.target.value });
 
     //console.log(this.state.smBucket);
   };
-  handleBucketQtyLg = event => {
+  handleBucketQtyLg = (event) => {
     this.setState({ lgBucket: event.target.value });
 
     //console.log(this.state.smBucket);
@@ -298,7 +305,7 @@ class TicketForm extends Component {
                 onChange={this.handleFieldChange}
               >
                 <option>Choose Farm Field...</option>
-                {this.state.fields.map(field => (
+                {this.state.fields.map((field) => (
                   <option key={field}>{field}</option>
                 ))}
               </Form.Control>
