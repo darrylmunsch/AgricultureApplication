@@ -6,11 +6,11 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { login, ButtonStyle } from "../StyleSheets";
-import FormTextInput from "../Components/FormTextInput";
-import Button from "../Components/Button";
-import { loginCurrentUser, logoutUser } from "../Redux/Actions/AuthActions";
+import FormTextInput from "./FormTextInput";
+import Button from "./Button";
+import { loginUser, logoutUser } from "../Redux/Actions/AuthActions";
 import { connect } from "react-redux";
-import DismissKeyboard from "../Components/DismissKeyboard";
+import DismissKeyboard from "./DismissKeyboard";
 
 class Login extends Component {
   constructor(props) {
@@ -114,7 +114,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => {
   return {
     loginUser: (userData) => {
-      dispatch(loginCurrentUser(userData));
+      dispatch(loginUser(userData));
     },
     logoutUser: () => dispatch(logoutUser()),
   };

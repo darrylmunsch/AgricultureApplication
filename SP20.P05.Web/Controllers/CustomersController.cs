@@ -34,13 +34,13 @@ namespace SP20.P05.Web.Controllers
                 var identityResult = await userManager.CreateAsync(newUser, dto.Password);
                 if (!identityResult.Succeeded)
                 {
-                    return BadRequest();
+                    return BadRequest(identityResult.Errors);
                 }
 
                 var roleResult = await userManager.AddToRoleAsync(newUser, Roles.Customer);
                 if (!roleResult.Succeeded)
                 {
-                    return BadRequest();
+                    return BadRequest(roleResult.Errors);
                 }
 
                 transaction.Commit(); // this marks our work as done

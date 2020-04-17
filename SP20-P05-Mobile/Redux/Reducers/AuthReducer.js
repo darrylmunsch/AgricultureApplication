@@ -12,6 +12,8 @@ const initialState = {
   isAuthenticated: false,
   user: {},
   loading: false,
+  registered: false,
+  error: null,
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -22,6 +24,11 @@ export default function (state = initialState, action) {
         ...state,
         isAuthenticated: !isEmpty(action.payload),
         user: action.payload,
+      };
+    case "REGISTER_USER":
+      return {
+        ...state,
+        registered: action.payload,
       };
     case "USER_LOADING":
       return {

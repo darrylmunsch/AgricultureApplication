@@ -23,8 +23,7 @@ export const main = StyleSheet.create({
 // Note: each export should contain all styles for a specific component, function, etc unless needed otherwise
 
 export const home = StyleSheet.create({
-  container: {
-  },
+  container: {},
   textGreen: {
     color: "green",
   },
@@ -41,13 +40,12 @@ export const home = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: "cover",
-
   },
   h1: {
     textAlign: "center",
     fontSize: 55,
     color: "green",
-    paddingTop: 230
+    paddingTop: 230,
   },
   h2: {
     textAlign: "center",
@@ -58,8 +56,8 @@ export const home = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     paddingTop: 20,
-    color: "#987856"
-  }
+    color: "#987856",
+  },
 });
 export const login = StyleSheet.create({
   container: {

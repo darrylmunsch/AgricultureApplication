@@ -62,6 +62,10 @@
 -Began refactoring app layout
     -Added Bottom Tab Navigator
 
+*****4/16/20 DM
+-Finished Logic behind Register form
+    -All fields have correct validation
+    -Correctly gets status code from backend (Identity)
 
 
 
