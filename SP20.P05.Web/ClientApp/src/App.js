@@ -16,6 +16,7 @@ import Register from "./Pages/Register/Register";
 import Admin from "./Components/RBA/Admin";
 import TestStorageMapping from "./Components/TestingLocalStorage";
 import { AboutUs } from "./Pages/AboutUs/AboutUs";
+import PayPalPage from './Pages/Mobile/PayPal/PayPalPage';
 
 // CSS
 import "./Pages/HomePage/HomePage.css";
@@ -36,7 +37,7 @@ function App() {
         <Route exact path="/tickets" component={Tickets} />
         <Route exact path={"/login"} component={Login} />
         <Route exact path={"/register"} component={Register} />
-        <Route exact path={"/trial"} component={PayPal} />
+        <Route exact path={"/trial"} component={PayPalPage} />
         <Route
           exact
           path={"/TestStorageMapping"}
