@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/RBA/PrivateRoute";
 import NavBar from "./Components/NavBar/NavBar";
-import PayPal from "./Components/Paypal/PayPal";
 
 // Context
 import { UserContext } from "./Components/Hooks/Context/UserContext";
@@ -17,6 +16,7 @@ import Admin from "./Components/RBA/Admin";
 import TestStorageMapping from "./Components/TestingLocalStorage";
 import { AboutUs } from "./Pages/AboutUs/AboutUs";
 import PayPalPage from './Pages/Mobile/PayPal/PayPalPage';
+import PayPal from './Components/Paypal/PayPal';
 
 // CSS
 import "./Pages/HomePage/HomePage.css";
@@ -37,7 +37,8 @@ function App() {
         <Route exact path="/tickets" component={Tickets} />
         <Route exact path={"/login"} component={Login} />
         <Route exact path={"/register"} component={Register} />
-        <Route exact path={"/trial"} component={PayPalPage} />
+        <Route exact path={"/trial"} component={PayPal} />
+        <Route exact path={"/mobilePay/:price/:ticketInfo"} component={PayPalPage} />
         <Route
           exact
           path={"/TestStorageMapping"}

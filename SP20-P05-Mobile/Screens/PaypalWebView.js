@@ -9,21 +9,12 @@ class PaypalWebView extends Component {
     super(props);
   }
 
-  handleOnMessage = (e) => {
-    const { data } = e.nativeEvent;
-    console.log("Message Received...\n" + data);
-  };
-  postMessage = () => {
-    if (this.webview) {
-      this.webview.postMessage('"Hello" from React Native!');
-    }
-    console.log("Sent Post Message");
-  };
-
   render() {
-    console.log("WebView props: " + this.props);
-
-    return <WebView source={{ uri: `${baseurl}/trial` }} />;
+    return(
+      <WebView
+          source={{uri: `${baseurl}/mobilePay/${this.props.price}/?ticketInfo=${this.props.ticketInfo}`}}
+      />
+    )
   }
 }
 
