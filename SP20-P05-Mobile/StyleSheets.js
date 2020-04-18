@@ -78,25 +78,20 @@ export const login = StyleSheet.create({
     marginBottom: 20,
   },
   centerText: {
-    textAlign: "center",
+    textAlign: "left",
     fontSize: 20,
+    color: "#e1ffdf",
+    paddingBottom: 20,
+  },
+  centerTextLarge: {
+    textAlign: "left",
+    fontSize: 30,
     color: "#e1ffdf",
   },
   centerFooter: {
     textAlign: "center",
     fontSize: 15,
     alignItems: "center",
-  },
-});
-export const ticket = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#343a40",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  textGreen: {
-    color: "#90ee90",
   },
 });
 export const form = StyleSheet.create({
@@ -139,18 +134,16 @@ export const ButtonStyle = StyleSheet.create({
     color: "#90cd9e",
   },
 });
-export const TEST_STYLE = StyleSheet.create({
-  formColors: {
-    color: "#ee82ee",
-    borderColor: "#ee82ee",
-  },
-});
 export const ticketForm = StyleSheet.create({
   container: {
-    flex: 10,
-    backgroundColor: "#dddddd",
+    flex: 1,
+    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  header: {
+    color: "#e1ffdf",
+    fontSize: 25,
   },
   buttonBottom: {
     marginTop: 200,
@@ -159,13 +152,41 @@ export const ticketForm = StyleSheet.create({
     borderColor: "#0d5d0d",
   },
   picker: {
-    color: "#90ee90",
-    height: 50,
+    color: "#e1ffdf",
+    height: 30,
     width: 200,
+    marginTop: -50,
   },
   progress: {
     flex: 1,
     backgroundColor: "#0d5d0d",
+  },
+  blueberry: {
+    height: 100,
+    width: 300,
+    borderColor: "#e1ffdf",
+    borderWidth: 1,
+    borderRadius: 4,
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  Img: {
+    width: 100,
+    resizeMode: "cover",
+    flex: 0.4,
+  },
+  ImgView: {
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    color: "#e1ffdf",
+  },
+  navigateBack: {
+    color: "green",
+    alignSelf: "flex-end",
   },
 });
 export const profile = StyleSheet.create({

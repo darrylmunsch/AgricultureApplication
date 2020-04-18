@@ -17,7 +17,6 @@ class AuthScreen extends Component {
     });
   }
   render() {
-    console.log("AuthScreen Props: " + this.props);
     return !this.state.showReg ? (
       <Login func={this.setScreen} navigation={this.props.navigation} />
     ) : (

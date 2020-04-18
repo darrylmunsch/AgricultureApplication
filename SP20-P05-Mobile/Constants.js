@@ -26,3 +26,21 @@ export const BucketPrices = {
     lgBucketPrice: "24",
   },
 };
+export const Fields = [
+  {
+    id: 1,
+    title: "Blueberry Field",
+  },
+  {
+    id: 2,
+    title: "Blackberry Field",
+  },
+  {
+    id: 3,
+    title: "Strawberry Field",
+  },
+  {
+    id: 4,
+    title: "Pumpkin Field",
+  },
+];

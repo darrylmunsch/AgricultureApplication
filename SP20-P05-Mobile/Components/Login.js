@@ -27,9 +27,6 @@ class Login extends Component {
       this.props.navigation.navigate("Home");
     }
   }
-  componentDidMount() {
-    console.log(this.props);
-  }
 
   handleUsernameChange = (username) => {
     this.setState({ username: username });
@@ -47,12 +44,7 @@ class Login extends Component {
     console.log("login pressed" + JSON.stringify(userData));
     console.log(this.props.auth.loading);
   };
-  handleLogout = () => {
-    console.log("test");
-    this.props.logoutUser();
-  };
   handlePress = () => {
-    console.log("test");
     this.props.func();
   };
 
@@ -63,7 +55,8 @@ class Login extends Component {
           {!this.state.loading ? (
             <View>
               <View style={{ width: 300 }}>
-                <Text style={login.centerText}>Log In</Text>
+                <Text style={login.centerTextLarge}>Welcome back,</Text>
+                <Text style={login.centerText}>Log In to continue</Text>
                 <FormTextInput
                   value={this.state.username}
                   onChangeText={this.handleUsernameChange}

@@ -115,7 +115,8 @@ class Register extends Component {
         <KeyboardAvoidingView style={login.container}>
           <View>
             <View style={{ width: 300 }}>
-              <Text style={login.centerText}>Register</Text>
+              <Text style={login.centerTextLarge}>Create your account,</Text>
+              <Text style={login.centerText}>Sign up to continue</Text>
               <FormTextInput
                 value={this.state.username}
                 onChangeText={this.handleUsernameChange}
@@ -134,7 +135,7 @@ class Register extends Component {
                 secureTextEntry
                 style={login.formStyle}
               />
-              {this.state.PassReqErr !== "" ? (
+              {this.state.PassReqErr ? (
                 <Text style={{ color: "red" }}>{this.state.PassReqErr}</Text>
               ) : null}
               <FormTextInput

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { Text, View, Picker } from "react-native";
+import { Text, View, Picker, FlatList } from "react-native";
 import { ticketForm } from "../StyleSheets";
 import Button from "../Components/Button";
-import { BucketPrices } from "../Constants";
+import { BucketPrices, Fields } from "../Constants";
 import FormTextInput from "../Components/FormTextInput";
 import DismissKeyboard from "../Components/DismissKeyboard";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
+import BucketSelect from "../Components/BucketSelect";
 
 class TicketForm extends Component {
   constructor(props) {
@@ -70,7 +72,6 @@ class TicketForm extends Component {
         return;
     }
   };
-
   setValue = (item) => {
     this.setState({
       selectedField: item,
@@ -158,7 +159,7 @@ class TicketForm extends Component {
         <View style={ticketForm.container}>
           {this.state.step === 1 ? (
             <View style={ticketForm.container}>
-              <Text>Select Farm Field</Text>
+              <Text style={ticketForm.header}>Select Farm Field</Text>
               <Picker
                 selectedValue={selectedField}
                 style={ticketForm.picker}
@@ -181,43 +182,7 @@ class TicketForm extends Component {
             </View>
           ) : null}
           {this.state.step === 2 ? (
-            <View style={ticketForm.container}>
-              <Text>{this.state.selectedField}</Text>
-              <Text>Please pick your bucket(s)</Text>
-              <Text>Small Bucket Price: ${this.state.smBucketPrice}</Text>
-              <FormTextInput
-                style={{ width: 200 }}
-                placeholder={"How many small buckets?"}
-                keyboardType={"numeric"}
-                onChangeText={this.setNumSmBuckets}
-              />
-              {this.state.error !== "" ? (
-                <Text style={{ color: "#ff0000" }}>{this.state.errorSm}</Text>
-              ) : null}
-              <Text>Medium Bucket Price: ${this.state.mdBucketPrice}</Text>
-              <FormTextInput
-                style={{ width: 200 }}
-                placeholder={"How many medium buckets?"}
-                keyboardType={"numeric"}
-                onChangeText={this.setNumMdBuckets}
-              />
-              {this.state.error !== "" ? (
-                <Text style={{ color: "#ff0000" }}>{this.state.errorMd}</Text>
-              ) : null}
-              <Text>Large Bucket Price: ${this.state.lgBucketPrice}</Text>
-              <FormTextInput
-                style={{ width: 200 }}
-                placeholder={"How many large buckets?"}
-                keyboardType={"numeric"}
-                onChangeText={this.setNumLgBuckets}
-              />
-              {this.state.error !== "" ? (
-                <Text style={{ color: "#ff0000" }}>{this.state.errorLg}</Text>
-              ) : null}
-              <Text>Ticket Total: ${this.state.ticketTotal}</Text>
-              <Button label={"Back to fields"} onPress={this.decreaseStep} />
-              <Button label={"Purchase Tickets!"} onPress={this.goToPurchase} />
-            </View>
+            <BucketSelect selectedField={this.state.selectedField} />
           ) : null}
         </View>
       </DismissKeyboard>
