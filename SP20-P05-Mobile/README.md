@@ -23,14 +23,49 @@
 
 *****4/9/20 DM
 -Added Constants.js to main project
--Added LoginScreen.js to Screens
+-Added Login.js to Screens
 -Added Button.js and FormTextInput.js to Components folder
     -These are template functions to be reused in many cases
 -Added Resources folder for images, etc.
 -Added Storage.js to Functions folder. Stores multiple AsyncStorage functions to be used across app.
--LoginScreen successfully authorizes a valid login.
+-Login successfully authorizes a valid login.
     -Need to finish passing data to/from screens via AsyncStorage.
+    
+*****4/10/20 DM
+-Added Dependencies:
+    -redux
+    -react-redux
+    -is-empty
+    -redux-thunk
+-Implemented Redux -- it still sucks.     
+    -The user state, and any other state, can be configured so that we have access to it anywhere in the app.
+    -Added Redux folder with multiple files corresponding to the redux life-cycle. Don't break them.
+-Tested Login & Logout functionality. 
+    -Successfully Logging in redirects used back home.
+-Lines 13-15 of "AuthActions" use "Axios.create()", allowing us to store an instance of 
+ Axios with our baseurl, making api calls shorter to write.
+-NOTE: Logout redirects user back to home. This is not intentional. /shrug
 
+*****4/11/20 DM
+-Added Dependencies:
+    -react-native-webview
+-Set up a webview component
+    -Began attempting to send/receive data (WIP)
+-When a user logs in, An option to buy tickets will appear on the home page
+-Began working on TicketForm (WIP)
+-TicketScreen renamed to TicketForm
+
+*****4/15/20 DM
+-Added Dependencies:
+    -@react-navigation/material-bottom-tabs 
+    -react-native-paper
+-Began refactoring app layout
+    -Added Bottom Tab Navigator
+
+*****4/16/20 DM
+-Finished Logic behind Register form
+    -All fields have correct validation
+    -Correctly gets status code from backend (Identity)
 
 
 

@@ -1,19 +1,12 @@
 import React, { Component } from "react";
 import { Button, Col, Form, Jumbotron } from "react-bootstrap";
-import Stripe from "./Stripe";
-import ReactDOM from "react-dom";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "./CheckoutForm";
+import PayPal from '../Paypal/PayPal';
 
 // CSS
 import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-const stripePromise = loadStripe("pk_test_Rtv1biV3asCHTEeJ0UxXpD6x00P2Q6h9LA");
 
 class BuyTicketForm extends Component {
   constructor(props) {
@@ -42,14 +35,13 @@ class BuyTicketForm extends Component {
       });
   };
 
+
   render() {
     return (
       <div>
         <Jumbotron className={"jumbo_clr"}>
           <h1>Purchase Tickets</h1>
-          <Elements stripe={stripePromise}>
-            <CheckoutForm />
-          </Elements>
+          <PayPal price={this.props.ticketTotal} description={'Farm field ticket purchase.'} />
           <div className={"divider div-transparent"} />
           <div>
             <Button onClick={this.props.changeForm}>Back to Tickets</Button>

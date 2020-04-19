@@ -7,10 +7,10 @@ class Button extends Component {
     super(props);
   }
   render() {
-    const { label, onPress, style } = this.props;
+    const { label, onPress, style, textStyle } = this.props;
     return (
       <TouchableOpacity style={[ButtonStyle.primary, style]} onPress={onPress}>
-        <Text style={ButtonStyle.whiteText}>{label}</Text>
+        <Text style={[ButtonStyle.whiteText, textStyle]}>{label}</Text>
       </TouchableOpacity>
     );
   }

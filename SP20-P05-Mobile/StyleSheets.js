@@ -23,52 +23,75 @@ export const main = StyleSheet.create({
 // Note: each export should contain all styles for a specific component, function, etc unless needed otherwise
 
 export const home = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#343a40",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  container: {},
   textGreen: {
-    color: "#90ee90",
+    color: "green",
   },
   textLarge: {
     fontSize: 30,
     color: "#90ee90",
   },
+  panel: {
+    flex: 1,
+    color: "#90ee90",
+    borderColor: "#90ee90",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+  },
+  h1: {
+    textAlign: "center",
+    fontSize: 55,
+    color: "green",
+    paddingTop: 230,
+  },
+  h2: {
+    textAlign: "center",
+    fontSize: 50,
+    color: "brown",
+  },
+  h3: {
+    textAlign: "center",
+    fontSize: 20,
+    paddingTop: 20,
+    color: "#987856",
+  },
 });
 export const login = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#343a40",
+    backgroundColor: "#90cd9e",
     alignItems: "center",
     justifyContent: "center",
-  },
-  textGreen: {
-    color: "#90ee90",
   },
   formContainer: {
     flex: 1,
     justifyContent: "center",
-    width: "80%",
   },
   formStyle: {
     height: 40,
-    borderColor: "#90ee90",
-    color: "#90ee90",
+    borderColor: "#e1ffdf",
+    color: "#e1ffdf",
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginBottom: 20,
   },
-});
-export const ticket = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#343a40",
-    alignItems: "center",
-    justifyContent: "center",
+  centerText: {
+    textAlign: "left",
+    fontSize: 20,
+    color: "#e1ffdf",
+    paddingBottom: 20,
   },
-  textGreen: {
-    color: "#90ee90",
+  centerTextLarge: {
+    textAlign: "left",
+    fontSize: 30,
+    color: "#e1ffdf",
+  },
+  centerFooter: {
+    textAlign: "center",
+    fontSize: 15,
+    alignItems: "center",
   },
 });
 export const form = StyleSheet.create({
@@ -98,14 +121,82 @@ export const ButtonStyle = StyleSheet.create({
     height: 20,
   },
   light: {
-    backgroundColor: "#90ee90",
-    color: "#343a40",
-    borderColor: "#90ee90",
+    backgroundColor: "#e1ffdf",
+    borderColor: "#e1ffdf",
+    color: "#90cd9e",
+    shadowColor: "#469856",
+    shadowOffset: { width: 2, height: 2 },
+    shadowRadius: 4,
+    shadowOpacity: 0.8,
+    width: "40%",
+  },
+  lightText: {
+    color: "#90cd9e",
   },
 });
-export const TEST_STYLE = StyleSheet.create({
-  formColors: {
-    color: "#ee82ee",
-    borderColor: "#ee82ee",
+export const ticketForm = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  header: {
+    color: "#e1ffdf",
+    fontSize: 25,
+  },
+  buttonBottom: {
+    marginTop: 200,
+    width: 100,
+    backgroundColor: "#0d5d0d",
+    borderColor: "#0d5d0d",
+  },
+  picker: {
+    color: "#e1ffdf",
+    height: 30,
+    width: 200,
+    marginTop: -50,
+  },
+  progress: {
+    flex: 1,
+    backgroundColor: "#0d5d0d",
+  },
+  blueberry: {
+    height: 100,
+    width: 300,
+    borderColor: "#e1ffdf",
+    borderWidth: 1,
+    borderRadius: 4,
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  Img: {
+    width: 100,
+    resizeMode: "cover",
+    flex: 0.4,
+  },
+  ImgView: {
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    color: "#e1ffdf",
+  },
+  navigateBack: {
+    color: "green",
+    alignSelf: "flex-end",
+  },
+});
+export const profile = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#dddddd",
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
   },
 });

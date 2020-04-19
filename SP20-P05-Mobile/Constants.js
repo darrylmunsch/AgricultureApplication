@@ -1,4 +1,4 @@
-export const baseurl = "http://0545a531.ngrok.io";
+export const baseurl = "http://7be32878.ngrok.io";
 
 // Run the below script in the directory under it that I listed.. "the mobile directory7"
 // ngrok http -host-header=rewrite https://localhost:44346/
@@ -8,3 +8,39 @@ export const baseurl = "http://0545a531.ngrok.io";
 // and youre good
 
 //Or type tunnel
+
+export const BucketPrices = {
+  StrawberryField: {
+    smBucketPrice: "10",
+    mdBucketPrice: "15",
+    lgBucketPrice: "20",
+  },
+  BlueberryField: {
+    smBucketPrice: "11",
+    mdBucketPrice: "16",
+    lgBucketPrice: "21",
+  },
+  BlackberryField: {
+    smBucketPrice: "13",
+    mdBucketPrice: "17",
+    lgBucketPrice: "24",
+  },
+};
+export const Fields = [
+  {
+    id: 1,
+    title: "Blueberry Field",
+  },
+  {
+    id: 2,
+    title: "Blackberry Field",
+  },
+  {
+    id: 3,
+    title: "Strawberry Field",
+  },
+  {
+    id: 4,
+    title: "Pumpkin Field",
+  },
+];
