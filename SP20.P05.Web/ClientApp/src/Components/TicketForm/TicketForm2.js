@@ -33,7 +33,10 @@ class TicketForm extends Component {
       amountDisable: true,
       buttonDisable: true,
       BucketTotalPrice: "",
-      cartPrice: "",
+      cartPrice1: "",
+      cartPrice2: "",
+      cartPrice3: "",
+      totalCart: "",
     };
   }
 
@@ -58,21 +61,44 @@ class TicketForm extends Component {
       this.checkTotal();
     }
     //Todo , make this work.
-    if (this.state.smBucket != prevState.smBucket) {
+    if (this.state.smBucket !== prevState.smBucket) {
+      //this.TotalCartPrice();
       //this.getBucketQty();
-      console.log("Number of small buckets", this.state.smBucket);
+      let price = this.state.smBucket * this.state.bucketPriceSM;
+      this.setState({ cartPrice1: price });
+      this.getTotalCart();
+
       //TODO: GET TOTAL OF BUCKETS TO CONSOLE LOG
       //this.getTotalWithBuckets();
     }
-    if (this.state.medBucket != prevState.medBucket) {
+    if (this.state.medBucket !== prevState.medBucket) {
+      let price2 = this.state.medBucket * this.state.bucketPriceMD;
+      this.setState({ cartPrice2: price2 });
+      this.getTotalCart();
+      //this.TotalCartPrice();
+      //let price = this.state.medBucket * this.state.bucketPriceMD;
+      //this.setState({ cartPrice: price });
       //this.getBucketQty();
-      console.log("Number of medium buckets", this.state.medBucket);
+      // console.log("Number of medium buckets", this.state.medBucket);
     }
-    if (this.state.lgBucket != prevState.lgBucket) {
+    if (this.state.lgBucket !== prevState.lgBucket) {
+      let price3 = this.state.lgBucket * this.state.bucketPriceLG;
+      this.setState({ cartPrice3: price3 });
+      this.getTotalCart();
+      //this.TotalCartPrice();
+      //let price = this.state.lgBucket * this.state.bucketPriceLG;
+      //this.setState({ cartPrice: price });
       //this.getBucketQty();
-      console.log("Number of large buckets", this.state.lgBucket);
+      // console.log("Number of large buckets", this.state.lgBucket);
     }
   }
+
+  getTotalCart = () => {
+    let total =
+      this.state.cartPrice1 + this.state.cartPrice2 + this.state.cartPrice3;
+
+    this.setState({ totalCart: total });
+  };
   getFarmFieldId = async (data) => {
     await axios
       .get(this.farmFieldActiveUrl)
@@ -100,19 +126,19 @@ class TicketForm extends Component {
     console.log("setBucketPriceSM hit");
     switch (selectedField) {
       case "Blueberry":
-        this.setState({ bucketPriceSM: "$11" });
-        sessionStorage.setItem("bucketPriceSM", "$11");
+        this.setState({ bucketPriceSM: "11" });
+        sessionStorage.setItem("bucketPriceSM", "11");
         return;
       case "Strawberry":
-        this.setState({ bucketPriceSM: "$10" });
-        sessionStorage.setItem("bucketPriceSM", "$10");
+        this.setState({ bucketPriceSM: "10" });
+        sessionStorage.setItem("bucketPriceSM", "10");
         return;
       case "Blackberry":
-        this.setState({ bucketPriceSM: "$13" });
-        sessionStorage.setItem("bucketPriceSM", "$13");
+        this.setState({ bucketPriceSM: "13" });
+        sessionStorage.setItem("bucketPriceSM", "13");
         return;
       default:
-        this.setState({ bucketPriceSM: "$11" });
+        this.setState({ bucketPriceSM: "11" });
         sessionStorage.setItem("bucketPriceSM", "");
         return;
     }
@@ -150,16 +176,16 @@ class TicketForm extends Component {
     console.log("setBucketPriceMD hit");
     switch (selectedField) {
       case "Blueberry":
-        this.setState({ bucketPriceMD: "$16" });
-        sessionStorage.setItem("bucketPriceMD", "$16");
+        this.setState({ bucketPriceMD: "16" });
+        sessionStorage.setItem("bucketPriceMD", "16");
         return;
       case "Strawberry":
-        this.setState({ bucketPriceMD: "$15" });
-        sessionStorage.setItem("bucketPriceMD", "$15");
+        this.setState({ bucketPriceMD: "15" });
+        sessionStorage.setItem("bucketPriceMD", "15");
         return;
       case "Blackberry":
-        this.setState({ bucketPriceMD: "$17" });
-        sessionStorage.setItem("bucketPriceMD", "$17");
+        this.setState({ bucketPriceMD: "17" });
+        sessionStorage.setItem("bucketPriceMD", "17");
         return;
       default:
         this.setState({ bucketPriceMD: "" });
@@ -171,16 +197,16 @@ class TicketForm extends Component {
     console.log("setBucketPriceLG hit");
     switch (selectedField) {
       case "Blueberry":
-        this.setState({ bucketPriceLG: "$21" });
-        sessionStorage.setItem("bucketPriceLG", "$21");
+        this.setState({ bucketPriceLG: "21" });
+        sessionStorage.setItem("bucketPriceLG", "21");
         return;
       case "Strawberry":
-        this.setState({ bucketPriceLG: "$20" });
-        sessionStorage.setItem("bucketPriceLG", "$20");
+        this.setState({ bucketPriceLG: "20" });
+        sessionStorage.setItem("bucketPriceLG", "20");
         return;
       case "Blackberry":
-        this.setState({ bucketPriceLG: "$24" });
-        sessionStorage.setItem("bucketPriceLG", "$24");
+        this.setState({ bucketPriceLG: "24" });
+        sessionStorage.setItem("bucketPriceLG", "24");
         return;
       default:
         this.setState({ bucketPriceLG: "" });
@@ -265,25 +291,36 @@ class TicketForm extends Component {
     }
   };
 
+  // TotalCartPrice = () => {
+  //   const price1 = this.state.smBucket * this.state.bucketPriceSM;
+  //   const price2 = this.state.medBucket * this.state.bucketPriceMD;
+  //   const price3 = this.state.lgBucket * this.state.bucketPriceLG;
+  //   const FinalTotal = price1 + price2 + price3;
+  //   console.log("Smbucket: ", this.state.smBucket);
+  //   console.log("Bucket PRice:  ", this.state.bucketPriceSM);
+  //   console.log("Price 1:  ", this.state.price1);
+  //   this.setState({ cartPrice: FinalTotal });
+  // };
   //TODO: Get this to change cart price from empty string to the
   // Reflected price..
   handleBucketQtySm = (event) => {
     this.setState({ smBucket: event.target.value });
     sessionStorage.getItem("bucketPriceSM").substring(1);
-    let price = this.state.smBucket * this.state.selectedBucketPrice;
-    console.log("**Price Logging**: ", price);
-    this.setState({ cartPrice: price });
-    console.log("Cart price: ", this.state.cartPrice);
+    // console.log("**Num of Bucket**: ", this.state.smBucket);
+    // console.log("**Price Logging**: ", price);
+    //console.log("Cart price: ", this.state.cartPrice);
 
     //console.log(this.state.smBucket);
   };
   handleBucketQtyMed = (event) => {
     this.setState({ medBucket: event.target.value });
+    sessionStorage.getItem("bucketPriceMD").substring(1);
 
     //console.log(this.state.smBucket);
   };
   handleBucketQtyLg = (event) => {
     this.setState({ lgBucket: event.target.value });
+    sessionStorage.getItem("bucketPriceLG").substring(1);
 
     //console.log(this.state.smBucket);
   };
@@ -314,12 +351,14 @@ class TicketForm extends Component {
             <Form.Group as={Col} controlId={"Buckets"}>
               <Form.Label>Bucket</Form.Label>
               <div>
+                <div>Cart Total Price: {this.state.cartPrice1}</div>
                 {this.state.selectedField ? (
                   <div>
                     <strong>
                       Bucket Prices for {this.state.selectedField} Field:
                     </strong>
                     <div>Small Bucket: {this.state.bucketPriceSM}</div>
+                    <div>Number of small Buckets: {this.state.smBucket}</div>
                     <div>
                       <Select
                         onChange={this.handleBucketQtySm}
@@ -343,6 +382,7 @@ class TicketForm extends Component {
                     </div>
                     <div>Medium Bucket: {this.state.bucketPriceMD}</div>
                     <div>
+                      <div>Cart Total Price: {this.state.cartPrice2}</div>
                       <Select
                         onChange={this.handleBucketQtyMed}
                         value={this.state.medBucket}
@@ -366,6 +406,7 @@ class TicketForm extends Component {
                     <div className={"padding"}>
                       Large Bucket: {this.state.bucketPriceLG}
                     </div>
+                    <div>Cart Total Price: {this.state.cartPrice3}</div>
                     <div>
                       <Select
                         onChange={this.handleBucketQtyLg}
@@ -390,7 +431,7 @@ class TicketForm extends Component {
                   </div>
                 ) : null}
               </div>
-              <Form.Control
+              {/* <Form.Control
                 as={"select"}
                 value={this.state.selectedBucket}
                 onChange={this.handleBucketChange}
@@ -400,7 +441,7 @@ class TicketForm extends Component {
                 <option>Small</option>
                 <option>Medium</option>
                 <option>Large</option>
-              </Form.Control>
+              </Form.Control> */}
             </Form.Group>
             {this.state.selectedField && this.state.selectedBucket ? (
               <div>
@@ -431,7 +472,7 @@ class TicketForm extends Component {
                 <option>10</option>
               </Form.Control>
             </Form.Group>
-            <div>Total: ${this.state.ticketTotal}</div>
+            <div>Total: ${this.state.totalCart}</div>
             <div>
               <Button
                 variant={"contained"}
