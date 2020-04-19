@@ -38,6 +38,7 @@ export default function PayPal(props) {
 
             onApprove: async (data, actions) => {
               const order = await actions.order.capture();
+              localStorage.setItem('isPaidFor', 'true');
               setPaidFor(true);
               console.log(order);
             }
