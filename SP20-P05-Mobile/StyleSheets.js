@@ -195,5 +195,5 @@ export const profile = StyleSheet.create({
     backgroundColor: "#90cd9e",
     alignItems: "center",
     justifyContent: "center",
-  }
+  },
 });
