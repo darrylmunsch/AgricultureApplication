@@ -192,11 +192,8 @@ export const ticketForm = StyleSheet.create({
 export const profile = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#dddddd",
-  },
-  image: {
-    flex: 1,
-    resizeMode: "cover",
+    backgroundColor: "#90cd9e",
+    alignItems: "center",
     justifyContent: "center",
-  },
+  }
 });
