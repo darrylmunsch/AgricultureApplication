@@ -53,7 +53,7 @@ class Register extends Component {
     ) {
       this.setState({
         PassReqErr:
-          "Password must Contain 1 Uppercase, Lowercase, Number and special Character",
+          "Password must be at least 10 characters long and contain 1 Uppercase, Lowercase, Number and special Character",
       });
     } else {
       this.setState({

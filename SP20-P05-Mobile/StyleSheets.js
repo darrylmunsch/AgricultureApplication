@@ -196,4 +196,20 @@ export const profile = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  logout: {
+    color: "#e1ffdf",
+    fontWeight: "bold",
+    textAlign: "right",
+    paddingRight: 20,
+    fontSize: 18
+  },
+  main : {
+    flex: 1,
+    backgroundColor: "#90cd9e",
+  },
+  centerText: {
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
