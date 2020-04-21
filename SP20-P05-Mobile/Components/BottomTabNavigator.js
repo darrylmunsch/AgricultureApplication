@@ -12,6 +12,7 @@ import TicketForm from "../Screens/TicketForm";
 import UserProfile from "../Screens/UserProfile";
 import AuthScreen from "../Screens/AuthScreen";
 import PaypalWebView from "../Screens/PaypalWebView";
+import RedeemQrCode from "../Screens/RedeemQrCode";
 
 const barStyle = {
   backgroundColor: "white",
@@ -23,7 +24,7 @@ const barStyle = {
 const Tab = createMaterialBottomTabNavigator();
 
 function BottomNav() {
-  return (
+    return (
     <Tab.Navigator
       initialRouteName={"Home"}
       activeColor={"green"}
@@ -74,6 +75,15 @@ function BottomNav() {
           ),
         }}
       />
+        <Tab.Screen
+            name={"RedeemTickets"}
+            component={RedeemQrCode}
+            options={{
+                tabBarIcon: ({ color }) => (
+                    <MaterialIcon name={"barcode"} color={color} size={25} />
+                ),
+            }}
+        />
     </Tab.Navigator>
   );
 }
