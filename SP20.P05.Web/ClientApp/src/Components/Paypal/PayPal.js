@@ -1,8 +1,28 @@
 import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
 
 export default function PayPal(props) {
   const [paidFor, setPaidFor] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  let ticketUrl = "api/farm-field-tickets";
+
+  let individulauserId = sessionStorage.getItem('userId')
+
+  let smallBucketQTY = sessionStorage.getItem("bucketQtySM")
+  let mediumBucketQTY = sessionStorage.getItem("bucketQtyMD")
+  let largeBucketQTY = sessionStorage.getItem("bucketQtyLG")
+  let farmFieldId= sessionStorage.getItem("farmFieldId")
+
+
+  let ticket = {
+    FarmFieldId: farmFieldId,
+    TicketTimeSlot: "9999-03-23T22:24:13.306Z",
+    UserId: individulauserId,
+    SmallBucketQty: smallBucketQTY,
+    MediumBucketQty: mediumBucketQTY,
+    LargeBucketQty: largeBucketQTY
+  };
+
 
   let paypalRef = useRef();
 
@@ -37,12 +57,11 @@ export default function PayPal(props) {
                 ]
               });
             },
-
             onApprove: async (data, actions) => {
               const order = await actions.order.capture();
               localStorage.setItem('isPaidFor', 'true');
               setPaidFor(true);
-              console.log(order);
+
             }
           })
           .render(paypalRef);
@@ -52,7 +71,24 @@ export default function PayPal(props) {
 
   return (
     <div>
-      {paidFor ? (
+      {paidFor ?
+
+        (async() =>{
+          for( var i=0; i<1; i++){
+            await axios
+                .post(ticketUrl, ticket, {
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                })
+                .then(res => {
+                  console.log(res);
+                  console.log(res.data);
+                });
+          }
+        })
+
+          (
         <div>
           <h1>Thanks for the Monies!</h1>
         </div>

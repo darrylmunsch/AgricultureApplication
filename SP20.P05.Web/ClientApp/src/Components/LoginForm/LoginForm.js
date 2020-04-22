@@ -46,6 +46,7 @@ export default function LoginForm(props) {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        localStorage.setItem('userId', res.data.id)
 
         if (res.status === 200) {
           localStorage.setItem("user", JSON.stringify(res.data));
