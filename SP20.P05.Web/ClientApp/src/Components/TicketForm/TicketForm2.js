@@ -40,75 +40,42 @@ class TicketForm extends Component {
     };
   }
 
-  // ToDo : add to component did update handler for bucket changing size
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.state.numTickets !== prevState.numTickets) {
-      this.getTicketTotal();
-      this.checkTotal();
-    }
     if (this.state.selectedField !== prevState.selectedField) {
       this.getTicketTotal();
       this.checkField();
     }
     if (this.state.selectedBucket !== prevState.selectedBucket) {
       this.getTicketTotal();
-      console.log(this.state.ticketTotal);
       this.checkBucket();
     }
     if (this.state.ticketTotal !== prevState.ticketTotal) {
       this.getTicketTotal();
-      console.log(this.state.ticketTotal);
       this.checkTotal();
     }
     //Todo , make this work.
     if (this.state.smBucket !== prevState.smBucket) {
-      //this.TotalCartPrice();
-      //this.getBucketQty();
       let price = this.state.smBucket * this.state.bucketPriceSM;
       this.setState({ cartPrice1: price });
       this.getTotalCart();
-
-      //TODO: GET TOTAL OF BUCKETS TO CONSOLE LOG
-      //this.getTotalWithBuckets();
     }
     if (this.state.medBucket !== prevState.medBucket) {
       let price2 = this.state.medBucket * this.state.bucketPriceMD;
       this.setState({ cartPrice2: price2 });
       this.getTotalCart();
-      //this.TotalCartPrice();
-      //let price = this.state.medBucket * this.state.bucketPriceMD;
-      //this.setState({ cartPrice: price });
-      //this.getBucketQty();
-      // console.log("Number of medium buckets", this.state.medBucket);
     }
     if (this.state.lgBucket !== prevState.lgBucket) {
       let price3 = this.state.lgBucket * this.state.bucketPriceLG;
       this.setState({ cartPrice3: price3 });
       this.getTotalCart();
-      //this.TotalCartPrice();
-      //let price = this.state.lgBucket * this.state.bucketPriceLG;
-      //this.setState({ cartPrice: price });
-      //this.getBucketQty();
-      // console.log("Number of large buckets", this.state.lgBucket);
     }
   }
 
   getTotalCart = () => {
-    let total =
-      this.state.cartPrice1 + this.state.cartPrice2 + this.state.cartPrice3;
-
+    let total = this.state.cartPrice1 + this.state.cartPrice2 + this.state.cartPrice3;
     this.setState({ totalCart: total });
   };
-  getFarmFieldId = async (data) => {
-    await axios
-      .get(this.farmFieldActiveUrl)
-      .then((response) => {
-        if (response.data.name === this.state.selectedField) {
-          console.log(response.data.id);
-        }
-      })
-      .catch((error) => console.log(error.response));
-  };
+
   handleFieldChange = (e) => {
     let val = e.target.value;
     if (val === "Choose Farm Field...") {
@@ -123,7 +90,6 @@ class TicketForm extends Component {
     this.setBucketPriceLG(val);
   };
   setBucketPriceSM = (selectedField) => {
-    console.log("setBucketPriceSM hit");
     switch (selectedField) {
       case "Blueberry":
         this.setState({ bucketPriceSM: "11" });
@@ -173,7 +139,6 @@ class TicketForm extends Component {
     } else this.setState({ buttonDisable: false });
   };
   setBucketPriceMD = (selectedField) => {
-    console.log("setBucketPriceMD hit");
     switch (selectedField) {
       case "Blueberry":
         this.setState({ bucketPriceMD: "16" });
@@ -194,7 +159,6 @@ class TicketForm extends Component {
     }
   };
   setBucketPriceLG = (selectedField) => {
-    console.log("setBucketPriceLG hit");
     switch (selectedField) {
       case "Blueberry":
         this.setState({ bucketPriceLG: "21" });
@@ -214,120 +178,41 @@ class TicketForm extends Component {
         return;
     }
   };
-  handleBucketChange = (e) => {
-    console.log("Bucket Changed...");
-    // Set val to form value
-    const val = e.target.value;
-    if (val === "Choose Bucket Size...") {
-      sessionStorage.setItem("selectedBucket", "");
-      this.setState({ selectedBucket: "" });
-    } else {
-      sessionStorage.setItem("selectedBucket", val);
-      this.setState({ selectedBucket: val });
-      sessionStorage.setItem("selectedBucketSize", val);
-      this.setState({ selectedBucketSize: val });
-    }
-    this.setSelectedBucketPrice(val);
-  };
-  handleNumberChange = (e) => {
-    console.log("Number of Tickets Changed...");
-    // Set val to form value
-    const val = e.target.value;
-    if (val !== 0) {
-      sessionStorage.setItem("numTickets", val);
-      this.setState({
-        numTickets: val,
-      });
-    }
-  };
   getTicketTotal = () => {
-    console.log("Getting Ticket Total..");
-    let numTick = sessionStorage.getItem("numTickets");
-    let SBP = sessionStorage.getItem("selectedBucketPrice");
-    let ans = numTick * SBP;
-    sessionStorage.setItem("ticketTotal", ans.toString());
+
+    let smallBucketPrice = this.state.bucketPriceSM
+    let mediumBucketPrice = this.state.bucketPriceMD
+    let largeBucketPrice = (this.state.bucketPriceLG)
+
+    let smallBucketQTY = sessionStorage.getItem("bucketQtySM")
+    let mediumBucketQTY = sessionStorage.getItem("bucketQtyMD")
+    let largeBucketQTY = sessionStorage.getItem("bucketQtyLG")
+
+    let ans = (smallBucketPrice * smallBucketQTY) + (mediumBucketPrice * mediumBucketQTY) + (largeBucketPrice * largeBucketQTY)
+    sessionStorage.setItem("ticketTotal", ans);
+
 
     this.setState({
-      ticketTotal: this.state.numTickets * this.state.selectedBucketPrice,
+      ticketTotal: sessionStorage.getItem("ticketTotal")
     });
   };
 
-  //TODO:  , calculate the total correctly
-  getTotalWithBuckets = () => {
-    this.setState({
-      BucketTotalPrice: this.state.smBucket * this.state.selectedBucketPrice,
-    });
-    console.log("Price of buckets:  ", this.state.BucketTotalPrice);
-  };
-  setSelectedBucketPrice = (size) => {
-    console.log("Setting Selected Bucket Price...");
-    switch (size) {
-      case "Small":
-        sessionStorage.setItem(
-          "selectedBucketPrice",
-          sessionStorage.getItem("bucketPriceSM").substring(1)
-        );
-        return this.setState({
-          selectedBucketPrice: this.state.bucketPriceSM.substring(1),
-        });
-      case "Medium":
-        sessionStorage.setItem(
-          "selectedBucketPrice",
-          sessionStorage.getItem("bucketPriceMD").substring(1)
-        );
-        return this.setState({
-          selectedBucketPrice: this.state.bucketPriceMD.substring(1),
-        });
-      case "Large":
-        sessionStorage.setItem(
-          "selectedBucketPrice",
-          sessionStorage.getItem("bucketPriceLG").substring(1)
-        );
-        return this.setState({
-          selectedBucketPrice: this.state.bucketPriceLG.substring(1),
-        });
-      default:
-        return console.log("Error setting selected bucket price");
-    }
-  };
-
-  // TotalCartPrice = () => {
-  //   const price1 = this.state.smBucket * this.state.bucketPriceSM;
-  //   const price2 = this.state.medBucket * this.state.bucketPriceMD;
-  //   const price3 = this.state.lgBucket * this.state.bucketPriceLG;
-  //   const FinalTotal = price1 + price2 + price3;
-  //   console.log("Smbucket: ", this.state.smBucket);
-  //   console.log("Bucket PRice:  ", this.state.bucketPriceSM);
-  //   console.log("Price 1:  ", this.state.price1);
-  //   this.setState({ cartPrice: FinalTotal });
-  // };
-  //TODO: Get this to change cart price from empty string to the
-  // Reflected price..
   handleBucketQtySm = (event) => {
     this.setState({ smBucket: event.target.value });
-    sessionStorage.getItem("bucketPriceSM").substring(1);
-    // console.log("**Num of Bucket**: ", this.state.smBucket);
-    // console.log("**Price Logging**: ", price);
-    //console.log("Cart price: ", this.state.cartPrice);
-
-    //console.log(this.state.smBucket);
+    sessionStorage.setItem("bucketQtySM", event.target.value);
+    this.getTicketTotal()
   };
   handleBucketQtyMed = (event) => {
     this.setState({ medBucket: event.target.value });
-    sessionStorage.getItem("bucketPriceMD").substring(1);
-
-    //console.log(this.state.smBucket);
+    sessionStorage.setItem("bucketQtyMD", event.target.value);
+    this.getTicketTotal()
   };
   handleBucketQtyLg = (event) => {
     this.setState({ lgBucket: event.target.value });
-    sessionStorage.getItem("bucketPriceLG").substring(1);
-
-    //console.log(this.state.smBucket);
+    sessionStorage.setItem("bucketQtyLG", event.target.value);
+    this.getTicketTotal()
   };
 
-  // this.setState({
-  //   numTickets: val
-  // });
   render() {
     return (
       <Jumbotron className={"jumbo_clr"}>
@@ -361,12 +246,10 @@ class TicketForm extends Component {
                     <div>Number of small Buckets: {this.state.smBucket}</div>
                     <div>
                       <Select
+                        style={{backgroundColor: "white"}}
                         onChange={this.handleBucketQtySm}
                         value={this.state.smBucket}
                       >
-                        <MenuItem value="">
-                          <em>None</em>
-                        </MenuItem>
                         <MenuItem value={0}>Zero</MenuItem>
                         <MenuItem value={1}>One</MenuItem>
                         <MenuItem value={2}>Two</MenuItem>
@@ -384,12 +267,10 @@ class TicketForm extends Component {
                     <div>
                       <div>Cart Total Price: {this.state.cartPrice2}</div>
                       <Select
+                        style={{backgroundColor: "white"}}
                         onChange={this.handleBucketQtyMed}
                         value={this.state.medBucket}
                       >
-                        <MenuItem value="">
-                          <em>None</em>
-                        </MenuItem>
                         <MenuItem value={0}>Zero</MenuItem>
                         <MenuItem value={1}>One</MenuItem>
                         <MenuItem value={2}>Two</MenuItem>
@@ -409,12 +290,10 @@ class TicketForm extends Component {
                     <div>Cart Total Price: {this.state.cartPrice3}</div>
                     <div>
                       <Select
+                        style={{backgroundColor: "white"}}
                         onChange={this.handleBucketQtyLg}
                         value={this.state.lgBucket}
                       >
-                        <MenuItem value="">
-                          <em>None</em>
-                        </MenuItem>
                         <MenuItem value={0}>Zero</MenuItem>
                         <MenuItem value={1}>One</MenuItem>
                         <MenuItem value={2}>Two</MenuItem>
@@ -431,17 +310,6 @@ class TicketForm extends Component {
                   </div>
                 ) : null}
               </div>
-              {/* <Form.Control
-                as={"select"}
-                value={this.state.selectedBucket}
-                onChange={this.handleBucketChange}
-                disabled={this.state.bucketDisable}
-              >
-                <option>Choose Bucket Size</option>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-              </Form.Control> */}
             </Form.Group>
             {this.state.selectedField && this.state.selectedBucket ? (
               <div>
@@ -451,28 +319,8 @@ class TicketForm extends Component {
               </div>
             ) : null}
             <div className={"divider div-transparent"} />
-            {/* <Form.Group>
-              <Form.Label>How Many Tickets?</Form.Label>
-              <Form.Control
-                as={"select"}
-                value={this.state.numTickets}
-                onChange={this.handleNumberChange}
-                disabled={this.state.amountDisable}
-              >
-                <option />
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </Form.Control>
-            </Form.Group> */}
-            <div>Total: ${this.state.totalCart}</div>
+
+            <div>Total: ${this.state.ticketTotal}</div>
             <div>
               <Button
                 variant={"contained"}
