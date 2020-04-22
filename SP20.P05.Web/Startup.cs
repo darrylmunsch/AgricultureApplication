@@ -15,8 +15,6 @@ using SP20.P05.Web.Data;
 using SP20.P05.Web.Features.Authentication;
 using SP20.P05.Web.Features.FarmFields;
 using SP20.P05.Web.Features.Shared;
-using SP20.P05.Web.Features.Stripe;
-using Stripe;
 
 namespace SP20.P05.Web
 {
@@ -25,11 +23,6 @@ namespace SP20.P05.Web
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
-        public class StripeSettings
-        {
-        public string SecretKey { get; set; }
-        public string PublishableKey { get; set; }
         }
 
         public IConfiguration Configuration { get; }
@@ -68,8 +61,6 @@ namespace SP20.P05.Web
             {
                 configuration.RootPath = "ClientApp/build";
             });
-
-            services.Configure<StripeSettingsDto>(Configuration.GetSection("Stripe"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -113,9 +104,6 @@ namespace SP20.P05.Web
                     spa.UseReactDevelopmentServer(npmScript: "dev");             
                 }
             });
-
-            StripeConfiguration.ApiKey = Configuration.GetSection("Keys")["Stripe"];
-            //StripeConfiguration.SetApiKey(Configuration["Stripe:TestSecretKey"]);
         }
 
         private static async Task AddRoles(IApplicationBuilder app)
