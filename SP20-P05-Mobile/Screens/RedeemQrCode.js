@@ -15,7 +15,7 @@ export default function RedeemQrCode() {
 
     const handleBarCodeScanned = ({ type, data }) => {
         setScanned(true);
-        alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+        alert(`-Bar code with type ${type}\n- Data: ${data}`);
     };
 
     if (hasPermission === null) {
