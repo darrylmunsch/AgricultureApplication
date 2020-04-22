@@ -451,7 +451,7 @@ class TicketForm extends Component {
               </div>
             ) : null}
             <div className={"divider div-transparent"} />
-            <Form.Group>
+            {/* <Form.Group>
               <Form.Label>How Many Tickets?</Form.Label>
               <Form.Control
                 as={"select"}
@@ -471,7 +471,7 @@ class TicketForm extends Component {
                 <option>9</option>
                 <option>10</option>
               </Form.Control>
-            </Form.Group>
+            </Form.Group> */}
             <div>Total: ${this.state.totalCart}</div>
             <div>
               <Button
