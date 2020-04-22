@@ -239,14 +239,12 @@ class TicketForm extends Component {
             <Form.Group as={Col} controlId={"Buckets"}>
               <Form.Label>Bucket</Form.Label>
               <div>
-                <div>Cart Total Price: {this.state.cartPrice1}</div>
                 {this.state.selectedField ? (
                   <div>
                     <strong>
                       Bucket Prices for {this.state.selectedField} Field:
                     </strong>
-                    <div>Small Bucket: {this.state.bucketPriceSM}</div>
-                    <div>Number of small Buckets: {this.state.smBucket}</div>
+                    <div>Small Bucket Price: {this.state.bucketPriceSM}</div>
                     <div>
                       <Select
                         style={{backgroundColor: "white"}}
@@ -266,9 +264,8 @@ class TicketForm extends Component {
                         <MenuItem value={10}>Ten</MenuItem>
                       </Select>
                     </div>
-                    <div>Medium Bucket: {this.state.bucketPriceMD}</div>
+                    <div>Medium Bucket Price: {this.state.bucketPriceMD}</div>
                     <div>
-                      <div>Cart Total Price: {this.state.cartPrice2}</div>
                       <Select
                         style={{backgroundColor: "white"}}
                         onChange={this.handleBucketQtyMed}
@@ -288,9 +285,8 @@ class TicketForm extends Component {
                       </Select>
                     </div>
                     <div className={"padding"}>
-                      Large Bucket: {this.state.bucketPriceLG}
+                      Large Bucket Price: {this.state.bucketPriceLG}
                     </div>
-                    <div>Cart Total Price: {this.state.cartPrice3}</div>
                     <div>
                       <Select
                         style={{backgroundColor: "white"}}
