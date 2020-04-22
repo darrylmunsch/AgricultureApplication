@@ -11,6 +11,8 @@ export default function PayPal(props) {
     description: props.description
   };
 
+  sessionStorage.setItem('purchaseCompleted', 'true')
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
