@@ -6,7 +6,6 @@ import { BucketPrices, Fields } from "../Constants";
 import FormTextInput from "../Components/FormTextInput";
 import DismissKeyboard from "../Components/DismissKeyboard";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-import BucketSelect from "../Components/BucketSelect";
 
 class TicketForm extends Component {
   constructor(props) {
@@ -156,9 +155,9 @@ class TicketForm extends Component {
     const selectedField = this.state.selectedField;
     return (
       <DismissKeyboard>
-        <View style={ticketForm.container}>
+        <View style={ticketForm.container1}>
           {this.state.step === 1 ? (
-            <View style={ticketForm.container}>
+            <View style={ticketForm.container1}>
               <Text style={ticketForm.header}>Select Farm Field</Text>
               <Picker
                 selectedValue={selectedField}
@@ -182,7 +181,90 @@ class TicketForm extends Component {
             </View>
           ) : null}
           {this.state.step === 2 ? (
-            <BucketSelect selectedField={this.state.selectedField} />
+            <View>
+              <View style={ticketForm.inputContainer}>
+                <Text style={{ fontSize: 30, paddingBottom: 10 }}>
+                  {selectedField}
+                </Text>
+                <Text style={{ fontSize: 20, paddingBottom: 30 }}>
+                  Please pick your bucket(s)
+                </Text>
+                <Text>Small Bucket Price: ${this.state.smBucketPrice}</Text>
+                <FormTextInput
+                  style={{
+                    width: 200,
+                    color: "#90cd9e",
+                    borderColor: "#90cd9e",
+                    textAlign: "center",
+                  }}
+                  placeholder={"How many small buckets?"}
+                  keyboardType={"numeric"}
+                  onChangeText={this.setNumSmBuckets}
+                />
+                {this.state.error !== "" ? (
+                  <Text style={{ color: "#ff0000" }}>{this.state.errorSm}</Text>
+                ) : null}
+                <Text>Medium Bucket Price: ${this.state.mdBucketPrice}</Text>
+                <FormTextInput
+                  style={{
+                    width: 200,
+                    color: "#90cd9e",
+                    borderColor: "#90cd9e",
+                    textAlign: "center",
+                  }}
+                  placeholder={"How many medium buckets?"}
+                  keyboardType={"numeric"}
+                  onChangeText={this.setNumMdBuckets}
+                />
+                {this.state.error !== "" ? (
+                  <Text style={{ color: "#ff0000" }}>{this.state.errorMd}</Text>
+                ) : null}
+                <Text>Large Bucket Price: ${this.state.lgBucketPrice}</Text>
+                <FormTextInput
+                  style={{
+                    width: 200,
+                    color: "#90cd9e",
+                    borderColor: "#90cd9e",
+                    textAlign: "center",
+                  }}
+                  placeholder={"How many large buckets?"}
+                  keyboardType={"numeric"}
+                  onChangeText={this.setNumLgBuckets}
+                />
+                {this.state.error !== "" ? (
+                  <Text style={{ color: "#ff0000" }}>{this.state.errorLg}</Text>
+                ) : null}
+                <Text>Ticket Total: ${this.state.ticketTotal}</Text>
+              </View>
+              <View style={ticketForm.navigationView}>
+                <View style={ticketForm.navigateBackView}>
+                  <MaterialIcon
+                    name={"navigate-before"}
+                    color={"green"}
+                    size={25}
+                  />
+                  <Text
+                    style={ticketForm.navigateBack}
+                    onPress={() => this.decreaseStep()}
+                  >
+                    Back
+                  </Text>
+                </View>
+                <View style={ticketForm.navigateNextView}>
+                  <Text
+                    style={ticketForm.navigateNext}
+                    onPress={() => this.goToPurchase()}
+                  >
+                    Next
+                  </Text>
+                  <MaterialIcon
+                    name={"navigate-next"}
+                    color={"green"}
+                    size={25}
+                  />
+                </View>
+              </View>
+            </View>
           ) : null}
         </View>
       </DismissKeyboard>

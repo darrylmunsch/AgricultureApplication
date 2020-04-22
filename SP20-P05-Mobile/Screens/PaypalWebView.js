@@ -10,11 +10,13 @@ class PaypalWebView extends Component {
   }
 
   render() {
-    return(
+    return (
       <WebView
-          source={{uri: `${baseurl}/mobilePay/${this.props.price}/?ticketInfo=${this.props.ticketInfo}`}}
+        source={{
+          uri: `${baseurl}/mobilePay/${this.props.price}/?ticketInfo=${this.props.ticketInfo}`,
+        }}
       />
-    )
+    );
   }
 }
 
