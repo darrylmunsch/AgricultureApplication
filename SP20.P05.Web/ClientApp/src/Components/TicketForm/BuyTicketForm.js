@@ -18,6 +18,41 @@ class BuyTicketForm extends Component {
     super(props);
   }
 
+  ticketUrl = "api/tickets";
+  farmFieldActiveUrl = "api/farm-fields/active";
+
+  handleProcessTicket = async data => {
+    let ticket = {
+      id: 0,
+      ticketTimeSlot: "9999-03-23T22:24:13.306Z",
+      farmFieldId: this.getFarmFieldId
+    };
+
+    sessionStorage.setItem('purchaseCompleted', 'false')
+
+    if(sessionStorage.getItem('purchaseCompleted') === 'true'){
+      for( var i=0; i<1; i++){
+        await axios
+            .post(this.ticketUrl, ticket, {
+              headers: {
+                "Content-Type": "application/json"
+              }
+            })
+            .then(res => {
+              console.log(res);
+              console.log(res.data);
+            });
+      }
+      sessionStorage.setItem('purchaseCompleted', 'false')
+    }
+
+
+
+
+
+  };
+
+
   render() {
     return (
       <div>

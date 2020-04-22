@@ -94,17 +94,14 @@ class TicketForm extends Component {
       case "Blueberry":
         this.setState({ bucketPriceSM: "11" });
         sessionStorage.setItem("bucketPriceSM", "11");
-        sessionStorage.setItem("farmFieldId", '1')
         return;
       case "Strawberry":
         this.setState({ bucketPriceSM: "10" });
         sessionStorage.setItem("bucketPriceSM", "10");
-        sessionStorage.setItem("farmFieldId", '3')
         return;
       case "Blackberry":
         this.setState({ bucketPriceSM: "13" });
         sessionStorage.setItem("bucketPriceSM", "13");
-        sessionStorage.setItem("farmFieldId", '2')
         return;
       default:
         this.setState({ bucketPriceSM: "11" });

@@ -42,11 +42,7 @@ export class Tickets extends Component {
     this.setState({
       showTicketForm: !this.state.showTicketForm
     });
-
-
-
   }
-
 
   render() {
     return (
