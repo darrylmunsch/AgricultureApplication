@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { Button, Col, Form, Jumbotron } from "react-bootstrap";
-import PayPal from '../Paypal/PayPal';
+import ReactDOM from "react-dom";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
-// CSS
+
+//// CSS
 import "./TicketForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import PayPal from "../Paypal/PayPal";
+
 
 
 class BuyTicketForm extends Component {
@@ -23,16 +28,28 @@ class BuyTicketForm extends Component {
       farmFieldId: this.getFarmFieldId
     };
 
-    await axios
-      .post(this.ticketUrl, ticket, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      });
+    sessionStorage.setItem('purchaseCompleted', 'false')
+
+    if(sessionStorage.getItem('purchaseCompleted') === 'true'){
+      for( var i=0; i<1; i++){
+        await axios
+            .post(this.ticketUrl, ticket, {
+              headers: {
+                "Content-Type": "application/json"
+              }
+            })
+            .then(res => {
+              console.log(res);
+              console.log(res.data);
+            });
+      }
+      sessionStorage.setItem('purchaseCompleted', 'false')
+    }
+
+
+
+
+
   };
 
 
@@ -41,7 +58,7 @@ class BuyTicketForm extends Component {
       <div>
         <Jumbotron className={"jumbo_clr"}>
           <h1>Purchase Tickets</h1>
-          <PayPal price={this.props.ticketTotal} description={'Farm field ticket purchase.'} />
+            <PayPal price={sessionStorage.getItem("ticketTotal")} description={'Ticket Purchase from website'} />
           <div className={"divider div-transparent"} />
           <div>
             <Button onClick={this.props.changeForm}>Back to Tickets</Button>
