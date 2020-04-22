@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text, ImageBackground, SafeAreaView} from "react-native";
+import { View, Text, ImageBackground, SafeAreaView } from "react-native";
 import { profile } from "../StyleSheets";
 import { connect } from "react-redux";
 import Button from "../Components/Button";
@@ -13,23 +13,22 @@ class UserProfile extends Component {
     this.props.navigation.navigate("Login");
   };
   logoutUser = () => {
-    console.log("add log out function")
-  }
+    console.log("add log out function");
+  };
 
   render() {
     const navigation = this.props.navigation;
     return (
-      <SafeAreaView style={profile.main} >
+      <SafeAreaView style={profile.main}>
         {this.props.auth.isAuthenticated ? (
           <View>
-            <Text
-                style={profile.logout}
-                onPress={() => this.redirectToLogin()}
-            >
+            <Text style={profile.logout} onPress={() => this.redirectToLogin()}>
               Logout
             </Text>
             <View style={profile.centerText}>
-            <Text style={{color: "#e1ffdf"}}>Welcome, {this.props.auth.user.username}</Text>
+              <Text style={{ color: "#e1ffdf" }}>
+                Welcome, {this.props.auth.user.username}
+              </Text>
             </View>
           </View>
         ) : (

@@ -135,14 +135,19 @@ export const ButtonStyle = StyleSheet.create({
   },
 });
 export const ticketForm = StyleSheet.create({
-  container: {
+  container1: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#e1ffdf",
     alignItems: "center",
     justifyContent: "center",
   },
+  inputContainer: {
+    flex: 1,
+    backgroundColor: "#e1ffdf",
+    justifyContent: "center",
+  },
   header: {
-    color: "#e1ffdf",
+    color: "#90cd9e",
     fontSize: 25,
   },
   buttonBottom: {
@@ -184,9 +189,35 @@ export const ticketForm = StyleSheet.create({
   buttonText: {
     color: "#e1ffdf",
   },
+  navigateBackView: {
+    alignItems: "flex-end",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginRight: 100,
+    marginBottom: 20,
+  },
   navigateBack: {
-    color: "green",
-    alignSelf: "flex-end",
+    color: "#90cd9e",
+    fontSize: 20,
+  },
+  navigateNext: {
+    color: "#90cd9e",
+    fontSize: 20,
+  },
+  buttonBucket: {
+    width: 100,
+    backgroundColor: "#0d5d0d",
+    borderColor: "#0d5d0d",
+  },
+  navigateNextView: {
+    alignItems: "flex-end",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginLeft: 100,
+    marginBottom: 20,
+  },
+  navigationView: {
+    flexDirection: "row",
   },
 });
 export const profile = StyleSheet.create({
@@ -201,15 +232,15 @@ export const profile = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "right",
     paddingRight: 20,
-    fontSize: 18
+    fontSize: 18,
   },
-  main : {
+  main: {
     flex: 1,
     backgroundColor: "#90cd9e",
   },
   centerText: {
     textAlign: "center",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
