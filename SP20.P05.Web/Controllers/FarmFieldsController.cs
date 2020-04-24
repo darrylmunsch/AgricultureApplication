@@ -55,7 +55,7 @@ namespace SP20.P05.Web.Controllers
             return context.Set<FarmField>().Where(x=>x.Active).Select(MapEntityToDto()).ToList();
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("/get-by-name/{name}")]
         public ActionResult<FarmFieldDto> GetByName(string name)
         {
             var data= context.Set<FarmField>().Where(x => x.Name == name).Select(MapEntityToDto()).FirstOrDefault();
@@ -73,7 +73,7 @@ namespace SP20.P05.Web.Controllers
             return data;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("/api/farm-fields/{id}")]
         public ActionResult<FarmFieldDto> GetById(int id)
         {
             var data = context.Set<FarmField>().Where(x => x.Id == id).Select(MapEntityToDto()).FirstOrDefault();

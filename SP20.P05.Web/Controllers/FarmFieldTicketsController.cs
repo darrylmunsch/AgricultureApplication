@@ -48,7 +48,7 @@ namespace SP20.P05.Web.Controllers
         }
 
         [HttpPost("{id}/redeem")]
-        [Authorize(Roles = Roles.EmplyoyeePlus)]
+        //.[Authorize(Roles = Roles.EmplyoyeePlus)]
         public ActionResult<FarmFieldTicketDto> RedeemTicket(int id)
         {
             var targetValue = context.Set<FarmFieldTicket>()
