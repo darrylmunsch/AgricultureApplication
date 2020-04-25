@@ -16,7 +16,8 @@ import Button from "react-bootstrap/Button";
 class TicketForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+      this.state = {
+      farmFieldId: null,
       fields: ["Blueberry", "Blackberry", "Strawberry"],
       selectedField: "",
       selectedBucket: "",
@@ -36,20 +37,30 @@ class TicketForm extends Component {
       cartPrice1: "",
       cartPrice2: "",
       cartPrice3: "",
-      totalCart: "",
+        totalCart: "",
+        ticket: {
+
+
+        }
     };
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.state.selectedField !== prevState.selectedField) {
+      if (this.state.selectedField !== prevState.selectedField) {
+      this.handleFieldID();
+      this.handleSetTicket();
       this.getTicketTotal();
       this.checkField();
     }
-    if (this.state.selectedBucket !== prevState.selectedBucket) {
+      if (this.state.selectedBucket !== prevState.selectedBucket) {
+      this.handleFieldID();
+      this.handleSetTicket();
       this.getTicketTotal();
       this.checkBucket();
     }
-    if (this.state.ticketTotal !== prevState.ticketTotal) {
+      if (this.state.ticketTotal !== prevState.ticketTotal) {
+      this.handleFieldID();
+      this.handleSetTicket();
       this.getTicketTotal();
       this.checkTotal();
     }
@@ -88,7 +99,26 @@ class TicketForm extends Component {
     this.setBucketPriceSM(val);
     this.setBucketPriceMD(val);
     this.setBucketPriceLG(val);
-  };
+    };
+
+    handleFieldID = (selectedField) => {
+        switch (this.state.selectedField) {
+            case "Blueberry":
+                this.setState({ farmFieldId: 1 });
+                return;
+            case "Blackberry":
+                this.setState({ farmFieldId: 2 });
+                return;
+            case "Strawberry":
+                this.setState({ farmFieldId: 3 });
+                return;
+
+        }
+    };
+
+
+
+
   setBucketPriceSM = (selectedField) => {
     switch (selectedField) {
       case "Blueberry":
@@ -182,7 +212,7 @@ class TicketForm extends Component {
 
     let smallBucketPrice = this.state.bucketPriceSM
     let mediumBucketPrice = this.state.bucketPriceMD
-    let largeBucketPrice = (this.state.bucketPriceLG)
+    let largeBucketPrice = this.state.bucketPriceLG
 
     let smallBucketQTY = sessionStorage.getItem("bucketQtySM")
     let mediumBucketQTY = sessionStorage.getItem("bucketQtyMD")
@@ -201,6 +231,7 @@ class TicketForm extends Component {
     this.setState({ smBucket: event.target.value });
     sessionStorage.setItem("bucketQtySM", event.target.value);
     this.getTicketTotal()
+
   };
   handleBucketQtyMed = (event) => {
     this.setState({ medBucket: event.target.value });
@@ -211,7 +242,65 @@ class TicketForm extends Component {
     this.setState({ lgBucket: event.target.value });
     sessionStorage.setItem("bucketQtyLG", event.target.value);
     this.getTicketTotal()
-  };
+    };
+
+// Hardcoded for testing
+
+
+    handleSetTicket = () => {
+        this.setState({
+            ticket: {
+                farmFieldId: this.state.farmFieldId,
+                TicketTimeSlot: "9999-03-23T22:24:13.306Z",
+                SmallBucketQty: JSON.parse(sessionStorage.getItem("bucketQtySM")),
+                MediumBucketQty: JSON.parse(sessionStorage.getItem("bucketQtyMD")),
+                LargeBucketQty: JSON.parse(sessionStorage.getItem("bucketQtyLG")),
+                UserId: 2,
+            }
+        })
+
+    }
+
+
+
+
+
+
+
+//ticket = {
+//    farmFieldId: 1,
+//    TicketTimeSlot: "9999-03-23T22:24:13.306Z",
+//    SmallBucketQty: JSON.parse(sessionStorage.getItem("bucketQtySM")),
+//    MediumBucketQty: JSON.parse(sessionStorage.getItem("bucketQtyMD")),
+//    LargeBucketQty: JSON.parse(sessionStorage.getItem("bucketQtyLG")),
+//    UserId: 2,
+//};
+
+// 
+
+   ticketUrl = "/api/farm-field-tickets"
+
+
+
+
+    issueTicket = async () => {
+        console.log(this.state.farmFieldId);
+        //console.log(this.state.ticket);
+
+    for (var i = 0; i < 1; i++) {
+        await axios
+            .post(this.ticketUrl, this.state.ticket, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            });
+     }
+     this.props.changeForm();
+}
 
   render() {
     return (
@@ -320,7 +409,7 @@ class TicketForm extends Component {
             <div>
               <Button
                 variant={"contained"}
-                onClick={this.props.changeForm}
+                onClick={this.issueTicket}
                 disabled={this.state.buttonDisable}
               >
                 Buy Tickets

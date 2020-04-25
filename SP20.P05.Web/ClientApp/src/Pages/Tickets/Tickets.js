@@ -24,8 +24,10 @@ export class Tickets extends Component {
     this.changeForm = this.changeForm.bind(this);
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.state.numTickets !== prevState.numTickets) {
-      this.getTicketTotal();
+      if (this.state.numTickets !== prevState.numTickets) {
+          this.handleFieldID();
+        this.getTicketTotal();
+
     }
   }
   componentDidMount() {
@@ -38,7 +40,7 @@ export class Tickets extends Component {
     });
   }
   changeForm(e) {
-    e.preventDefault();
+    //e.preventDefault();
     this.setState({
       showTicketForm: !this.state.showTicketForm
     });

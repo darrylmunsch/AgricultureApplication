@@ -60,25 +60,7 @@ export default function PayPal(props) {
             onApprove: async (data, actions) => {
               const order = await actions.order.capture();
               localStorage.setItem('isPaidFor', 'true');
-              setPaidFor(true);
-
-
-              var issueTicket = async() =>{
-                for( var i=0; i<1; i++){
-                  await axios
-                      .post(ticketUrl, ticket, {
-                        headers: {
-                          "Content-Type": "application/json"
-                        }
-                      })
-                      .then(res => {
-                        console.log(res);
-                        console.log(res.data);
-                      });
-                }
-              }
-
-              
+              setPaidFor(true);           
             }
           })
           .render(paypalRef);
