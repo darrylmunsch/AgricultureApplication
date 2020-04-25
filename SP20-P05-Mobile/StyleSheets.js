@@ -157,9 +157,9 @@ export const ticketForm = StyleSheet.create({
     borderColor: "#0d5d0d",
   },
   picker: {
-    color: "#e1ffdf",
-    height: 30,
-    width: 200,
+    color: 'transparent', //"#e1ffdf",
+    height: 65,
+    width: 300,
     marginTop: -50,
   },
   progress: {
