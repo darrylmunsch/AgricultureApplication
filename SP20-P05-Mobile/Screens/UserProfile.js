@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { View, Text, ImageBackground, SafeAreaView } from "react-native";
 import { profile } from "../StyleSheets";
 import { connect } from "react-redux";
-import Button from "../Components/Button";
 
 class UserProfile extends Component {
   constructor(props) {

@@ -66,6 +66,7 @@ function BottomNav() {
           ),
         }}
       />
+<<<<<<< HEAD
       <Tab.Screen
         name={"WebView"}
         component={PaypalWebView}
@@ -84,6 +85,8 @@ function BottomNav() {
                 ),
             }}
         />
+=======
+>>>>>>> Dev_Darryl
     </Tab.Navigator>
   );
 }

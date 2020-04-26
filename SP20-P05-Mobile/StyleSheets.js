@@ -137,7 +137,7 @@ export const ButtonStyle = StyleSheet.create({
 export const ticketForm = StyleSheet.create({
   container1: {
     flex: 1,
-    backgroundColor: "#e1ffdf",
+    backgroundColor: "#90cd9e",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -157,7 +157,7 @@ export const ticketForm = StyleSheet.create({
     borderColor: "#0d5d0d",
   },
   picker: {
-    color: 'transparent', //"#e1ffdf",
+    color: "transparent", //"#e1ffdf",
     height: 65,
     width: 300,
     marginTop: -50,
