@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { View, Text, ImageBackground, SafeAreaView } from "react-native";
 import { profile } from "../StyleSheets";
 import { connect } from "react-redux";
+import CustomerProfile from "../Components/CustomerProfile";
+import AdminProfile from "../Components/AdminProfile";
+import { logoutUser } from "../Redux/Actions/AuthActions";
 
 class UserProfile extends Component {
   constructor(props) {
@@ -12,7 +15,7 @@ class UserProfile extends Component {
     this.props.navigation.navigate("Login");
   };
   logoutUser = () => {
-    console.log("add log out function");
+    this.props.logoutUser();
   };
 
   render() {
@@ -21,7 +24,7 @@ class UserProfile extends Component {
       <SafeAreaView style={profile.main}>
         {this.props.auth.isAuthenticated ? (
           <View>
-            <Text style={profile.logout} onPress={() => this.redirectToLogin()}>
+            <Text style={profile.logout} onPress={() => this.logoutUser()}>
               Logout
             </Text>
             <View style={profile.centerText}>
@@ -29,6 +32,14 @@ class UserProfile extends Component {
                 Welcome, {this.props.auth.user.username}
               </Text>
             </View>
+            {this.props.auth.user?.username === "customer" ? (
+              <CustomerProfile />
+            ) : this.props.auth.user && this.props.username ? (
+              <AdminProfile />
+            ) : null}
+            {this.props.auth.user?.username === "admin" ? (
+              <AdminProfile />
+            ) : null}
           </View>
         ) : (
           <View style={profile.container}>
@@ -52,4 +63,9 @@ function mapStateToProps(state) {
     auth: state.AuthReducer,
   };
 }
-export default connect(mapStateToProps)(UserProfile);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutUser: () => dispatch(logoutUser()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

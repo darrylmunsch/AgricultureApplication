@@ -23,8 +23,8 @@ const barStyle = {
 
 const Tab = createMaterialBottomTabNavigator();
 
-function BottomNav() {
-    return (
+function BottomNav(props) {
+  return (
     <Tab.Navigator
       initialRouteName={"Home"}
       activeColor={"green"}
@@ -66,27 +66,17 @@ function BottomNav() {
           ),
         }}
       />
-<<<<<<< HEAD
-      <Tab.Screen
-        name={"WebView"}
-        component={PaypalWebView}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <EntypoIcon name={"paypal"} color={color} size={25} />
-          ),
-        }}
-      />
+      {props.auth.user?.username === "admin" ? (
         <Tab.Screen
-            name={"RedeemTickets"}
-            component={RedeemQrCode}
-            options={{
-                tabBarIcon: ({ color }) => (
-                    <MaterialIcon name={"barcode"} color={color} size={25} />
-                ),
-            }}
+          name={"RedeemTickets"}
+          component={RedeemQrCode}
+          options={{
+            tabBarIcon: ({ color }) => (
+              <MaterialIcon name={"barcode"} color={color} size={25} />
+            ),
+          }}
         />
-=======
->>>>>>> Dev_Darryl
+      ) : null}
     </Tab.Navigator>
   );
 }

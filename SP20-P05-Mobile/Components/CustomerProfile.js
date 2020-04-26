@@ -5,8 +5,13 @@ import { connect } from "react-redux";
 
 class CustomerProfile extends Component {
   render() {
-    return <View></View>;
+    return <Text>customer page</Text>;
   }
 }
+function mapStateToProps(state) {
+  return {
+    auth: state.AuthReducer,
+  };
+}
 
-export default CustomerProfile;
+export default connect(mapStateToProps)(CustomerProfile);

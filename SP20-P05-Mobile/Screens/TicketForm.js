@@ -2,23 +2,17 @@ import React, { Component } from "react";
 import { Text, View, Picker, FlatList } from "react-native";
 import { ticketForm } from "../StyleSheets";
 import Button from "../Components/Button";
-import {baseurl, BucketPrices, Fields} from "../Constants";
+import { BucketPrices, Fields } from "../Constants";
 import FormTextInput from "../Components/FormTextInput";
 import DismissKeyboard from "../Components/DismissKeyboard";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-<<<<<<< HEAD
-import axios from 'axios';
-import {connect} from "react-redux";
-=======
 import { connect } from "react-redux";
->>>>>>> Dev_Darryl
 
 class TicketForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedField: "Choose Field...",
-      farmFieldId: null,
       step: 1,
       smBucketPrice: "",
       mdBucketPrice: "",
@@ -31,7 +25,6 @@ class TicketForm extends Component {
       errorLg: "",
       ticketTotal: "",
       finalTicket: {
-        id:1,
         field: "",
         totalCost: "",
         smBuckets: 0,
@@ -56,21 +49,21 @@ class TicketForm extends Component {
 
   setBucketPrice = (field) => {
     switch (field) {
-      case "Blue Berries":
+      case "Blueberry":
         this.setState({
           smBucketPrice: BucketPrices.BlueberryField.smBucketPrice,
           mdBucketPrice: BucketPrices.BlueberryField.mdBucketPrice,
           lgBucketPrice: BucketPrices.BlueberryField.lgBucketPrice,
         });
         return;
-      case "Black Berries":
+      case "Blackberry":
         this.setState({
           smBucketPrice: BucketPrices.BlackberryField.smBucketPrice,
           mdBucketPrice: BucketPrices.BlackberryField.mdBucketPrice,
           lgBucketPrice: BucketPrices.BlackberryField.lgBucketPrice,
         });
         return;
-      case "Strawberries":
+      case "Strawberry":
         this.setState({
           smBucketPrice: BucketPrices.StrawberryField.smBucketPrice,
           mdBucketPrice: BucketPrices.StrawberryField.mdBucketPrice,
@@ -79,13 +72,11 @@ class TicketForm extends Component {
         return;
     }
   };
-
   setValue = (item) => {
     this.setState({
       selectedField: item,
     });
   };
-
   increaseStep = () => {
     if (this.state.selectedField !== "Choose Field...") {
       this.setState({
@@ -93,27 +84,12 @@ class TicketForm extends Component {
       });
     }
   };
-
   decreaseStep = () => {
     this.setState({
       step: 1,
     });
   };
-
-  findFarmFieldId = async() =>{
-
-    const getFarmFieldIdUrl = baseurl + '/get-by-name/' + this.state.selectedField
-
-    const getFarmFieldNameRequest = await axios.get(getFarmFieldIdUrl);
-
-    alert(getFarmFieldNameRequest.data.id)
-
-    this.setState({farmFieldId: getFarmFieldNameRequest.data.id})
-
-    this.increaseStep()
-  }
-
-  goToPurchase = async () => {
+  goToPurchase = () => {
     this.setState({
       finalTicket: {
         field: this.state.selectedField,
@@ -123,36 +99,10 @@ class TicketForm extends Component {
         lgBuckets: this.state.lgBuckets,
       },
     });
-
-    let ticket = {
-      'id': 1,
-      'ticketTimeSlot' : '9999-04-25T01:56:33.09Z',
-      'smallBucketQty': this.state.finalTicket.smBuckets,
-      'mediumBucketQty': this.state.finalTicket.mdBuckets,
-      'largeBucketQty' : this.state.finalTicket.lgBuckets,
-      'farmFieldId' : this.state.farmFieldId,
-      'userId': this.props.auth.user.id
-    }
-
-    alert(this.props.auth.user.id)
-
-    let createTicketUrl = baseurl + '/api/farm-field-tickets'
-
-     let thing = axios.post( createTicketUrl,ticket,
-        {headers:{
-        'Content Type': 'application/json'
-      }}).then( (res) =>{
-        alert(res.data.id)
-       alert(res.status)
-     }).catch( (error) =>{
-       alert(error)
-     })
-
     this.props.navigation.navigate("WebView", {
       ticket: this.state.finalTicket,
     });
   };
-
   setNumSmBuckets = (value) => {
     const isnum = /^\d+$/.test(value);
     if (!isnum) {
@@ -166,7 +116,6 @@ class TicketForm extends Component {
       });
     }
   };
-
   setNumMdBuckets = (value) => {
     const isnum = /^\d+$/.test(value);
     if (!isnum) {
@@ -180,7 +129,6 @@ class TicketForm extends Component {
       });
     }
   };
-
   setNumLgBuckets = (value) => {
     const isnum = /^\d+$/.test(value);
     if (!isnum) {
@@ -194,7 +142,6 @@ class TicketForm extends Component {
       });
     }
   };
-
   getTotal = () => {
     const totalSm = this.state.smBucketPrice * this.state.numSmBucket;
     const totalMd = this.state.mdBucketPrice * this.state.numMdBucket;
@@ -216,35 +163,7 @@ class TicketForm extends Component {
     return (
       <DismissKeyboard>
         <View style={ticketForm.container1}>
-<<<<<<< HEAD
-          {this.state.step === 1 ? (
-            <View style={ticketForm.container1}>
-              <Text style={ticketForm.header}>{this.state.selectedField}</Text>
-              <Picker
-                selectedValue={selectedField}
-                style={ticketForm.picker}
-                onValueChange={this.setValue}
-              >
-                <Picker.Item
-                  label={"Choose Field..."}
-                  value={"Choose Field..."}
-                />
-                <Picker.Item label={"Blueberry"} value={"Blue Berries"} />
-                <Picker.Item label={"Blackberry"} value={"Black Berries"} />
-                <Picker.Item label={"Strawberry"} value={"Strawberries"} />
-              </Picker>
-              <Button
-                label={"Select Field"}
-                onPress={this.findFarmFieldId}
-                style={ticketForm.buttonBottom}
-              />
-              <View style={{ backgroundColor: "#90ee90" }} />
-            </View>
-          ) : null}
-          {this.state.step === 2 ? (
-=======
           {this.props.auth.isAuthenticated ? (
->>>>>>> Dev_Darryl
             <View>
               {this.state.step === 1 ? (
                 <View style={ticketForm.container1}>
@@ -383,18 +302,9 @@ class TicketForm extends Component {
     );
   }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> Dev_Darryl
 function mapStateToProps(state) {
   return {
     auth: state.AuthReducer,
   };
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> Dev_Darryl
 export default connect(mapStateToProps)(TicketForm);
