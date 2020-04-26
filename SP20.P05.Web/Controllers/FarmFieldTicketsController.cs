@@ -22,7 +22,7 @@ namespace SP20.P05.Web.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = Roles.Customer)]
+        //[Authorize(Roles = Roles.Customer)]
         // Dear 383 student, below is an example of async / await
         // further reading: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/
         public async Task<ActionResult<FarmFieldTicketDto>> CreateTicket(FarmFieldTicketDto targetValue)

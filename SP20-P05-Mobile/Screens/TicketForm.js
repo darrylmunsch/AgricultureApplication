@@ -81,17 +81,6 @@ class TicketForm extends Component {
     });
   };
 
-  findFarmFieldId = async() =>{
-
-    const getFarmFieldIdUrl = baseurl + '/get-by-name/' + this.state.selectedField
-
-    const getFarmFieldNameRequest = await axios.get(getFarmFieldIdUrl);
-
-    this.setState({farmFieldId: getFarmFieldNameRequest.data.id})
-
-    this.increaseStep()
-  }
-
   increaseStep = () => {
     if (this.state.selectedField !== "Choose Field...") {
       this.setState({
@@ -106,6 +95,19 @@ class TicketForm extends Component {
     });
   };
 
+  findFarmFieldId = async() =>{
+
+    const getFarmFieldIdUrl = baseurl + '/get-by-name/' + this.state.selectedField
+
+    const getFarmFieldNameRequest = await axios.get(getFarmFieldIdUrl);
+
+    alert(getFarmFieldNameRequest.data.id)
+
+    this.setState({farmFieldId: getFarmFieldNameRequest.data.id})
+
+    this.increaseStep()
+  }
+
   goToPurchase = async () => {
     this.setState({
       finalTicket: {
@@ -117,7 +119,6 @@ class TicketForm extends Component {
       },
     });
 
-
     let ticket = {
       'id': 1,
       'ticketTimeSlot' : '9999-04-25T01:56:33.09Z',
@@ -125,27 +126,20 @@ class TicketForm extends Component {
       'mediumBucketQty': this.state.finalTicket.mdBuckets,
       'largeBucketQty' : this.state.finalTicket.lgBuckets,
       'farmFieldId' : this.state.farmFieldId,
-      'userId': userId
+      'userId': 2
     }
 
+    let createTicketUrl = baseurl + '/api/farm-field-tickets'
 
-
-
-    const createTicketUrl = baseurl + '/api/farm-field-tickets'
-
-
-    await axios.post( createTicketUrl,ticket,
+     let thing = axios.post( createTicketUrl,ticket,
         {headers:{
         'Content Type': 'application/json'
-      }}).then( (res)=>{
-          if(res.status === 200){
-            alert('SHIT IS POPPING OFF')
-          }
-          else{
-            alert('YEET')
-          }
-        }
-    )
+      }}).then( (res) =>{
+        alert(res.data.id)
+       alert(res.status)
+     }).catch( (error) =>{
+       alert(error)
+     })
 
     this.props.navigation.navigate("WebView", {
       ticket: this.state.finalTicket,

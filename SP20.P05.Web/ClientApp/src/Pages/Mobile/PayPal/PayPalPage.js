@@ -31,12 +31,6 @@ class PayPalPage extends Component {
 
         localStorage.setItem('isPaidFor', '');
 
-        var successfulPayment = localStorage.getItem('isPaidFor');
-
-        if(successfulPayment ==='true'){
-            //TODO: Implement issue ticket function here!!!!
-        }
-
             return (
                 <div>
                     <PayPal price={this.props.match.params.price} description='Farm field ticket purchase from mobile app.' />
