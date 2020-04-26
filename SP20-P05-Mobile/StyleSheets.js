@@ -137,7 +137,7 @@ export const ButtonStyle = StyleSheet.create({
 export const ticketForm = StyleSheet.create({
   container1: {
     flex: 1,
-    backgroundColor: "#e1ffdf",
+    backgroundColor: "#90cd9e",
     alignItems: "center",
     justifyContent: "center",
   },

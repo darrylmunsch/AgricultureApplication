@@ -65,15 +65,6 @@ function BottomNav() {
           ),
         }}
       />
-      <Tab.Screen
-        name={"WebView"}
-        component={PaypalWebView}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <EntypoIcon name={"paypal"} color={color} size={25} />
-          ),
-        }}
-      />
     </Tab.Navigator>
   );
 }
