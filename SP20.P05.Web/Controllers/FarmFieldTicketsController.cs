@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +21,20 @@ namespace SP20.P05.Web.Controllers
         public FarmFieldTicketsController(DataContext context)
         {
             this.context = context;
+        }
+
+        private static Expression<Func<FarmFieldTicket, FarmFieldTicketDto>> MapEntityToDto()
+        {
+            return x => new FarmFieldTicketDto
+            {
+                Id = x.Id,
+                TicketTimeSlot = x.TicketTimeSlot,
+                SmallBucketQty = x.SmallBucketQty,
+                MediumBucketQty = x.MediumBucketQty,
+                LargeBucketQty = x.LargeBucketQty,
+                FarmFieldId = x.FarmFieldId,
+                UserId = x.UserId
+            };
         }
 
         [HttpPost]
@@ -68,6 +84,11 @@ namespace SP20.P05.Web.Controllers
             context.SaveChanges();
 
             return Ok();
+        }
+        [HttpGet("{id}/userTickets")]
+        public IEnumerable<FarmFieldTicketDto> getByUserId(int id)
+        {
+            return context.Set<FarmFieldTicket>().Where(x => x.UserId == id).Select(MapEntityToDto()).ToList();
         }
     }
 }
