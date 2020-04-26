@@ -7,6 +7,7 @@ import FormTextInput from "../Components/FormTextInput";
 import DismissKeyboard from "../Components/DismissKeyboard";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import axios from 'axios';
+import {connect} from "react-redux";
 
 class TicketForm extends Component {
   constructor(props) {
@@ -126,8 +127,10 @@ class TicketForm extends Component {
       'mediumBucketQty': this.state.finalTicket.mdBuckets,
       'largeBucketQty' : this.state.finalTicket.lgBuckets,
       'farmFieldId' : this.state.farmFieldId,
-      'userId': 2
+      'userId': this.props.auth.user.id
     }
+
+    alert(this.props.auth.user.id)
 
     let createTicketUrl = baseurl + '/api/farm-field-tickets'
 
@@ -318,4 +321,12 @@ class TicketForm extends Component {
     );
   }
 }
-export default TicketForm;
+
+function mapStateToProps(state) {
+  return {
+    auth: state.AuthReducer,
+  };
+}
+
+
+export default connect(mapStateToProps)(TicketForm);
