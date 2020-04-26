@@ -17,6 +17,7 @@ class TicketForm extends Component {
   constructor(props) {
     super(props);
       this.state = {
+      userId: null,
       farmFieldId: null,
       fields: ["Blueberry", "Blackberry", "Strawberry"],
       selectedField: "",
@@ -47,6 +48,7 @@ class TicketForm extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
       if (this.state.selectedField !== prevState.selectedField) {
+      this.handleUser();
       this.handleFieldID();
       this.handleSetTicket();
       this.getTicketTotal();
@@ -66,19 +68,13 @@ class TicketForm extends Component {
     }
     //Todo , make this work.
     if (this.state.smBucket !== prevState.smBucket) {
-      let price = this.state.smBucket * this.state.bucketPriceSM;
-      this.setState({ cartPrice1: price });
-      this.getTotalCart();
+        this.handleSetTicket();
     }
     if (this.state.medBucket !== prevState.medBucket) {
-      let price2 = this.state.medBucket * this.state.bucketPriceMD;
-      this.setState({ cartPrice2: price2 });
-      this.getTotalCart();
+        this.handleSetTicket();
     }
     if (this.state.lgBucket !== prevState.lgBucket) {
-      let price3 = this.state.lgBucket * this.state.bucketPriceLG;
-      this.setState({ cartPrice3: price3 });
-      this.getTotalCart();
+        this.handleSetTicket();
     }
   }
 
@@ -101,6 +97,12 @@ class TicketForm extends Component {
     this.setBucketPriceLG(val);
     };
 
+    handleUser = () => {
+        let s = localStorage.getItem("userId");
+        this.setState({ userId: s });
+
+
+    };
     handleFieldID = (selectedField) => {
         switch (this.state.selectedField) {
             case "Blueberry":
@@ -244,10 +246,13 @@ class TicketForm extends Component {
     this.getTicketTotal()
     };
 
+
+    
 // Hardcoded for testing
 
 
     handleSetTicket = () => {
+        
         this.setState({
             ticket: {
                 farmFieldId: this.state.farmFieldId,
@@ -255,7 +260,7 @@ class TicketForm extends Component {
                 SmallBucketQty: JSON.parse(sessionStorage.getItem("bucketQtySM")),
                 MediumBucketQty: JSON.parse(sessionStorage.getItem("bucketQtyMD")),
                 LargeBucketQty: JSON.parse(sessionStorage.getItem("bucketQtyLG")),
-                UserId: 2,
+                UserId: JSON.parse(this.state.userId)
             }
         })
 
@@ -285,6 +290,7 @@ class TicketForm extends Component {
 
     issueTicket = async () => {
         console.log(this.state.farmFieldId);
+        console.log("Ticket Object: ",this.state.ticket);
         //console.log(this.state.ticket);
 
     for (var i = 0; i < 1; i++) {
@@ -335,7 +341,8 @@ class TicketForm extends Component {
                       <Select
                         style={{backgroundColor: "white"}}
                         onChange={this.handleBucketQtySm}
-                        value={this.state.smBucket}
+                                            value={this.state.smBucket}
+                                            
                       >
                         <MenuItem value={0}>Zero</MenuItem>
                         <MenuItem value={1}>One</MenuItem>
@@ -353,9 +360,10 @@ class TicketForm extends Component {
                     <div>Medium Bucket Price: {this.state.bucketPriceMD}</div>
                     <div>
                       <Select
-                        style={{backgroundColor: "white"}}
-                        onChange={this.handleBucketQtyMed}
-                        value={this.state.medBucket}
+                                            style={{ backgroundColor: "white" }}
+                                            onChange={this.handleBucketQtyMed}
+                                            value={this.state.medBucket}
+                                            
                       >
                         <MenuItem value={0}>Zero</MenuItem>
                         <MenuItem value={1}>One</MenuItem>
@@ -377,7 +385,8 @@ class TicketForm extends Component {
                       <Select
                         style={{backgroundColor: "white"}}
                         onChange={this.handleBucketQtyLg}
-                        value={this.state.lgBucket}
+                                            value={this.state.lgBucket}
+                                            
                       >
                         <MenuItem value={0}>Zero</MenuItem>
                         <MenuItem value={1}>One</MenuItem>
