@@ -140,14 +140,16 @@ export const ticketForm = StyleSheet.create({
     backgroundColor: "#90cd9e",
     alignItems: "center",
     justifyContent: "center",
+    color: "#e1ffdf",
   },
   inputContainer: {
     flex: 1,
-    backgroundColor: "#e1ffdf",
+    backgroundColor: "#90cd9e",
     justifyContent: "center",
+    color: "#e1ffdf",
   },
   header: {
-    color: "#90cd9e",
+    color: "#e1ffdf",
     fontSize: 25,
   },
   buttonBottom: {
@@ -157,10 +159,10 @@ export const ticketForm = StyleSheet.create({
     borderColor: "#0d5d0d",
   },
   picker: {
-    color: "transparent", //"#e1ffdf",
+    color: "#e1ffdf",
     height: 65,
     width: 300,
-    marginTop: -50,
+    marginTop: -20,
   },
   progress: {
     flex: 1,
@@ -197,11 +199,11 @@ export const ticketForm = StyleSheet.create({
     marginBottom: 20,
   },
   navigateBack: {
-    color: "#90cd9e",
+    color: "#e1ffdf",
     fontSize: 20,
   },
   navigateNext: {
-    color: "#90cd9e",
+    color: "#e1ffdf",
     fontSize: 20,
   },
   buttonBucket: {
