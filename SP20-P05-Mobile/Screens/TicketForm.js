@@ -192,19 +192,30 @@ class TicketForm extends Component {
               {this.state.step === 2 ? (
                 <View>
                   <View style={ticketForm.inputContainer}>
-                    <Text style={{ fontSize: 30, paddingBottom: 10 }}>
+                    <Text
+                      style={{
+                        fontSize: 30,
+                        paddingBottom: 10,
+                        color: "#e1ffdf",
+                      }}
+                    >
                       {selectedField}
                     </Text>
-                    <Text style={{ fontSize: 20, paddingBottom: 30 }}>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        paddingBottom: 30,
+                        color: "#e1ffdf",
+                      }}
+                    >
                       Please pick your bucket(s)
                     </Text>
                     <Text>Small Bucket Price: ${this.state.smBucketPrice}</Text>
                     <FormTextInput
                       style={{
                         width: 200,
-                        color: "#90cd9e",
-                        borderColor: "#90cd9e",
-                        textAlign: "center",
+                        color: "#e1ffdf",
+                        borderColor: "#e1ffdf",
                       }}
                       placeholder={"How many small buckets?"}
                       keyboardType={"numeric"}
@@ -221,9 +232,8 @@ class TicketForm extends Component {
                     <FormTextInput
                       style={{
                         width: 200,
-                        color: "#90cd9e",
-                        borderColor: "#90cd9e",
-                        textAlign: "center",
+                        color: "#e1ffdf",
+                        borderColor: "#e1ffdf",
                       }}
                       placeholder={"How many medium buckets?"}
                       keyboardType={"numeric"}
@@ -238,9 +248,8 @@ class TicketForm extends Component {
                     <FormTextInput
                       style={{
                         width: 200,
-                        color: "#90cd9e",
-                        borderColor: "#90cd9e",
-                        textAlign: "center",
+                        color: "#e1ffdf",
+                        borderColor: "#e1ffdf",
                       }}
                       placeholder={"How many large buckets?"}
                       keyboardType={"numeric"}

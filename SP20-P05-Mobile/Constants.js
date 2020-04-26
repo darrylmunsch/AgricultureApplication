@@ -1,4 +1,4 @@
-export const baseurl = "http://bad42a3b.ngrok.io";
+export const baseurl = "http://eef20610.ngrok.io";
 
 // Run the below script in the directory under it that I listed.. "the mobile directory7"
 // ngrok http -host-header=rewrite https://localhost:44346/
